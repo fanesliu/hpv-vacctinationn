@@ -53,11 +53,11 @@
 <body>
     {{-- perlu variable error dari be --}}
     @error('email')
-    <div class="card text-danger bg-light">{{$message}}</div>
+    <div class="card text-danger bg-light">{{$error}}</div>
     @enderror
 
     @error('password')
-    <div class="card text-danger bg-light">{{$message}}</div>
+    <div class="card text-danger bg-light">{{$error}}</div>
     @enderror
     
     <div class="login-card">

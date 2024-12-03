@@ -22,10 +22,10 @@
             max-width: 400px;
             text-align: center;
         }
-        .login-card img {
+        /* .login-card img {
             width: 50px;
             margin-bottom: 1rem;
-        }
+        } */
         .login-card h1 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
@@ -52,16 +52,21 @@
 </head>
 <body>
     {{-- perlu variable error dari be --}}
-    @error('error')
+    @error('email')
+    <div class="card text-danger bg-light">{{$message}}</div>
+    @enderror
+
+    @error('password')
     <div class="card text-danger bg-light">{{$message}}</div>
     @enderror
     
-
     <div class="login-card">
         <div class="row">
-            <img src="{{asset('assets/logo.png')}}" alt="Logo">
+            <div class="img-fluid">
+                <img src="{{asset('assets/logo.png')}}" alt="Logo">
+            </div>
             <h1>Log In</h1>
-            <form action="{{ route('login') }}" method="post">
+            <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="d-flex"></div>
                 <div class="mb-3">

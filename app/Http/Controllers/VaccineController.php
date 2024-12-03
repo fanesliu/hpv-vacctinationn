@@ -7,10 +7,8 @@ use Illuminate\Http\Request;
 
 class VaccineController extends Controller
 {
-    //
-    public function get_allVaccine(){
-        $v = Vaccine::all();
-        dd($v);
-        return view('home.home',['v'=>$v]);
+    public function get_allVaccine($userID){
+        $vaccines = Vaccine::all();
+        return view('pricing',compact('vaccines'));
     }
 }

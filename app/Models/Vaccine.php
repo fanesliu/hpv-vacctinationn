@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Vaccine extends Model
 {
     use HasFactory;
-    protected $table ='transactions';
+    protected $table ='vaccine';
     protected $guarded=[];
 
-    public function appointments(){
-        return $this->hasMany(Appointment::class);
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class, 'vaccineId');
     }
-}
+    }

@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="input-con">
-                    <input type="text" name="email" class="form-control" placeholder="Name">
+                    <input type="text" name="email" class="form-control" placeholder="Name" required>
                 </div>
 
                 <div class="text-con">
@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="input-con">
-                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <input type="email" name="email" class="form-control" placeholder="Email" required>
                 </div>
                 
                 
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="input-con">
-                    <input type="password" name="email" class="form-control" placeholder="Password">
+                    <input type="password" name="email" class="form-control" placeholder="Password" required>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Register</button>

@@ -27,6 +27,6 @@ class AppointmentController extends Controller
         $message = $places->isEmpty() ? 'No place available' : null;
 
         // Return ke view
-        return view('appointment', compact('places', 'message'));
+        return view('pages.appointment', compact('places', 'message'));
     }
 }

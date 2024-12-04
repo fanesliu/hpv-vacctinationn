@@ -7,11 +7,11 @@ use App\Models\Vaccine;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('home');
+    return view('pages.home');
 });
 
 Route::get('/services', function () {
-    return view('servicesPage');
+    return view('pages.servicesPage');
 });
 // Route::get('/',[VaccineController::class,'get_allVaccine'])->name("home.view");
 Route::get('/appointment/{userID}/{vaccineID}/{date}',[AppointmentController::class,'get_place'])->name("appointment.view");

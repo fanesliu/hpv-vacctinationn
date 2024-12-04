@@ -11,7 +11,6 @@ class Appointment extends Model
     use HasFactory;
     protected $table ='appointment';
     protected $guarded=[];
-    
     public function vaccine(){
         return $this->belongsTo(Vaccine::class, 'vaccineID');
     }

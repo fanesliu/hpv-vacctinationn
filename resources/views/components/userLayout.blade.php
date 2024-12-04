@@ -49,7 +49,7 @@
         }
 
         .services-section {
-            padding: 80px 0;
+            padding: 2rem 0;
         }
 
         .service-card {

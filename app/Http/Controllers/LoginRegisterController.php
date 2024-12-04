@@ -16,20 +16,24 @@ class LoginRegisterController extends Controller{
 
     public function loginInsert(Request $req){
         $input = $req->validate([
-            "email"=> "required|email",
+            "email"=> "required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/']",
             "password"=> "required|min:8",
             ]);
 
         if(auth::attempt($input)){
             if(Auth::user()->role   == "admin"){
-                return redirect()->route(""); //admin punya dashboard
+                return redirect()->route("admin_dashboard"); //admin punya dashboard
             }else{
-                return redirect()->route(""); //user punya dashboard
+                return redirect()->route("homepage"); //user punya dashboard
 
         }
     }else{
         return redirect()->back()->with('error', 'Input Invalid!');
     }
+}
+
+public function registerPage(){
+    return view('register.register'); //cocokin dengan nama frontend nya
 }
 
 public function registerInsert(Request $req){

@@ -3,15 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Auth;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class TransactionController extends Controller
 {
-    public function home(){
-        $user = Auth::user();
-        return view('home', compact('user'));
-    }
     public function store(Request $request)
     {
         $request->validate([
@@ -26,10 +21,5 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('users.index');
-    }
-
-    public function logout(){
-        Auth::logout();
-        return redirect()->route('login');
     }
 }

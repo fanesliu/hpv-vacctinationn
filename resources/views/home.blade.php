@@ -38,6 +38,8 @@
                             <li class="nav-item">
                                 <a class="nav-link btn btn-primary text-white" href="#">Contact Us</a>
                             </li>
+
+                            <a href="{{ route('login') }}" class="btn btn-primary">Log Out</a>
                         </ul>
                     </div>
                 </div>

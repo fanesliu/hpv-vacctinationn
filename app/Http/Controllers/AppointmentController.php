@@ -13,7 +13,7 @@ class AppointmentController extends Controller
     {
         // Jika date adalah 0, abaikan dan return view tanpa pesan
         if ($date == 0) {
-            return view('appointment', ['places' => [], 'message' => null]);
+            return view('pages.appointment', ['places' => [], 'message' => null]);
         }
 
         // Ambil semua tempat yang tersedia berdasarkan tanggal dan vaccineID
@@ -27,6 +27,6 @@ class AppointmentController extends Controller
         $message = $places->isEmpty() ? 'No place available' : null;
 
         // Return ke view
-        return view('appointment', compact('places', 'message'));
+        return view('pages.appointment', compact('places', 'message'));
     }
 }

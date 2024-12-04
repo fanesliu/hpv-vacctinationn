@@ -1,3 +1,26 @@
+<style>
+    .navbar {
+        background-color: transparent;
+        padding: 20px 0;
+    }
+
+    .navbar-brand img {
+        height: 40px;
+    }
+
+    .contact-btn {
+        background-color: #FF7F50;
+        color: white !important;
+        border-radius: 25px;
+        padding: 8px 25px;
+    }
+
+    .contact-btn:hover {
+        background-color: #ffff;
+        border: #FF7F50 1px solid;
+        color: #FF7F50 !important;
+    }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="#">

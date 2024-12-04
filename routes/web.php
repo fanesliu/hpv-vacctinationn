@@ -12,7 +12,13 @@ Route::post('/register', [LoginRegisterController::class, 'registerInsert']);
 Route::get('/login', [LoginRegisterController::class, 'loginPage'])->name('login');
 Route::post('/login', [LoginRegisterController::class, 'loginInsert']);
 Route::get('/logout', [UserController::class, 'logout']);
+Route::get('/profile',function(){
+    return view('pages.profile');
+})->name('profile');
 
+
+// ---------------------------------------------------------------------------------------------------
+// ---------------------------------ADMIN---------------------------------
 
 //Kalo belom login, ga bisa akses route dibawah
 Route::middleware(['auth', 'user'])->group(function () {
@@ -22,7 +28,6 @@ Route::middleware(['auth', 'user'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->group(function (){
 
-<<<<<<< HEAD
     Route::get('/admin',[AdminController::class,'adminDashboard'])->name('admin_dashboard');
     Route::get('/admin/create-appointment',[AdminController::class,'createAppointment']);
     Route::get('/admin/create-appointment',[AdminController::class,'insertApoointment']);
@@ -37,12 +42,3 @@ Route::middleware(['auth', 'admin'])->group(function (){
     route::get('/appointment/edit{id}', 'App\Http\Controllers\AppointmentController@edit')->name('index.edit');
     route::put('/appointment/update{id}', 'App\Http\Controllers\AppointmentController@update')->name('index.update');
 });
-=======
-Route::get('/register',function(){
-    return view('register.register');
-})->name('register');
-
-Route::get('/profile',function(){
-    return view('profile.profile');
-})->name('profile');
->>>>>>> refs/remotes/origin/branchWinsenJovan

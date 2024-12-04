@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         $user = Auth::user();
-        return view('home', compact('user'));
+        return view('pages.home', compact('user'));
     }
     public function store(Request $request)
     {
@@ -30,8 +31,9 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('pages.login');
     }
 }

@@ -15,7 +15,7 @@ Route::post('/register', [LoginRegisterController::class, 'registerInsert']);
 Route::get('/login', [LoginRegisterController::class, 'loginPage'])->name('login');
 Route::post('/login', [LoginRegisterController::class, 'loginInsert']);
 Route::get('/logout', [UserController::class, 'logout']);
-Route::get('/profile',function(){
+Route::get('/profile', function () {
     return view('pages.profile');
 })->name('profile');
 
@@ -24,16 +24,13 @@ Route::get('/profile',function(){
 // ---------------------------------ADMIN---------------------------------
 
 //Kalo belom login, ga bisa akses route dibawah
-Route::middleware(['auth', 'user'])->group(function () {
+Route::middleware(['auth', 'user'])->group(function () {});
 
+Route::middleware(['auth', 'admin'])->group(function () {
 
-});
-
-Route::middleware(['auth', 'admin'])->group(function (){
-
-    Route::get('/admin',[AdminController::class,'adminDashboard'])->name('admin_dashboard');
-    Route::get('/admin/create-appointment',[AdminController::class,'createAppointment']);
-    Route::get('/admin/create-appointment',[AdminController::class,'insertApoointment']);
+    Route::get('/admin', [AdminController::class, 'adminDashboard'])->name('admin_dashboard');
+    Route::get('/admin/create-appointment', [AdminController::class, 'createAppointment']);
+    Route::get('/admin/create-appointment', [AdminController::class, 'insertApoointment']);
 
     //Account Page
     Route::get('/admin/user/all-accounts', [AdminController::class, 'allAccountsPage']);

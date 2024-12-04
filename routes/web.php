@@ -50,5 +50,5 @@ Route::get('/services', function () {
     return view('pages.servicesPage');
 });
 // Route::get('/',[VaccineController::class,'get_allVaccine'])->name("home.view");
-Route::get('/appointment/{userID}/{vaccineID}/{date}',[AppointmentController::class,'get_place'])->name("appointment.view");
-Route::get('/pricing/{userID}',[VaccineController::class,'get_allVaccine'])->name("pricing.view");
+Route::get('/appointment/{userID}/{vaccineID}/{date}', [AppointmentController::class, 'get_place'])->name("appointment.view");
+Route::get('/pricing/{userID}', [VaccineController::class, 'get_allVaccine'])->name("pricing.view");

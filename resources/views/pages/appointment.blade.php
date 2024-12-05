@@ -114,7 +114,7 @@
                         <div class="days">
                             <div class="day"></div>
                             <div class="day"></div>
-                            <div class="day">1</div>
+                            <div class="day" data-date="2024-03-01">1</div>
                             <div class="day">2</div>
                             <div class="day">3</div>
                             <div class="day">4</div>

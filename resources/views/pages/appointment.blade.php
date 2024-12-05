@@ -177,6 +177,8 @@
         @endforelse
     </ul>
 
+    @include('components.testimoni')
+
     <!-- Console log pesan jika ada -->
     @if ($message)
         <script>

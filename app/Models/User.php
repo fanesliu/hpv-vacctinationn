@@ -15,9 +15,6 @@ class User extends Authenticatable
     protected $table ='users';
     protected $guarded=[];
 
-    public function appointments(){
-        return $this->hasMany(Appointment::class);
-    }
     public function transactions(){
         return $this->hasMany(Transaction::class);
     }

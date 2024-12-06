@@ -63,7 +63,7 @@
                 <h1 class="text-4xl font-bold">Book an Online Appointment</h1>
                 <div>
                     <label for="datepicker" class="block text-lg font-medium text-gray-700">Select a date</label>
-                    <div id="datepicker-inline" inline-datepicker data-date="{{ date('m/d/Y') }}"></div>
+                    <div id="datepicker-inline" name="appointment_date" inline-datepicker data-date="{{ date('m/d/Y') }}"></div>
                 </div>
             </div>
 
@@ -71,95 +71,7 @@
             <div class="lg:w-1/2 space-y-6">
                 <h1 class="text-4xl font-bold">Available Places for Vaccine Dose</h1>
                 <ul class="space-y-4">
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                        <p>
-                            <span class="font-bold">RUMAH SAKIT</span>: Available from
-                            <span class="font-bold">10-11-2024</span> to
-                            <span class="font-bold">12-12-2024</span>
-                        </p>
-                        <p>For dose <span class="font-semibold">Vaccine Id: 1</span></p>
-                    </li>
-                    {{-- @forelse ($places as $place)
+                    @forelse ($places as $place)
                         <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
                             <p>
                                 <span class="font-bold">{{ $place->place }}</span>: Available from
@@ -172,7 +84,7 @@
                         @if ($message)
                             <li class="text-red-500 font-medium">{{ $message }}</li>
                         @endif
-                    @endforelse --}}
+                    @endforelse
                 </ul>
             </div>
         </div>
@@ -257,6 +169,15 @@
     </footer>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            $('#datepicker').datepicker({
+                onSelect: function(dateText) {
+                    $('#datepicker').val(dateText); // Set nilai input ke tanggal yang dipilih
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

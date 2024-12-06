@@ -12,7 +12,7 @@ class UserController extends Controller
 {
     public function home(){
         $user = Auth::user();
-        return view('home', compact('user'));
+        return view('pages.home', compact('user'));
     }
     public function store(Request $request)
     {
@@ -20,14 +20,15 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'required|email',
         ]);
-
+        $default_img = '/profile_bg.png';
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
+            'image' => '/profile_bg.png'
         ]);
 
-        return redirect()->route('users.index');
+        return redirect()->route('login');
     }
 
     public function logout(){

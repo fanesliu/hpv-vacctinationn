@@ -44,7 +44,7 @@ class LoginRegisterController extends Controller
     {
 
         $users = new User;
-        $users->name = $req->input('username');
+        $users->name = $req->input('name');
         $users->email = $req->input('email');
         $users->password = Hash::make($req->input('password'));
         $users->role = 'user';

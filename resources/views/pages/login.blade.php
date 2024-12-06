@@ -66,7 +66,7 @@
                 <img src="{{asset('assets/logo.png')}}" alt="Logo">
             </div>
             <h1>Log In</h1>
-            <form action="{{ route('login') }}" method="POST">
+            <form action="/login" method="POST">
                 @csrf
                 <div class="d-flex"></div>
                 <div class="mb-3">

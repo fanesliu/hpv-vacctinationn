@@ -36,13 +36,13 @@
 
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('homepage')}}">Home</a>
+                    <a class="nav-link" href="{{ route('homepage') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('aboutus.view')}}">About</a>
+                    <a class="nav-link" href="{{ route('aboutus.view') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('service.view')}}">Services</a>
+                    <a class="nav-link" href="{{ route('service.view') }}">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Information</a>
@@ -58,7 +58,7 @@
             <div class="d-flex align-items-center">
                 <a class="btn contact-btn text-white me-3" href="#">Log Out</a>
                 <a href="{{ route('login') }}"></a>
-                    <i class="fas fa-user-circle fa-lg"></i>
+                <i class="fas fa-user-circle fa-lg"></i>
                 </a>
             </div>
         </div>

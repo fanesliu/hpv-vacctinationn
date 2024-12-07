@@ -1,3 +1,26 @@
+<style>
+    .navbar {
+        background-color: transparent;
+        padding: 20px 0;
+    }
+
+    .navbar-brand img {
+        height: 40px;
+    }
+
+    .contact-btn {
+        background-color: #FF7F50;
+        color: white !important;
+        border-radius: 25px;
+        padding: 8px 25px;
+    }
+
+    .contact-btn:hover {
+        background-color: #ffff;
+        border: #FF7F50 1px solid;
+        color: #FF7F50 !important;
+    }
+</style>
 <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -13,13 +36,13 @@
 
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{ route('homepage') }}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">About</a>
+                    <a class="nav-link" href="{{ route('aboutus.view') }}">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Services</a>
+                    <a class="nav-link" href="{{ route('service.view') }}">Services</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Information</a>
@@ -30,6 +53,11 @@
                 <a class="btn contact-btn text-white me-3" href="#">Contact Us</a>
                 <a href="#" class="d-flex align-items-center">
                     <i class="fas fa-user-circle fa-lg"></i>
+                </a>
+            </div>
+            <div class="d-flex align-items-center">
+                <a class="btn contact-btn text-white me-3" href="{{ route('login') }}">Log Out</a>
+                <i class="fas fa-user-circle fa-lg"></i>
                 </a>
             </div>
         </div>

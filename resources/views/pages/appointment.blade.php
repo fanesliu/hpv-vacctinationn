@@ -56,21 +56,21 @@
         </div>
     </section>
 
-    <section class="bg-gray-50 py-10">
+    <section class="bg-gray-50 py-32 min-h-screen">
         <div class="container mx-auto flex flex-col lg:flex-row items-start justify-between gap-8">
-            <!-- Kolom Kiri -->
+            <!-- Left Column -->
             <div class="lg:w-1/2 space-y-6 sticky top-0 pt-4 z-10">
                 <h1 class="text-4xl font-bold">Book an Online Appointment</h1>
                 <div>
                     <label for="datepicker" class="block text-lg font-medium text-gray-700">Select a date</label>
-                    <div id="datepicker-inline" name="appointment_date" inline-datepicker data-date="{{ date('m/d/Y') }}"></div>
+                    <div id="datepicker-inline" name="appointment_date" inline-datepicker data-date="{{ date('d') }}"></div>
                 </div>
             </div>
 
-            <!-- Kolom Kanan -->
+            <!-- Right Column -->
             <div class="lg:w-1/2 space-y-6">
                 <h1 class="text-4xl font-bold">Available Places for Vaccine Dose</h1>
-                <ul class="space-y-4">
+                <ul class="space-y-4 listData" id="placesList">
                     @forelse ($places as $place)
                         <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
                             <p>
@@ -88,6 +88,69 @@
                 </ul>
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Assuming these are passed from your Blade view
+                const userId = 1; // Make sure to pass this from your controller
+                const vaccineId = 1; // Make sure to pass this from your controller
+
+                // Select the inline datepicker
+                const datepicker = document.querySelector('[inline-datepicker]');
+
+                // Add event listener for date selection
+                datepicker.addEventListener('changeDate', function(event) {
+                    // Get the selected day (1-31)
+                    const selectedDay = event.detail.date.getDate();
+
+                    // Construct the new URL
+                    const newUrl = `/appointment/${userId}/${vaccineId}/${selectedDay}`;
+
+                    // Fetch updated places for the selected date
+                    fetch(newUrl, {
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        })
+                        .then(response => response.json())
+                        .then(data => {
+                            // Update the places list
+                            const placesList = document.getElementById('placesList');
+                            placesList.innerHTML = ''; // Clear existing list
+
+                            if (data.places && data.places.length > 0) {
+                                data.places.forEach(place => {
+                                    const li = document.createElement('li');
+                                    li.className = 'bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white';
+                                    li.innerHTML = `
+                                    <p>
+                                        <span class="font-bold">${place.place}</span>: Available from 
+                                        <span class="font-bold">${place.dateAvailibilityStart}</span> to 
+                                        <span class="font-bold">${place.dateAvailibilityEnd}</span>
+                                    </p>
+                                    <p>For dose <span class="font-semibold">${place.vaccineId}</span></p>
+                                `;
+                                    placesList.appendChild(li);
+                                });
+                            } else {
+                                const li = document.createElement('li');
+                                li.className = 'text-red-500 font-medium';
+                                li.textContent = data.message || 'No available places for the selected date';
+                                placesList.appendChild(li);
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Error fetching places:', error);
+                            const placesList = document.getElementById('placesList');
+                            placesList.innerHTML = `
+                            <li class="text-red-500 font-medium">
+                                Error loading places. Please try again.
+                            </li>
+                        `;
+                        });
+                });
+            });
+        </script>
     </section>
 
     <footer class="bg-gradient-to-r from-green-400 to-teal-600 text-white py-20">
@@ -169,15 +232,59 @@
     </footer>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            $('#datepicker').datepicker({
-                onSelect: function(dateText) {
-                    $('#datepicker').val(dateText); // Set nilai input ke tanggal yang dipilih
-                }
+    {{-- <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const datepicker = document.querySelector('#datepicker-inline'); // Elemen kalender
+            const placesList = document.querySelector('listData'); // Daftar tempat vaksinasi
+
+            // Event listener untuk menangkap tanggal yang dipilih
+            datepicker.addEventListener('changeDate', function(event) {
+                const selectedDate = event.detail.date; // Tanggal yang dipilih
+
+                // Ambil hanya bagian tanggal (tanggal bulan)
+                const date = new Date(selectedDate);
+                const day = date.getDate(); // Mendapatkan tanggal (1-31)
+
+                const userID = 1; // Ganti dengan userID dinamis
+                const vaccineID = 1; // Ganti dengan vaccineID dinamis
+
+                // Kirim request ke Laravel untuk mendapatkan data tempat vaksinasi berdasarkan tanggal
+                fetch(`/appointment/${userID}/${vaccineID}/${date}`)
+                    .then((response) => response.json())
+                    .then((data) => {
+                        // Kosongkan daftar tempat vaksinasi sebelum menampilkan data baru
+                        placesList.innerHTML = '';
+
+                        if (data.places && data.places.length > 0) {
+                            // Tampilkan data tempat vaksinasi baru
+                            data.places.forEach((place) => {
+                                const listItem = document.createElement('li');
+                                listItem.className =
+                                    'bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white';
+                                listItem.innerHTML = `
+                            <p>
+                                <span class="font-bold">${place.place}</span>: Available from
+                                <span class="font-bold">${place.dateAvailibilityStart}</span> to
+                                <span class="font-bold">${place.dateAvailibilityEnd}</span>
+                            </p>
+                            <p>For dose <span class="font-semibold">${place.vaccineId}</span></p>
+                        `;
+                                placesList.appendChild(listItem);
+                            });
+                        } else {
+                            // Tampilkan pesan jika tidak ada tempat vaksinasi tersedia
+                            const messageItem = document.createElement('li');
+                            messageItem.className = 'text-red-500 font-medium';
+                            messageItem.textContent = data.message || 'No places available for the selected date.';
+                            placesList.appendChild(messageItem);
+                        }
+                    })
+                    .catch((error) => {
+                        console.error('Error fetching data:', error);
+                    });
             });
         });
-    </script>
+    </script> --}}
 </body>
 
 </html>

@@ -22,11 +22,19 @@ class AppointmentController extends Controller
             ->where('dateAvailibilityStart', '<=', $date)
             ->where('dateAvailibilityEnd', '>=', $date)
             ->get(['place', 'dateAvailibilityStart', 'dateAvailibilityEnd', 'vaccineId']);
-        // dd($places);
-        // Jika tidak ada tempat yang tersedia, tambahkan pesan ke view
+
+        // Jika tidak ada tempat yang tersedia, tambahkan pesan
         $message = $places->isEmpty() ? 'No place available' : null;
 
-        // Return ke view
+        // Periksa apakah request berasal dari AJAX atau fetch()
+        if (request()->wantsJson()) {
+            return response()->json([
+                'places' => $places,
+                'message' => $message,
+            ]);
+        }
+
+        // Jika bukan AJAX, return view
         return view('pages.appointment', compact('places', 'message'));
     }
 }

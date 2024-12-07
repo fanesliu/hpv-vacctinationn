@@ -56,8 +56,7 @@
                 </a>
             </div>
             <div class="d-flex align-items-center">
-                <a class="btn contact-btn text-white me-3" href="#">Log Out</a>
-                <a href="{{ route('login') }}"></a>
+                <a class="btn contact-btn text-white me-3" href="{{ route('login') }}">Log Out</a>
                 <i class="fas fa-user-circle fa-lg"></i>
                 </a>
             </div>

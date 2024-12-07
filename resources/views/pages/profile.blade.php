@@ -5,110 +5,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
-    <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
-    <script src="{{ asset('bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <style>
-        .profile-card {
+        .profile-card{
             background: linear-gradient(to right, #2ba84a, #159d83);
             margin: 10%;
-            margin-top: 10px;
-            border-radius: 20px;
-        }
-        .profile-picture {
-            max-width: 150px;
-            margin: auto;
-        }
-        label {
-            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
         }
 
-        .curved-line {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 40%;
-            height: 100%;
-            border: 4px solid rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transform: translate(20%, 50%);
-        }
-
-        .custom-table {
-            background: linear-gradient(to right, #2ba84a, #159d83);
-            height: 2px;
-            color: white; 
-            border: none; 
-        }
-
-        .custom-container{
-            justify-content: space-evenly
-        }
-        
-        .custom-table-header{
-            background-color: #159d83;
-        }
-    </style>
+    </style> 
 </head>
 <body>
-    @include('components.navbar')
 
-    <hr class="custom-line">
+    <nav class="navbar navbar-nav">
+        <ul>
+            Navbar
+        </ul>
+    </nav>
 
-    <div class="text-center custom-container">
-        <div class="d-flex flex-column justify-content-evenly">
-            <div>
-                <h1 class="text-center mb-2">Profile</h1>
-            </div>
-            <div>
-                <a href="{{route('login')}}" class="btn btn-primary">Logout</a>
-            </div>
-        </div>
-        
-        
-        <div class="text-white">
-            <div class="row profile-card p-4">
-                <div class="col-4">
-                    <img src="{{asset('profile_bg.png')}}" class="profile-picture rounded-circle"  style="width:100%;height :100%"alt="{{asset('profile_bg.png')}}">
-                </div> 
-                
-                <div class="col-8  ">
-                    <form action="{{ route('profile.update') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <div class="mb-3 row">
-                            <label for="name" class="col-sm-3 col-form-label text-end">Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control w-50" id="name" name="name" placeholder="Name" disabled>
-                            </div>
+    <div class="profile-card p-4 text-white">
+        <div class="row align-items-center">
+            <div class="col text-center">
+                <img src="{{ $users->image}}" class="rounded-circle" alt="">
+            </div> 
+            
+            <div class="col-9">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <label for="name" class="form-label" style="font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Name :</label>
+                            {{ $users->name }}
                         </div>
-                        <div class="mb-3 row">
-                            <label for="email" class="col-sm-3 col-form-label text-end">Email</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control w-50" id="email" name="email" placeholder="Email" disabled>
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="password" class="col-sm-3 col-form-label text-end">Password</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control w-50" id="password" name="password" placeholder="Password">
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="uploadimg" class="col-sm-3 col-form-label text-end">Upload Images</label>
-                            <div class="col-sm-9">
-                                <input type="file" class="form-control w-50" id="profile_picture" name="profile_picture">
-                            </div>
-                        </div>
-                        <div class="text-end">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                        </div>
-                    </form>
-                </div>
+                        <div class="col">
+                            <label for="email" class="form-label" style="font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Email :</label>
+                            {{ $users->email }}
+                       </div>
+                    </div>
+                    <a href="/editProfile" button type="button" class="btn btn-warning">Update Profile</button></a>
             </div>
         </div>
-
     </div>
-   
-    @include('components.historyTable')
-
 </body>
 </html>

@@ -16,7 +16,7 @@ class AdminController extends Controller{
     public function adminDashboard(){
         $appointment = Appointment::all();
         $user = Auth::user();
-        return view('admin.dashboard', compact('user', 'appointment'));
+        return view('pages.admin.dashboard', compact('user', 'appointment'));
     }
 
     public function createAppointment(){
@@ -26,8 +26,6 @@ class AdminController extends Controller{
     public function insertAppointment(Request $req){
         $req->validate([
             'vaccine_id' => 'required|min:3',
-            
-
             'judul_donasi' => 'required|min:5',
             'deskripsi_donasi' => 'required|min:5',
             'target_donasi' => 'required|min:0|max:999999999',

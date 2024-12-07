@@ -9,8 +9,9 @@ class Appointment extends Model
 {
     use HasFactory;
     use HasFactory;
-    protected $table ='appointment';
+    protected $table ='appointments';
     protected $guarded=[];
+    
     public function vaccine(){
         return $this->belongsTo(Vaccine::class, 'vaccineID');
     }

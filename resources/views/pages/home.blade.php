@@ -38,8 +38,13 @@
                             <li class="nav-item">
                                 <a class="nav-link btn btn-primary text-white" href="#">Contact Us</a>
                             </li>
-
-                            <a href="{{ route('login') }}" class="btn btn-primary">Log Out</a>
+                            @if (Auth::guest())
+                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('register') }}">Register</a>
+                            @else
+                            <a href="/profile" >{{ Auth::user()->name }}</a>
+                            <a href="{{ route('logout') }}">Logout</a>
+                            @endif
                         </ul>
                     </div>
                 </div>

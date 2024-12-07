@@ -91,14 +91,11 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                // Assuming these are passed from your Blade view
-                const userId = 1; // Make sure to pass this from your controller
-                const vaccineId = 1; // Make sure to pass this from your controller
+                const userId = 1;
+                const vaccineId = 1;
 
-                // Select the inline datepicker
                 const datepicker = document.querySelector('[inline-datepicker]');
 
-                // Add event listener for date selection
                 datepicker.addEventListener('changeDate', function(event) {
                     // Get the selected day (1-31)
                     const selectedDay = event.detail.date.getDate();

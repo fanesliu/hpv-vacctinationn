@@ -23,7 +23,7 @@
                 <div class="col-md-6">
                     <div class="d-flex flex-column service-card">
                         <h3>Book an online appointment to get your HPV Vaccine</h3>
-                        <a class="btn contact-btn text-white me-3 mt-3">See Detail</a>
+                        <a href="" class="btn contact-btn text-white me-3 mt-3">See Detail</a>
                     </div>
                 </div>
                 <div class="col-md-6">

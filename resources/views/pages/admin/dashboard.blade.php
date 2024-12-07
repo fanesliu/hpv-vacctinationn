@@ -8,7 +8,7 @@
     <title>Admin Dashboard</title>
 </head>
 
-<body>
+<a>
     @if (Auth::guest())
     <a href="{{ route('login') }}">Login</a>
     <a href="{{ route('register') }}">Register</a>
@@ -16,6 +16,9 @@
     <a href="/profile" >{{ Auth::user()->name }}</a>
     <a href="{{ route('logout') }}">Logout</a>
     @endif
+
+    <a href="/appointment"><button type="button" class="btn btn-primary">List Schedule</button></a>
+    <a href="/vaccine"><button type="button" class="btn btn-primary">Update Price Vaccine</button></a>
 </body>
 
 </html>

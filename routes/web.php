@@ -20,6 +20,10 @@ Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 Route::get('/editProfile', [UserController::class, 'editProfile'])->name('editProfile');
 Route::post('/updateProfile', [UserController::class, 'updateProfile'])->name('updateProfile');
 
+
+Route::get('/update-password', [UserController::class, 'editPassword'])->name('editPassword');
+Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name('updatePassword');
+
 // ---------------------------------------------------------------------------------------------------
 // ---------------------------------ADMIN---------------------------------
 
@@ -30,20 +34,26 @@ Route::middleware(['auth', 'user'])->group(function () {
 
 //Route dibawah hanya bisa diakses oleh akun yang punya role admin
 Route::middleware(AdminAuthenticate::class)->group(function () {
-    Route::get('/admin',[AdminController::class,'adminDashboard'])->name('admin_dashboard');
     Route::get('/admin/create-appointment',[AdminController::class,'createAppointment']);
     Route::get('/admin/create-appointment',[AdminController::class,'insertApoointment']);
 
     //Account Page
     Route::get('/admin/user/all-accounts', [AdminController::class, 'allAccountsPage']);
 
+    Route::get('/admin',[AdminController::class,'adminDashboard'])->name('admin_dashboard');
+
+    Route::get('/appointment', 'App\Http\Controllers\AppointmentController@index')->name('index.appointment');
+    Route::get('/create-appointment', 'App\Http\Controllers\AppointmentController@create')->name('index.create');
+    Route::post('/appointment/store', 'App\Http\Controllers\AppointmentController@store')->name('store.appointment');
+    Route::post('/appointment/destroy/{id}', 'App\Http\Controllers\AppointmentController@delete')->name('appointment.destroy');
+
+
+    Route::get('/vaccine', 'App\Http\Controllers\VaccineController@index')->name('vaccine.index');
+    Route::get('/vaccine/edit{id}', 'App\Http\Controllers\VaccineController@edit')->name('vaccine.edit');
+    Route::put('/vaccine/update{id}', 'App\Http\Controllers\VaccineController@update')->name('vaccine.update');
+
     //schedule list
-    Route::get('/appointment', 'App\Http\Controllers\AppointmentController@index')->name('index.index');
-    route::get('/appointment/create', 'App\Http\Controllers\AppointmentController@create')->name('index.create');
-    route::post('/appointment/store', 'App\Http\Controllers\AppointmentController@store')->name('index.store');
-    route::get('/appointment/edit{id}', 'App\Http\Controllers\AppointmentController@edit')->name('index.edit');
-    route::put('/appointment/update{id}', 'App\Http\Controllers\AppointmentController@update')->name('index.update');
-});
+    });
 
 
 Route::get('/services', function () {

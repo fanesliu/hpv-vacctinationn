@@ -43,6 +43,7 @@
                        </div>
                     </div>
                     <a href="/editProfile" button type="button" class="btn btn-warning">Update Profile</button></a>
+                    <a href="/update-password"><button type="button" class="btn btn-success">Change Password</button></a>
             </div>
         </div>
     </div>

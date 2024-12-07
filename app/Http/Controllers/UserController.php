@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 
 
@@ -54,7 +55,7 @@ class UserController extends Controller
             'email' => [
                 'required',
                 'email',
-                'regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/', // Ensure the email ends with @gmail.com
+                'regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/', 
                 'unique:users,email',
             ],
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -68,5 +69,32 @@ class UserController extends Controller
 
         return redirect()->route('pages.profile')->with('success', 'Profile updated successfully.');
     }
-    
+
+    public function editPassword(){
+        return view('pages.update_password');
+    }
+
+public function updatePassword(Request $request)
+{
+    $request->validate([
+        'old_password' => 'required',
+        'new_password' => 'required|min:8|confirmed',
+    ]);
+
+    $user = Auth::user();
+
+    if (!Hash::check($request->old_password, $user->password)) {
+        return back()->withErrors(['old_password' => 'The provided password does not match our records.']);
+    }
+
+    try {
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+
+        return redirect()->route('profile')->with('success', 'Password updated successfully!');
+    } catch (\Exception $e) {
+        return back()->withErrors(['error' => 'Failed to update password: ' . $e->getMessage()]);
+    }
+}
+
 }

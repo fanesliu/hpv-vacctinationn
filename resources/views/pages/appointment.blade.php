@@ -7,8 +7,11 @@
 </head>
 <body>
     <h1>Available Places for vaccine dose</h1>
-
-    <!-- Tampilkan daftar tempat -->
+    @if (Auth::user()->role =='admin')
+    
+<a href="/create-appointment"><button type="button" class="btn btn-primary">Create Appointment</button></a>
+    
+    @endif
     <ul>
         @forelse ($places as $place)
             <li>
@@ -16,18 +19,14 @@
                 <br>
                 for dose {{$place->vaccineId}}
             </li>
+            <form action="{{ route('appointment.destroy', $place->id) }}" method="POST" style="display:inline;">
+                @csrf
+                @method('POST')
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </form>
         @empty
-            @if ($message)
-            <li>{{$message}}</li>
-            @endif
         @endforelse
     </ul>
 
-    <!-- Console log pesan jika ada -->
-    @if ($message)
-        <script>
-            console.log("{{ $message }}");
-        </script>
-    @endif
 </body>
 </html>

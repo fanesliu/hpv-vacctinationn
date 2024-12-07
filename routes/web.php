@@ -5,6 +5,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VaccineController;
+use App\Http\Middleware\AdminAuthenticate;
 use App\Models\Vaccine;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 
 
 //Route dibawah hanya bisa diakses oleh akun yang punya role admin
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(AdminAuthenticate::class)->group(function () {
     Route::get('/admin',[AdminController::class,'adminDashboard'])->name('admin_dashboard');
     Route::get('/admin/create-appointment',[AdminController::class,'createAppointment']);
     Route::get('/admin/create-appointment',[AdminController::class,'insertApoointment']);

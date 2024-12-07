@@ -73,8 +73,8 @@
                 <div class="input-con">
                     <input type="email" name="email" class="form-control" placeholder="Email" required>
                 </div>
-                
-                
+
+
                 <div class="text-con">
                     <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Image</h3>
                 </div>

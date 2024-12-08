@@ -229,59 +229,6 @@
     </footer>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-    {{-- <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const datepicker = document.querySelector('#datepicker-inline'); // Elemen kalender
-            const placesList = document.querySelector('listData'); // Daftar tempat vaksinasi
-
-            // Event listener untuk menangkap tanggal yang dipilih
-            datepicker.addEventListener('changeDate', function(event) {
-                const selectedDate = event.detail.date; // Tanggal yang dipilih
-
-                // Ambil hanya bagian tanggal (tanggal bulan)
-                const date = new Date(selectedDate);
-                const day = date.getDate(); // Mendapatkan tanggal (1-31)
-
-                const userID = 1; // Ganti dengan userID dinamis
-                const vaccineID = 1; // Ganti dengan vaccineID dinamis
-
-                // Kirim request ke Laravel untuk mendapatkan data tempat vaksinasi berdasarkan tanggal
-                fetch(`/appointment/${userID}/${vaccineID}/${date}`)
-                    .then((response) => response.json())
-                    .then((data) => {
-                        // Kosongkan daftar tempat vaksinasi sebelum menampilkan data baru
-                        placesList.innerHTML = '';
-
-                        if (data.places && data.places.length > 0) {
-                            // Tampilkan data tempat vaksinasi baru
-                            data.places.forEach((place) => {
-                                const listItem = document.createElement('li');
-                                listItem.className =
-                                    'bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white';
-                                listItem.innerHTML = `
-                            <p>
-                                <span class="font-bold">${place.place}</span>: Available from
-                                <span class="font-bold">${place.dateAvailibilityStart}</span> to
-                                <span class="font-bold">${place.dateAvailibilityEnd}</span>
-                            </p>
-                            <p>For dose <span class="font-semibold">${place.vaccineId}</span></p>
-                        `;
-                                placesList.appendChild(listItem);
-                            });
-                        } else {
-                            // Tampilkan pesan jika tidak ada tempat vaksinasi tersedia
-                            const messageItem = document.createElement('li');
-                            messageItem.className = 'text-red-500 font-medium';
-                            messageItem.textContent = data.message || 'No places available for the selected date.';
-                            placesList.appendChild(messageItem);
-                        }
-                    })
-                    .catch((error) => {
-                        console.error('Error fetching data:', error);
-                    });
-            });
-        });
-    </script> --}}
 </body>
 
 </html>

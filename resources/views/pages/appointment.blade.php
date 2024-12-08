@@ -49,7 +49,8 @@
             <div class="max-w-xl">
                 <h1 class="text-4xl font-bold mb-6">Book an Online Appointment</h1>
                 <p class="text-lg leading-relaxed">
-                    Our services offer comprehensive screenings, consultations, and educational resources tailored to empower individuals in their
+                    Our services offer comprehensive screenings, consultations, and educational resources tailored to
+                    empower individuals in their
                     understanding and management of HPV.
                 </p>
             </div>
@@ -63,7 +64,8 @@
                 <h1 class="text-4xl font-bold">Book an Online Appointment</h1>
                 <div>
                     <label for="datepicker" class="block text-lg font-medium text-gray-700">Select a date</label>
-                    <div id="datepicker-inline" name="appointment_date" inline-datepicker data-date="{{ date('d') }}"></div>
+                    <div id="datepicker-inline" name="appointment_date" inline-datepicker
+                        data-date="{{ date('d') }}"></div>
                 </div>
             </div>
 
@@ -91,8 +93,8 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                const userId = 1;
-                const vaccineId = 1;
+                const userId = @json($userID); // Menggunakan json_encode untuk mengeluarkan nilai
+                const vaccineId = @json($vaccineId); // Menggunakan json_encode untuk mengeluarkan nilai
 
                 const datepicker = document.querySelector('[inline-datepicker]');
 
@@ -103,48 +105,9 @@
                     // Construct the new URL
                     const newUrl = `/appointment/${userId}/${vaccineId}/${selectedDay}`;
 
-                    // Fetch updated places for the selected date
-                    fetch(newUrl, {
-                            headers: {
-                                'Accept': 'application/json'
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(data => {
-                            // Update the places list
-                            const placesList = document.getElementById('placesList');
-                            placesList.innerHTML = ''; // Clear existing list
+                    // Redirect to the new URL (this will refresh the page)
+                    window.location.href = newUrl; // Ganti ini
 
-                            if (data.places && data.places.length > 0) {
-                                data.places.forEach(place => {
-                                    const li = document.createElement('li');
-                                    li.className = 'bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white';
-                                    li.innerHTML = `
-                                    <p>
-                                        <span class="font-bold">${place.place}</span>: Available from 
-                                        <span class="font-bold">${place.dateAvailibilityStart}</span> to 
-                                        <span class="font-bold">${place.dateAvailibilityEnd}</span>
-                                    </p>
-                                    <p>For dose <span class="font-semibold">${place.vaccineId}</span></p>
-                                `;
-                                    placesList.appendChild(li);
-                                });
-                            } else {
-                                const li = document.createElement('li');
-                                li.className = 'text-red-500 font-medium';
-                                li.textContent = data.message || 'No available places for the selected date';
-                                placesList.appendChild(li);
-                            }
-                        })
-                        .catch(error => {
-                            console.error('Error fetching places:', error);
-                            const placesList = document.getElementById('placesList');
-                            placesList.innerHTML = `
-                            <li class="text-red-500 font-medium">
-                                Error loading places. Please try again.
-                            </li>
-                        `;
-                        });
                 });
             });
         </script>

@@ -13,7 +13,9 @@ class AppointmentController extends Controller
     {
         // Jika date adalah 0, abaikan dan return view tanpa pesan
         if ($date == 0) {
-            return view('pages.appointment', ['places' => [], 'message' => null]);
+            $places = []; // Atau Anda bisa mendefinisikan variabel lain jika diperlukan
+            $message = "Please Select an Appointment Date";
+            return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId'));
         }
 
         // Ambil semua tempat yang tersedia berdasarkan tanggal dan vaccineID
@@ -35,6 +37,6 @@ class AppointmentController extends Controller
         }
 
         // Jika bukan AJAX, return view
-        return view('pages.appointment', compact('places', 'message'));
+        return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId'));
     }
 }

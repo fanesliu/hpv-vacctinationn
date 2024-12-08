@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <style>
     .footer-bg {
         background: linear-gradient(to right, #5EB47C, #007D6E);
@@ -10,6 +11,8 @@
     }
 </style>
 
+=======
+>>>>>>> 1a70ae5 (feat: layout and footer component)
 <footer class="p-5 footer-bg">
     <div class="row">
         <div class="col-6 col-md-2 mb-3">

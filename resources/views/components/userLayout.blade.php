@@ -6,8 +6,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
+<<<<<<< HEAD
     <script src="{{ asset('bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}" defer></script>
     <style>
+=======
+    <style>
+        .navbar {
+            background-color: transparent;
+            padding: 20px 0;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .contact-btn {
+            background-color: #FF7F50;
+            color: white !important;
+            border-radius: 25px;
+            padding: 8px 25px;
+        }
+
+        .contact-btn:hover {
+            background-color: #ffff;
+            border: #FF7F50 1px solid;
+            color: #FF7F50 !important;
+        }
+
+>>>>>>> 1a70ae5 (feat: layout and footer component)
         .hero-section {
             background: linear-gradient(to right, #5EB47C, #007D6E);
             padding: 100px 0;
@@ -28,7 +54,11 @@
         }
 
         .services-section {
+<<<<<<< HEAD
             padding: 2rem 0;
+=======
+            padding: 80px 0;
+>>>>>>> 1a70ae5 (feat: layout and footer component)
         }
 
         .service-card {
@@ -44,6 +74,19 @@
             text-align: center;
             margin-bottom: 20px;
         }
+<<<<<<< HEAD
+=======
+
+        .footer-bg {
+            background: linear-gradient(to right, #5EB47C, #007D6E);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .text-body-secondary {
+            color: white !important;
+        }
+>>>>>>> 1a70ae5 (feat: layout and footer component)
     </style>
     <title>Serices - HPV Vaccination</title>
 </head>

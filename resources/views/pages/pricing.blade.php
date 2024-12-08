@@ -13,7 +13,27 @@
         </div>
     </section>
 
-    @foreach ($vaccines as $item)
-        <h1>dosis ke {{ $item->dose }} dengan harga {{ $item->price }}</h1>
-    @endforeach
+    <div class="container py-5">
+        <div class="text-center mb-4">
+            <small class="text-uppercase text-muted">Pricing</small>
+            <h2 class="fw-bold">Choose Mental Health Consultation Packages for Your Needs</h2>
+        </div>
+        <div class="row g-4">
+            <!-- First Dose -->
+            @foreach ($vaccines as $item)
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <h5>Dosis ke {{ $item->dose }}</h5>
+                        <h2 class="fw-bold text-primary">{{ $item->price }}</h2>
+                        <p class="text-muted">
+                            {{ $item->description }}
+                        </p>
+                        <button class="btn btn-primary px-4">Choose now</button>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
 @endsection

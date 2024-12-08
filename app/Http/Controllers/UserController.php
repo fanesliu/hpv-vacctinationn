@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    public function home(){
+    public function home()
+    {
         $user = Auth::user();
         return view('pages.home', compact('user'));
     }
@@ -32,9 +33,10 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function logout(){
+    public function logout()
+    {
         Auth::logout();
-        return redirect()->route('login');
+        return redirect()->route('pages.login');
     }
     
     public function profile(){

@@ -11,21 +11,27 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use League\CommonMark\Node\Block\Document;
 
-class AdminController extends Controller{
+class AdminController extends Controller
+{
 
-    public function adminDashboard(){
+    public function adminDashboard()
+    {
         $appointment = Appointment::all();
         $user = Auth::user();
         return view('pages.admin.dashboard', compact('user', 'appointment'));
     }
 
-    public function createAppointment(){
-        return view('admin.createAppointment');
+    public function createAppointment()
+    {
+        return view('pages.admin.createAppointment');
     }
 
-    public function insertAppointment(Request $req){
+    public function insertAppointment(Request $req)
+    {
         $req->validate([
             'vaccine_id' => 'required|min:3',
+
+
             'judul_donasi' => 'required|min:5',
             'deskripsi_donasi' => 'required|min:5',
             'target_donasi' => 'required|min:0|max:999999999',

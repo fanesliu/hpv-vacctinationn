@@ -70,29 +70,27 @@
             </div>
             <div>
                 <a href="{{route('login')}}" class="btn btn-primary">Logout</a>
-            </div>
-        </div>
-        
-        
+
+    <div class="profile-card p-4 text-white">
         <div class="text-white">
             <div class="row profile-card p-4">
                 <div class="col-4">
-                    <img src="{{asset('profile_bg.png')}}" class="profile-picture rounded-circle"  style="width:100%;height :100%"alt="{{asset('profile_bg.png')}}">
+                    <img src="{{ $users->image}}" class="profile-picture rounded-circle"  style="width:100%;height :100%"alt="{{asset('profile_bg.png')}}">
                 </div> 
                 
                 <div class="col-8  ">
-                    <form action="#" method="post" enctype="multipart/form-data">
+                    <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-3 row">
                             <label for="name" class="col-sm-3 col-form-label text-end">Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control w-50" id="name" name="name" placeholder="Name" disabled>
+                                <input type="text" class="form-control w-50" id="name" name="name" value="{{ $users->name }}" disabled>
                             </div>
                         </div>
                         <div class="mb-3 row">
                             <label for="email" class="col-sm-3 col-form-label text-end">Email</label>
                             <div class="col-sm-9">
-                                <input type="email" class="form-control w-50" id="email" name="email" placeholder="Email" disabled>
+                                <input type="email" class="form-control w-50" id="email" name="email" value="{{ $users->email }}">
                             </div>
                         </div>
                         
@@ -103,7 +101,7 @@
                             </div>
                         </div>
                         <div class="text-end d-flex flex-row justify-content-evenly"  style="width: 80%; margin: 0 auto;">
-                            <a href="{{route('updatePassword')}}"><button type="submit" class="btn btn-primary">Update Password</button></a>
+                            <a href="{{route('updatePassword')}}"><button class="btn btn-primary">Update Password</button></a>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                     </form>

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Vaccine extends Model
 {
     use HasFactory;
-    protected $table ='vaccine';
+    protected $table ='vaccines';
     protected $guarded=[];
 
     public function appointments()

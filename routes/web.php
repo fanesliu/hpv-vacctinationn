@@ -20,6 +20,9 @@ Route::get('/profile', function () {
 })->name('profile');
 
 
+Route::get('/updatePassword',function(){
+    return view('pages.updatePassword');
+})->name('updatePassword');
 // ---------------------------------------------------------------------------------------------------
 // ---------------------------------ADMIN---------------------------------
 

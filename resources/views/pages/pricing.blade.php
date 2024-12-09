@@ -1,3 +1,27 @@
+<style>
+    .sizing {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    @media (max-width: 768px) {
+        .sizing {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .sizing {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+    }
+</style>
+
+
 @extends('components.userLayout')
 @section('content')
     <section class="hero-section">
@@ -14,7 +38,7 @@
         </div>
     </section>
 
-    <div class="container py-5">
+    <div class="container py-5 sizing">
         <div class="text-center mb-4">
             <small class="text-uppercase text-muted">Pricing</small>
             <h2 class="fw-bold">Choose Mental Health Consultation Packages for Your Needs</h2>
@@ -33,12 +57,13 @@
                                 this.querySelector('.description').style.color='';">
                         <div class="card-body text-center">
                             <h5>Dosis ke {{ $item->dose }}</h5>
-                            <h2 class="fw-bold price" style="color: black;">{{ $item->price }}</h2>
+                            <h2 class="fw-bold price" style="color: black;">Rp
+                                {{ number_format($item->price ?? 0, 0, ',', '.') }}</h2>
                             <p class="description" style="color: black;">
                                 {{ $item->description }}
                             </p>
-                            <a href="{{ route('appointment.view', ['userID' => $userID, 'vaccineID' => $item->vaccineId, 'date' => 0]) }}" 
-                                class="btn btn-primary px-4" 
+                            <a href="{{ route('appointment.view', ['userID' => $userID, 'vaccineID' => $item->vaccineId, 'date' => 0]) }}"
+                                class="btn btn-primary px-4"
                                 style="background-color: #EC744A; border: none; text-decoration: none; display: inline-block;"
                                 onmouseover="this.style.backgroundColor='#D86A3A';"
                                 onmouseout="this.style.backgroundColor='#EC744A';">Choose now</a>

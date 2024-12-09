@@ -48,3 +48,4 @@ Route::get('/services', function () {return view('pages.servicesPage');})->name(
 Route::get('/appointment/{userID}/{vaccineID}/{date}', [AppointmentController::class, 'get_place'])->name("appointment.view");
 Route::get('/pricing/{userID}', [VaccineController::class, 'get_allVaccine'])->name("pricing.view");
 Route::view('/aboutus','pages.aboutus')->name("aboutus.view");
+Route::view('/payment','pages.payment')->name("payment.view");

@@ -38,9 +38,9 @@
 @section('content')
     <div class="py-5 sizing">
         <div class="container">
-            <div class="row">
+            <div class="row gap-5">
                 <!-- Payment Form -->
-                <div class="col-md-6">
+                <div class="col-md-6 p-5 border border-3 rounded-5">
                     <h3>Payment Information</h3>
                     <form method="POST">
                         @csrf
@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- Invoice -->
-                <div class="col-md-6">
+                <div class="col-md-5 p-5 border border-3 rounded-5 ml-2">
                     <h3>Invoice</h3>
                     <div class="card">
                         <div class="card-body">

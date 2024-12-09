@@ -23,8 +23,8 @@ Route::get('/editProfile', [UserController::class, 'editProfile'])->name('editPr
 Route::post('/updateProfile', [UserController::class, 'updateProfile'])->name('updateProfile');
 
 
-Route::get('/update-password/{id}', [UserController::class, 'editPassword'])->name('editPassword');
-Route::post('/updatePassword/{id}', [UserController::class, 'updatePassword'])->name('updatePassword');
+Route::get('/update-password', [UserController::class, 'editPassword'])->name('editPassword');
+Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name('updatePassword');
 
 // ---------------------------------------------------------------------------------------------------
 // ---------------------------------ADMIN---------------------------------

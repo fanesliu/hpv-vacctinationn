@@ -101,7 +101,7 @@
                             </div>
                         </div>
                         <div class="text-end d-flex flex-row justify-content-evenly"  style="width: 80%; margin: 0 auto;">
-                            <a href="{{route('editPassword')}}"><button class="btn btn-primary">Update Password</button></a>
+                            <a href="{{route('updatePassword')}}"><button class="btn btn-primary">Update Password</button></a>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                     </form>

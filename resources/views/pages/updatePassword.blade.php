@@ -42,7 +42,7 @@
             </div>
             <h1 class="mb-4">Update Password</h1>
             <div class="update-card card p-4">
-                <form method="POST" action="{{ route('updatePassword') }}">
+                <form method="POST" action="#">
                     @csrf
                     <div class="mb-3">
                         <label for="old_password" class="form-label text-white">Old Password</label>

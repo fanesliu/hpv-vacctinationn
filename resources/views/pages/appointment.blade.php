@@ -74,13 +74,49 @@
                 <h1 class="text-4xl font-bold">Available Places for Vaccine Dose</h1>
                 <ul class="space-y-4 listData" id="placesList">
                     @forelse ($places as $place)
-                        <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                            <p>
-                                <span class="font-bold">{{ $place->place }}</span>: Available from
-                                <span class="font-bold">{{ $place->dateAvailibilityStart }}</span> to
-                                <span class="font-bold">{{ $place->dateAvailibilityEnd }}</span>
-                            </p>
-                            <p>For dose <span class="font-semibold">{{ $place->vaccineId }}</span></p>
+                        <li
+                            class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white flex justify-between items-center">
+                            <div>
+                                <p>
+                                    <span class="font-bold">{{ $place->place }}</span>: Available from
+                                    <span class="font-bold">{{ $place->dateAvailibilityStart }}</span> to
+                                    <span class="font-bold">{{ $place->dateAvailibilityEnd }}</span>
+                                </p>
+                                <p>For dose <span class="font-semibold">{{ $place->vaccineId }}</span></p>
+                            </div>
+                            <button
+                                onclick="bookAppointment('{{ $place->place }}', '{{ $place->vaccineId }}', '{{ $place->dateAvailibilityStart }}')"
+                                class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
+                                Book
+                            </button>
+
+                            <script>
+                                function bookAppointment(place, vaccineId, date) {
+                                    const userID = /* ambil userID dari konteks yang sesuai */ ;
+
+                                    fetch('/checkout', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Pastikan untuk menyertakan token CSRF
+                                            },
+                                            body: JSON.stringify({
+                                                userID: userID,
+                                                vaccineId: vaccineId,
+                                                place: place,
+                                                date: date
+                                            })
+                                        })
+                                        .then(response => response.json())
+                                        .then(data => {
+                                            alert(data.message);
+                                            // Lakukan tindakan lain jika diperlukan, seperti memperbarui UI
+                                        })
+                                        .catch(error => {
+                                            console.error('Error:', error);
+                                        });
+                                }
+                            </script>
                         </li>
                     @empty
                         @if ($message)

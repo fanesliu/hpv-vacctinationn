@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Appointment;
+use App\Models\Transaction; 
 use App\Models\Vaccine;
 use Illuminate\Http\Request;
 
@@ -38,5 +39,51 @@ class AppointmentController extends Controller
 
         // Jika bukan AJAX, return view
         return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId'));
+    }
+    // Metode untuk melakukan checkout
+    public function checkout(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'userID' => 'required|integer',
+            'vaccineId' => 'required|integer',
+            'place' => 'required|string',
+            'date' => 'required|date',
+        ]);
+
+        // Buat transaksi baru
+        $transaction = Transaction::create([
+            'userid' => $request->userID,
+            'vaccineid' => $request->vaccineId,
+            'place' => $request->place,
+            'date' => $request->date,
+            'status' => 'completed', // Atau status lain sesuai kebutuhan
+        ]);
+
+        // Redirect atau return response
+        return response()->json([
+            'message' => 'Transaction completed successfully',
+            'transaction' => $transaction,
+        ]);
+    }
+
+    // Metode untuk menandai transaksi sebagai pending
+    public function pending(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'transactionId' => 'required|integer',
+        ]);
+
+        // Temukan transaksi dan ubah statusnya
+        $transaction = Transaction::findOrFail($request->transactionId);
+        $transaction->status = 'pending';
+        $transaction->save();
+
+        // Redirect atau return response
+        return response()->json([
+            'message' => 'Transaction status updated to pending',
+            'transaction' => $transaction,
+        ]);
     }
 }

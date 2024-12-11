@@ -12,6 +12,8 @@ class AppointmentController extends Controller
     // Metode untuk mendapatkan tempat
     public function get_place($userID, $vaccineId, $date)
     {
+        Log::info("Hello bang");
+        // return "hello";
         // Jika date adalah 0, abaikan dan return view tanpa pesan
         if ($date == 0) {
             $places = [];
@@ -24,8 +26,8 @@ class AppointmentController extends Controller
             ->where('vaccineId', $vaccineId)
             ->where('dateAvailibilityStart', '<=', $date)
             ->where('dateAvailibilityEnd', '>=', $date)
-            ->get(['place', 'dateAvailibilityStart', 'dateAvailibilityEnd', 'vaccineId']);
-        // dd($places);
+            ->get(['appointmentId', 'place', 'dateAvailibilityStart', 'dateAvailibilityEnd', 'vaccineId',]);
+        //  dd($places);
         $message = $places->isEmpty() ? 'No place available' : null;
 
         if (request()->wantsJson()) {
@@ -40,30 +42,41 @@ class AppointmentController extends Controller
 
     // Metode untuk melakukan checkout
     public function createTransaction(Request $request)
-    {
-        Log::info('createTransaction function called', $request->all()); // Log untuk debugging
-        // Validasi input
-        $request->validate([
-            'userId' => 'required|integer',
-            'appointmentId' => 'required|integer',
-            'finalPrice' => 'required|numeric',
-            'paymentType' => 'required|string',
-            'appointmentDate' => 'required|date',
-            'paymentDate' => 'required|date',
-        ]);
-        dd($request);
-        // Simpan transaksi ke database
+{
+    // Validasi input
+    $request->validate([
+        'userId' => 'required|integer', // Pastikan userId ada dan merupakan integer
+        'appointmentId' => 'required|integer',
+        'finalPrice' => 'required|numeric',
+        'paymentType' => 'required|string',
+        'appointmentDate' => 'required|date',
+        'paymentDate' => 'required|date',
+    ]);
+
+    // Ambil data dari request
+    $data = $request->all();
+    dd($data);
+
+    // Debugging: Lihat semua data yang dikirim
+    // dd($data); // Uncomment ini jika Anda ingin melihat data yang dikirim
+
+    // Simpan transaksi ke database
+    try {
         Transaction::create([
-            'userId' => $request->userId,
-            'appointmentId' => $request->appointmentId,
-            'finalPrice' => $request->finalPrice,
-            'paymentType' => $request->paymentType,
-            'appointmentDate' => $request->appointmentDate,
-            'paymentDate' => $request->paymentDate,
+            'userId' => $data['userId'], // Ambil userId dari data
+            'appointmentId' => $data['appointmentId'],
+            'finalPrice' => $data['finalPrice'],
+            'paymentType' => $data['paymentType'],
+            'appointmentDate' => $data['appointmentDate'],
+            'paymentDate' => $data['paymentDate'],
         ]);
 
         return redirect()->back()->with('success', 'Transaction created successfully!');
+    } catch (\Exception $e) {
+        // Tangani kesalahan jika terjadi saat menyimpan
+        return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan transaksi: ' . $e->getMessage());
     }
+}
     // Metode untuk menandai transaksi sebagai pending
     public function pending(Request $request)
     {

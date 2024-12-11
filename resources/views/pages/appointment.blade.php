@@ -84,10 +84,10 @@
                                 </p>
                                 <p>For dose <span class="font-semibold">{{ $place->vaccineId }}</span></p>
                             </div>
-                            <form method="GET" action="{{route('createTransaction')}}">
+                            <form method="POST" action="{{route('createTransaction')}}">
                                 @csrf
                                 <input type="hidden" name="userId" value="{{ $userID }}">
-                                <input type="hidden" name="appointmentId" value="{{ $place->id }}">
+                                <input type="hidden" name="appointmentId" value="{{$place->appointmentId}}">
                                 <input type="hidden" name="finalPrice" value="{{ $place->vaccine->price }}">
                                 <input type="hidden" name="paymentType" value="credit_card">
                                 <input type="hidden" name="appointmentDate" value="2023-10-30" id="appointmentDateInput"> <!-- Tanggal janji temu statis -->

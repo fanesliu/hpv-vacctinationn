@@ -19,6 +19,7 @@ class CreateVaccinesTable extends Migration
             $table->integer('price'); // equivalent to 'int'
             $table->longText('description'); // equivalent to 'longtext'
             $table->primary('vaccineId'); // setting 'vaccineId' as the primary key
+            $table->timestamps(); 
         });
     }
 

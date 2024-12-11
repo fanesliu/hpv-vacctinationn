@@ -31,6 +31,7 @@ class CreateAppointmentsTable extends Migration
                       ->onUpdate('cascade'); // on update cascade
                 
                 $table->primary('appointmentId');
+                $table->timestamps(); 
                 });
             
         }

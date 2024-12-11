@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Appointment;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class AppointmentController extends Controller
 {
@@ -20,7 +21,7 @@ class AppointmentController extends Controller
             $message = "Please Select an Appointment Date";
             return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId', 'date'));
         }
-
+        $today = Carbon::now()->format('Y-m-d');
         // Ambil semua tempat yang tersedia berdasarkan tanggal dan vaccineID
         $places = Appointment::with('vaccine')
             ->where('vaccineId', $vaccineId)
@@ -37,7 +38,7 @@ class AppointmentController extends Controller
             ]);
         }
 
-        return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId', 'date'));
+        return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId', 'date','today'));
     }
 
     // Metode untuk melakukan checkout
@@ -49,13 +50,13 @@ class AppointmentController extends Controller
         'appointmentId' => 'required|integer',
         'finalPrice' => 'required|numeric',
         'paymentType' => 'required|string',
-        'appointmentDate' => 'required|date',
+        'appointmentDate' => 'required|integer',
         'paymentDate' => 'required|date',
     ]);
 
     // Ambil data dari request
     $data = $request->all();
-    dd($data);
+    // dd($data);
 
     // Debugging: Lihat semua data yang dikirim
     // dd($data); // Uncomment ini jika Anda ingin melihat data yang dikirim

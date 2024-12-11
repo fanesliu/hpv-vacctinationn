@@ -90,8 +90,8 @@
                                 <input type="hidden" name="appointmentId" value="{{$place->appointmentId}}">
                                 <input type="hidden" name="finalPrice" value="{{ $place->vaccine->price }}">
                                 <input type="hidden" name="paymentType" value="credit_card">
-                                <input type="hidden" name="appointmentDate" value="2023-10-30" id="appointmentDateInput"> <!-- Tanggal janji temu statis -->
-                                <input type="hidden" name="paymentDate" value="2023-10-30" id="paymentDateInput"> 
+                                <input type="hidden" name="appointmentDate" value="{{$date}}" id="appointmentDateInput"> <!-- Tanggal janji temu statis -->
+                                <input type="hidden" name="paymentDate" value="{{$today}}" id="paymentDateInput"> 
                                 <button type="submit">Book</button>
                             </form>
                         </li>

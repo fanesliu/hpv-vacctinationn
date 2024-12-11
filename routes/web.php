@@ -48,5 +48,4 @@ Route::get('/services', function () {return view('pages.servicesPage');})->name(
 Route::get('/appointment/{userID}/{vaccineID}/{date}', [AppointmentController::class, 'get_place'])->name("appointment.view");
 Route::get('/pricing/{userID}', [VaccineController::class, 'get_allVaccine'])->name("pricing.view");
 Route::view('/aboutus','pages.aboutus')->name("aboutus.view");
-Route::post('/checkout', [AppointmentController::class, 'checkout']);
-Route::post('/pending', [AppointmentController::class, 'pending']);
+Route::get('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');

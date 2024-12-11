@@ -84,39 +84,16 @@
                                 </p>
                                 <p>For dose <span class="font-semibold">{{ $place->vaccineId }}</span></p>
                             </div>
-                            <button
-                                onclick="bookAppointment('{{ $place->place }}', '{{ $place->vaccineId }}', '{{ $place->dateAvailibilityStart }}')"
-                                class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">
-                                Book
-                            </button>
-
-                            <script>
-                                function bookAppointment(place, vaccineId, date) {
-                                    const userID = /* ambil userID dari konteks yang sesuai */ ;
-
-                                    fetch('/checkout', {
-                                            method: 'POST',
-                                            headers: {
-                                                'Content-Type': 'application/json',
-                                                'X-CSRF-TOKEN': '{{ csrf_token() }}' // Pastikan untuk menyertakan token CSRF
-                                            },
-                                            body: JSON.stringify({
-                                                userID: userID,
-                                                vaccineId: vaccineId,
-                                                place: place,
-                                                date: date
-                                            })
-                                        })
-                                        .then(response => response.json())
-                                        .then(data => {
-                                            alert(data.message);
-                                            // Lakukan tindakan lain jika diperlukan, seperti memperbarui UI
-                                        })
-                                        .catch(error => {
-                                            console.error('Error:', error);
-                                        });
-                                }
-                            </script>
+                            <form method="GET" action="{{route('createTransaction')}}">
+                                @csrf
+                                <input type="hidden" name="userId" value="{{ $userID }}">
+                                <input type="hidden" name="appointmentId" value="{{ $place->id }}">
+                                <input type="hidden" name="finalPrice" value="{{ $place->vaccine->price }}">
+                                <input type="hidden" name="paymentType" value="credit_card">
+                                <input type="hidden" name="appointmentDate" value="2023-10-30" id="appointmentDateInput"> <!-- Tanggal janji temu statis -->
+                                <input type="hidden" name="paymentDate" value="2023-10-30" id="paymentDateInput"> 
+                                <button type="submit">Book</button>
+                            </form>
                         </li>
                     @empty
                         @if ($message)
@@ -125,28 +102,28 @@
                     @endforelse
                 </ul>
             </div>
-        </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                const userId = @json($userID); // Menggunakan json_encode untuk mengeluarkan nilai
-                const vaccineId = @json($vaccineId); // Menggunakan json_encode untuk mengeluarkan nilai
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const userId = @json($userID); // Menggunakan json_encode untuk mengeluarkan nilai
+                    const vaccineId = @json($vaccineId); // Menggunakan json_encode untuk mengeluarkan nilai
 
-                const datepicker = document.querySelector('[inline-datepicker]');
+                    const datepicker = document.querySelector('[inline-datepicker]');
 
-                datepicker.addEventListener('changeDate', function(event) {
-                    // Get the selected day (1-31)
-                    const selectedDay = event.detail.date.getDate();
+                    datepicker.addEventListener('changeDate', function(event) {
+                        // Get the selected date
+                        const selectedDate = event.detail.date; // Ambil tanggal yang dipilih
+                        const selectedDay = selectedDate.getDate(); // Ambil hanya hari
 
-                    // Construct the new URL
-                    const newUrl = `/appointment/${userId}/${vaccineId}/${selectedDay}`;
+                        // Format hari menjadi dua digit
+                        const formattedDay = String(selectedDay);
 
-                    // Redirect to the new URL (this will refresh the page)
-                    window.location.href = newUrl; // Ganti ini
-
+                        // Construct the new URL
+                        const newUrl = `/appointment/${userId}/${vaccineId}/${selectedDay}`; // Hanya menggunakan hari
+                        window.location.href = newUrl; // Redirect to the new URL
+                    });
                 });
-            });
-        </script>
+            </script>
     </section>
 
     <footer class="bg-gradient-to-r from-green-400 to-teal-600 text-white py-20">

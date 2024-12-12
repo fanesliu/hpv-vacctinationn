@@ -22,7 +22,7 @@ class LoginRegisterController extends Controller
             'email.required' => 'Email is required!',
             'password.required' => 'Password is required!'
         ];
-        
+
         $input = $req->validate([
             "email" => "required|email",
             "password" => "required|min:8",
@@ -34,17 +34,35 @@ class LoginRegisterController extends Controller
             ]);
         }
 
-        if (auth::attempt($input)) {
-            if (Auth::user()->role   == "admin") {
-                return redirect()->route("admin_dashboard"); //admin punya dashboard
-            } else {
-                return redirect()->route("homepage"); //user punya dashboard
+        // Add debugging statements
+        if (Auth::attempt($input)) {
+            $user = Auth::user();
+            // $user = User::findOrFail(Auth::id());
 
+            // dd($user->name);
+
+            // Debug information
+            // dd([
+            //     'user' => $user,
+            //     'name' => $user->name,
+            //     'email' => $user->email,
+            //     'role' => $user->role
+            // ]);
+
+            // dd(
+            //     Auth::user(),
+            //     Auth::user()->name,
+            //     Auth::user()->getAttribute('name')
+            // );
+
+            if ($user->role == "admin") {
+                return redirect()->route("admin_dashboard");
+            } else {
+                return redirect()->route("homepage");
             }
         } else {
             return redirect()->back()->with('error', 'Input Invalid!');
         }
-        
     }
 
     public function registerPage()
@@ -66,7 +84,7 @@ class LoginRegisterController extends Controller
         ]);
 
         // Create the user
-      
+
         $users = new User;
         $users->name = $req->input('name');
         $users->email = $req->input('email');

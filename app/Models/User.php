@@ -12,10 +12,14 @@ class User extends Authenticatable
 {
 
     use HasFactory, Notifiable;
-    protected $table ='users';
-    protected $guarded=[];
+    protected $table = 'users';
+    protected $primaryKey = 'userId';
 
-    public function transactions(){
+
+    protected $guarded = [];
+
+    public function transactions()
+    {
         return $this->hasMany(Transaction::class);
     }
     /**
@@ -24,11 +28,12 @@ class User extends Authenticatable
      * @var array<int, string>
      */
 
-     protected $fillable = [
+    protected $fillable = [
         'name',
         'email',
         'password',
         'image',
+        'role'
     ];
 
     /**

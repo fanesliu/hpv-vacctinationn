@@ -9,7 +9,7 @@
 </head>
 
 <a>
-    @if (Auth::guest())
+    @if (!Auth::check())
     <a href="{{ route('login') }}">Login</a>
     <a href="{{ route('register') }}">Register</a>
     @else

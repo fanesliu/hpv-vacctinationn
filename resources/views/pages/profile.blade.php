@@ -36,14 +36,14 @@
         .custom-table {
             background: linear-gradient(to right, #2ba84a, #159d83);
             height: 2px;
-            color: white; 
-            border: none; 
+            color: white;
+            border: none;
         }
 
         .custom-container{
             justify-content: space-evenly
         }
-        
+
         .custom-table-header{
             background-color: #159d83;
         }
@@ -60,7 +60,7 @@
         <a href="{{route('homepage')}}">
             <img src="{{asset('assets/backward-arrow.png')}}" alt=""  class="small-arrow">
         </a>
-        
+
     </div>
 
     <div class="text-center custom-container">
@@ -75,10 +75,9 @@
         <div class="text-white">
             <div class="row profile-card p-4">
                 <div class="col-4">
-                    <img src="{{asset('profile_bg.png')}}" class="profile-picture rounded-circle"  style="width:100%;height :100%" alt="">
-                    {{-- {{ $users->image}} --}}
-                </div> 
-                
+                    <img src="{{ $users->image}}" class="profile-picture rounded-circle"  style="width:100%;height :100%"alt="{{asset('profile_bg.png')}}">
+                </div>
+
                 <div class="col-8  ">
                     <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
                         @csrf
@@ -96,7 +95,7 @@
                                 {{-- value="{{ $users->email }}" --}}
                             </div>
                         </div>
-                        
+
                         <div class="mb-3 row">
                             <label for="uploadimg" class="col-sm-3 col-form-label text-end">Upload Images</label>
                             <div class="col-sm-9">
@@ -113,7 +112,7 @@
         </div>
 
     </div>
-   
+
     @include('components.historyTable')
 
 </body>

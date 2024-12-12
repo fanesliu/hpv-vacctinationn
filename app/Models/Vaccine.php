@@ -9,6 +9,7 @@ class Vaccine extends Model
 {
     use HasFactory;
     protected $table ='vaccines';
+    protected $primaryKey = 'vaccineId';
     protected $guarded=[];
 
     public function appointments()

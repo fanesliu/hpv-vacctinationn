@@ -21,6 +21,25 @@ class AdminController extends Controller
         return view('pages.admin.dashboard', compact('user', 'appointment'));
     }
 
+    public function getAllVaccine(){
+        $vaccine = Vaccine::all();
+        return view('pages.admin.admintest',compact('vaccine'));
+    }
+
+    public function updatePrice(Request $request){
+        $vaccineId = $request->input('vaccine_id');
+        $newPrice = $request->input('new_price');
+
+        $vaccine = Vaccine::find($vaccineId);
+        if($vaccine){
+            $vaccine->price = $newPrice;
+            $vaccine->save();
+            return redirect()->back()->with('success','Harga berhasil di update');
+        }else{
+            return redirect()->back()->with('error','Harga gagal di update');
+        }
+    }
+
     public function createAppointment()
     {
         return view('pages.admin.createAppointment');

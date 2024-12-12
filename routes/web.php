@@ -33,11 +33,13 @@ Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name(
 Route::middleware(['auth', 'user'])->group(function () {
 });
 
+Route::get('/admin-test',[AdminController::class,'getAllVaccine']);
+Route::post('/admin-test/update-price',[AdminController::class,'updatePrice'])->name('updateVaccinePrice');
 
 //Route dibawah hanya bisa diakses oleh akun yang punya role admin
 Route::middleware(AdminAuthenticate::class)->group(function () {
     Route::get('/admin/create-appointment',[AdminController::class,'createAppointment']);
-    Route::get('/admin/create-appointment',[AdminController::class,'insertApoointment']);
+    Route::get('/admin/create-appointment',[AdminController::class,'insertAppointment']);
 
     //Account Page
     Route::get('/admin/user/all-accounts', [AdminController::class, 'allAccountsPage']);
@@ -55,7 +57,7 @@ Route::middleware(AdminAuthenticate::class)->group(function () {
     Route::put('/vaccine/update{id}', 'App\Http\Controllers\VaccineController@update')->name('vaccine.update');
 
     //schedule list
-    });
+});
 
 
 Route::get('/services', function () {return view('pages.servicesPage');})->name('service.view');

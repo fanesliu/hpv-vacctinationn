@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
+use Illuminate\Support\Facades\Storage;
 
 
 class UserController extends Controller
@@ -41,48 +41,37 @@ class UserController extends Controller
         return redirect()->route('login');
     }
 
-    public function profile()
-    {
+
+    public function profile(){
 
         $users = Auth::user();
         return view('pages.profile', compact('users'));
     }
-    public function editProfile()
-    {
-        $user = Auth::user();
-        return view('pages.edit_profile', compact('user'));
-    }
 
     public function updateProfile(Request $request)
     {
-        $user = Auth::user();
-        // dd($user->id);
-        // dd($user->userId);
-        // Validate data
+        // Validate the incoming request
         $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => [
-                'required',
-                'email',
-                'regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/',
-                'unique:users,email,' . $user->userId . ',userId',
-            ],
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Update user
-        $user->update([
-            'name' => $request->name,
-            'email' => $request->email,
-        ]);
+        $user = auth()->user();
 
-        // Handle image upload
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('profile_images', 'public');
-            $user->update(['image' => $imagePath]);
-        }
+            $file = $request->file('image');
 
-        return redirect()->route('pages.profile')->with('success', 'Profile updated successfully.');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            $filePath = $file->storeAs('image', $filename, 'public');
+
+            if ($user->image) {
+                Storage::disk('public')->delete($user->image);
+            }
+
+            $user->image = $filePath;
+            $user->save();
+        }
+        return redirect()->route('profile')->with('success', 'Profile image updated successfully.');
     }
 
     public function editPassword()
@@ -90,7 +79,6 @@ class UserController extends Controller
         $id = Auth::user()->userId;
         return view('pages.updatePassword', compact('id'));
     }
-
 
     public function updatePassword(Request $request)
     {

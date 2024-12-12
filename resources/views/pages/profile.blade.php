@@ -74,13 +74,13 @@
     <div class="profile-card text-white">
         <div class="text-white">
             <div class="row profile-card p-4">
-                <div class="col-4">
-                    <img src="{{ $users->image}}" class="profile-picture rounded-circle"  style="width:100%;height :100%"alt="{{asset('profile_bg.png')}}">
-                </div>
+                <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="col-4">
+                        <img src="{{ $users->image}}" class="profile-picture rounded-circle"  style="width:100%;height :100%"alt="{{asset('profile_bg.png')}}">
+                    </div>
 
-                <div class="col-8  ">
-                    <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
-                        @csrf
+                    <div class="col-8  ">
                         <div class="mb-3 row">
                             <label for="name" class="col-sm-3 col-form-label text-end">Name</label>
                             <div class="col-sm-9">
@@ -95,13 +95,16 @@
                                 {{-- value="{{ $users->email }}" --}}
                             </div>
                         </div>
-
-                        <div class="mb-3 row">
-                            <label for="uploadimg" class="col-sm-3 col-form-label text-end">Upload Images</label>
-                            <div class="col-sm-9">
-                                <input type="file" class="form-control w-50" id="profile_picture" name="profile_picture">
-                            </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="uploadimg" class="col-sm-3 col-form-label text-end">Upload Images</label>
+                        <div class="col-sm-9">
+                            <input type="file" class="form-control w-50" id="profile_picture" name="profile_picture">
                         </div>
+                    </div>
+                </form>
+                    <form action="">
+                        @csrf
                         <div class="text-end d-flex flex-row justify-content-evenly"  style="width: 80%; margin: 0 auto;">
                             <a href="{{route('updatePassword')}}"><button class="btn btn-primary">Update Password</button></a>
                             <button type="submit" class="btn btn-primary">Save Changes</button>

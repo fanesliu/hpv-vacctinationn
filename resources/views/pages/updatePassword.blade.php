@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-    @if ($errors->any())
+    {{-- @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
             @foreach ($errors->all() as $error)
@@ -29,7 +29,18 @@
             @endforeach
         </ul>
     </div>
+    @endif --}}
+    @if($error)
+    <div class="alert alert-danger">
+        {{ $old_password }}
+    </div>
     @endif
+    
+    @error('old_password')
+    <div class="alert alert-danger">
+        {{ $old_password }}
+    </div>
+    @enderror
 
 
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">

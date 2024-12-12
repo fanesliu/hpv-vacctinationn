@@ -41,7 +41,7 @@
             </div>
             <h1 class="mb-4">Update Password</h1>
             <div class="update-card card p-4">
-                <form method="POST" action="#">
+                <form method="POST" action="{{ route('updatePassword')}}">
                     @csrf
                     <div class="mb-3">
                         <label for="old_password" class="form-label text-white">Old Password</label>
@@ -52,8 +52,8 @@
                         <input type="password" name="new_password" id="new_password" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="confirm_password" class="form-label text-white">Confirm Password</label>
-                        <input type="password" name="confirm_password" id="confirm_password" class="form-control">
+                        <label for="new_password_confirmation" class="form-label text-white">Confirm Password</label>
+                        <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">Save</button>
                 </form>

@@ -94,32 +94,24 @@ class UserController extends Controller
 
     public function updatePassword(Request $request)
     {
-        // Validate the incoming request
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|min:8|confirmed',
         ]);
 
-        // Get the currently authenticated user
         $user = Auth::user();
 
+        if (!Hash::check($request->old_password, $user->password)) {
+            return back()->withErrors(['old_password' => 'The provided password does not match our records.']);
+        }
+
         try {
-            // Decrypt the current password stored in the database
-            $decryptedCurrentPassword = Crypt::decrypt($user->password);
-
-            // Check if the decrypted password matches the provided old password
-            if ($request->old_password !== $decryptedCurrentPassword) {
-                return back()->withErrors(['old_password' => 'The provided password does not match our records.']);
-            }
-
-            // Encrypt the new password
-            $user->password = Crypt::encrypt($request->new_password);
+            $user->password = Hash::make($request->new_password);
             $user->save();
 
             return redirect()->route('profile')->with('success', 'Password updated successfully!');
         } catch (\Exception $e) {
-            // Handle any exception that may occur during decryption or encryption
-            return back()->withErrors(['error' => 'Password decryption failed: ' . $e->getMessage()]);
+            return back()->withErrors(['error' => 'Failed to update password: ' . $e->getMessage()]);
         }
     }
 

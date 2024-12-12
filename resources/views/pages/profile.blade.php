@@ -69,7 +69,7 @@
                 <h1 class="text-center mb-2">Profile</h1>
             </div>
             <div>
-                <a href="{{route('login')}}" class="btn btn-primary">Logout</a>
+                <a href="{{route('logout')}}" class="btn btn-primary">Logout</a>
 
     <div class="profile-card text-white">
         <div class="text-white">
@@ -103,10 +103,11 @@
                             </div>
                         </div>
                         <div class="text-end d-flex flex-row justify-content-evenly"  style="width: 80%; margin: 0 auto;">
-                            <a href="{{route('updatePassword')}}"><button class="btn btn-primary">Update Password</button></a>
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
+
                     </form>
+                    <a href="{{ route('editPassword') }}"><button class="btn btn-primary">Update Password</button></a>
                 </div>
             </div>
         </div>

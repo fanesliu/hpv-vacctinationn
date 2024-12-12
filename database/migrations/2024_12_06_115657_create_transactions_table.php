@@ -36,6 +36,7 @@ class CreateTransactionsTable extends Migration
             $table->foreign('userId')
                   ->references('userId')->on('users')
                   ->onDelete('cascade'); // optional: cascade delete (depends on your needs)
+            $table->timestamps(); 
         });
     }
 

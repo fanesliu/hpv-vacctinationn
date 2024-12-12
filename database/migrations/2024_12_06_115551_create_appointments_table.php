@@ -29,7 +29,11 @@ class CreateAppointmentsTable extends Migration
                       ->references('vaccineId')->on('vaccines')
                       ->onDelete('cascade')  // on delete cascade
                       ->onUpdate('cascade'); // on update cascade
-            });
+                
+                $table->primary('appointmentId');
+                $table->timestamps(); 
+                });
+            
         }
     }
 

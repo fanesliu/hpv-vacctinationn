@@ -41,7 +41,8 @@
         }
 
         .custom-container{
-            justify-content: space-evenly
+            background-color: linear-gradient(to right, #159d83,#2ba84a);
+            
         }
 
         .custom-table-header{
@@ -60,61 +61,46 @@
         <a href="{{route('homepage')}}">
             <img src="{{asset('assets/backward-arrow.png')}}" alt=""  class="small-arrow">
         </a>
-
     </div>
 
-    <div class="text-center custom-container">
-        <div class="d-flex flex-column justify-content-evenly">
-            <div>
-                <h1 class="text-center mb-2">Profile</h1>
-            </div>
-            <div>
-                <a href="{{route('login')}}" class="btn btn-primary">Logout</a>
-
-    <div class="profile-card text-white">
-        <div class="text-white">
-            <div class="row profile-card p-4">
-                <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
-                    <div class="col-4">
-                        <img src="{{ $users->image}}" class="profile-picture rounded-circle"  style="width:100%;height :100%"alt="{{asset('profile_bg.png')}}">
-                    </div>
-
-                    <div class="col-8  ">
-                        <div class="mb-3 row">
-                            <label for="name" class="col-sm-3 col-form-label text-end">Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control w-50" id="name" name="name"  disabled>
-                                {{-- value="{{ $users->name }}" --}}
-                            </div>
-                        </div>
-                        <div class="mb-3 row">
-                            <label for="email" class="col-sm-3 col-form-label text-end">Email</label>
-                            <div class="col-sm-9">
-                                <input type="email" class="form-control w-50" id="email" name="email"  disabled>
-                                {{-- value="{{ $users->email }}" --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="uploadimg" class="col-sm-3 col-form-label text-end">Upload Images</label>
-                        <div class="col-sm-9">
-                            <input type="file" class="form-control w-50" id="profile_picture" name="profile_picture">
-                        </div>
-                    </div>
-                </form>
-                    <form action="">
+    <div class="container my-5">
+        <h1 class="mb-4">Profile</h1>
+        <div class="card p-4" style="background-color: #4caf50; border-radius: 15px;">
+            <div class="row align-items-center">
+                
+                <div class="col-md-4 text-center">
+                    <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="text-end d-flex flex-row justify-content-evenly"  style="width: 80%; margin: 0 auto;">
-                            <a href="{{route('updatePassword')}}"><button class="btn btn-primary">Update Password</button></a>
+                        <img src="{{ $users->image ? asset('storage/' . $users->image) : asset('profile_bg.png') }}" alt="Profile Picture" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
+                        
+                        <div class="d-flex justify-content-center align-items-center mt-3">
+                            <input type="file" class="form-control w-50 me-3" id="image" name="image">
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
                     </form>
                 </div>
+                
+                
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" disabled value="{{$users->name}}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" disabled value="{{$users->email}}">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <a href="{{ route('editPassword') }}"><button class="btn btn-primary">Update Password</button></a>
+                    </div>
+                </div>
             </div>
         </div>
-
     </div>
+    
 
     @include('components.historyTable')
 

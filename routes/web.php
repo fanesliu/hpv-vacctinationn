@@ -19,7 +19,6 @@ Route::get('/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
-Route::get('/editProfile', [UserController::class, 'editProfile'])->name('editProfile');
 Route::post('/updateProfile', [UserController::class, 'updateProfile'])->name('updateProfile');
 
 

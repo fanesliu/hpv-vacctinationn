@@ -30,18 +30,21 @@
         </ul>
     </div>
     @endif --}}
-    @if($error)
-    <div class="alert alert-danger">
-        {{ $old_password }}
+    @if (session('success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ session('success') }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+    @elseif ($errors->any())
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <ul class="mb-0">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     @endif
-    
-    @error('old_password')
-    <div class="alert alert-danger">
-        {{ $old_password }}
-    </div>
-    @enderror
-
 
     <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
         <div class="text-center">
@@ -52,7 +55,7 @@
             </div>
             <h1 class="mb-4">Update Password</h1>
             <div class="update-card card p-4">
-                <form method="POST" action="#">
+                <form method="POST" action="{{ route('updatePassword')}}">
                     @csrf
                     <div class="mb-3">
                         <label for="old_password" class="form-label text-white">Old Password</label>
@@ -63,8 +66,8 @@
                         <input type="password" name="new_password" id="new_password" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <label for="confirm_password" class="form-label text-white">Confirm Password</label>
-                        <input type="password" name="confirm_password" id="confirm_password" class="form-control">
+                        <label for="new_password_confirmation" class="form-label text-white">Confirm Password</label>
+                        <input type="password" name="new_password_confirmation" id="new_password_confirmation" class="form-control">
                     </div>
                     <button type="submit" class="btn btn-primary mt-3" style="width: 100%;">Save</button>
                 </form>

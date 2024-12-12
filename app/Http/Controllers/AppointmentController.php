@@ -13,16 +13,13 @@ class AppointmentController extends Controller
     // Metode untuk mendapatkan tempat
     public function get_place($userID, $vaccineId, $date)
     {
-        Log::info("Hello bang");
-        // return "hello";
-        // Jika date adalah 0, abaikan dan return view tanpa pesan
         if ($date == 0) {
             $places = [];
             $message = "Please Select an Appointment Date";
             return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId', 'date'));
         }
         $today = Carbon::now()->format('Y-m-d');
-        // Ambil semua tempat yang tersedia berdasarkan tanggal dan vaccineID
+        // Ambil semua tempat yang tersedia berdaan tanggal dan vaccineID
         $places = Appointment::with('vaccine')
             ->where('vaccineId', $vaccineId)
             ->where('dateAvailibilityStart', '<=', $date)

@@ -49,9 +49,7 @@
             <div class="max-w-xl">
                 <h1 class="text-4xl font-bold mb-6">Book an Online Appointment</h1>
                 <p class="text-lg leading-relaxed">
-                    Our services offer comprehensive screenings, consultations, and educational resources tailored to
-                    empower individuals in their
-                    understanding and management of HPV.
+                    @lang('test.appointmentDesc')
                 </p>
             </div>
         </div>
@@ -115,14 +113,13 @@
                         const selectedDate = event.detail.date; // Ambil tanggal yang dipilih
                         const selectedDay = selectedDate.getDate(); // Ambil hanya hari
 
-                        // Format hari menjadi dua digit
                         const formattedDay = String(selectedDay);
 
                         // Construct the new URL
                         const newUrl = `/appointment/${userId}/${vaccineId}/${selectedDay}`; // Hanya menggunakan hari
                         window.location.href = newUrl; // Redirect to the new URL
                     });
-                });
+                }); 
             </script>
     </section>
 

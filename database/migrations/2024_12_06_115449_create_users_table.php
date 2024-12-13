@@ -20,9 +20,8 @@ class CreateUsersTable extends Migration
             $table->longText('password'); // equivalent to 'longtext'
             $table->longText('image')->nullable(); // equivalent to 'longtext'
             $table->longText('role'); // equivalent to 'longtext'
-            $table->date('created_at')->nullable(); // equivalent to 'date DEFAULT NULL'
-            $table->date('updated_at')->nullable(); // equivalent to 'date DEFAULT NULL'
             $table->primary('userId'); // setting the primary key
+            $table->timestamps(); 
         });
     }
 

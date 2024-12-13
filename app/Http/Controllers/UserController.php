@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\Auth;
@@ -45,7 +46,9 @@ class UserController extends Controller
     public function profile(){
 
         $users = Auth::user();
-        return view('pages.profile', compact('users'));
+        $histories = Transaction::where('userId', $users->userId)->get();
+
+        return view('pages.profile', compact('users', 'histories'));
     }
 
     public function updateProfile(Request $request)
@@ -55,7 +58,7 @@ class UserController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $user = auth()->user();
+        $user = Auth()->user();
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');

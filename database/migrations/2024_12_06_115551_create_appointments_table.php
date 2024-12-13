@@ -26,9 +26,11 @@ class CreateAppointmentsTable extends Migration
 
                 // foreign key constraint
                 $table->foreign('vaccineId')
-                      ->references('vaccineId')->on('vaccines')
-                      ->onDelete('cascade')  // on delete cascade
-                      ->onUpdate('cascade'); // on update cascade
+                    ->references('vaccineId')->on('vaccines')
+                    ->onDelete('cascade')  // on delete cascade
+                    ->onUpdate('cascade'); // on update cascade
+
+                $table->timestamps();
             });
         }
     }

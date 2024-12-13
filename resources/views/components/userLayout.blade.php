@@ -7,6 +7,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
     <style>
+        .primaryBos {
+            background-color: #FCF8F4;
+        }
+
         .navbar {
             background-color: transparent;
             padding: 20px 0;
@@ -79,7 +83,7 @@
     <title>Serices - HPV Vaccination</title>
 </head>
 
-<body>
+<body class="primaryBos">
 
     @include('components.navbar')
 

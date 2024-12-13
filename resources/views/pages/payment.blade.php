@@ -1,7 +1,4 @@
-<style>
-    body {
-    }
-    
+<style>   
     .sizing {
         min-height: 100vh;
         display: flex;

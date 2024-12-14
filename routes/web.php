@@ -32,8 +32,17 @@ Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name(
 Route::middleware(['auth', 'user'])->group(function () {
 });
 
-Route::get('/admin-test',[AdminController::class,'getAllVaccine']);
+Route::delete('/admin-test/delete/{app}', [AdminController::class, 'deleteAppointment'])->name('deleteAppointment');
+Route::get('/admin-test',[AdminController::class,'getAllVaccineAndAppointment'])->name('viewAll');
+Route::post('/admin-test/update-selected-list/{app}',[AdminController::class,'updateSelectedList'])->name('updateSelectedSchedule');
+
+// Route::get('/admin-test', [AdminController::class, 'index'])->name('indexData');
+Route::get('/admin-test',[AdminController::class,'getAllVaccineAndAppointment'])->name('viewAll');
+Route::get('/insert/add-row', [AdminController::class, 'addRow'])->name('addRow');
 Route::post('/admin-test/update-price',[AdminController::class,'updatePrice'])->name('updateVaccinePrice');
+Route::post('/admin-test/insert-data',[AdminController::class,'storeList'])->name('storeList');
+// Route::get('/admin-test',[AdminController::class,'updateSchedule'])->name('updateSchedule');
+
 
 //Route dibawah hanya bisa diakses oleh akun yang punya role admin
 Route::middleware(AdminAuthenticate::class)->group(function () {

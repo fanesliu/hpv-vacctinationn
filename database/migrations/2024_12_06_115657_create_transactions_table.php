@@ -29,13 +29,14 @@ class CreateTransactionsTable extends Migration
 
             // Foreign key constraints
             $table->foreign('appointmentId')
-                  ->references('appointmentId')->on('appointments')
-                  ->onDelete('cascade')  // on delete cascade
-                  ->onUpdate('cascade'); // on update cascade
+                ->references('appointmentId')->on('appointments')
+                ->onDelete('cascade')  // on delete cascade
+                ->onUpdate('cascade'); // on update cascade
 
             $table->foreign('userId')
-                  ->references('userId')->on('users')
-                  ->onDelete('cascade'); // optional: cascade delete (depends on your needs)
+                ->references('userId')->on('users')
+                ->onDelete('cascade'); // optional: cascade delete (depends on your needs)
+            $table->timestamps();
         });
     }
 

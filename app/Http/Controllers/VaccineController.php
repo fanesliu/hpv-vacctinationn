@@ -12,6 +12,7 @@ class VaccineController extends Controller
     public function get_allVaccine($userID)
     {
         $vaccines = Vaccine::all();
+        dd($vaccines);
         return view('pages.pricing', compact('vaccines'));
     }
 

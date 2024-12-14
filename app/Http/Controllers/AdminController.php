@@ -75,21 +75,22 @@ class AdminController extends Controller
 
     public function getAllVaccineAndAppointment(){
         $vaccine = Vaccine::all();
-        $appointments = Appointment::with('vaccine')->get();
-        return view('pages.admin.admintest',compact('vaccine','appointments'));
+        $appointment = Appointment::with('vaccine')->get();
+        return view('pages.admin.admintest',compact('vaccine','appointment'));
     }
 
-    public function updatePrice(Request $request){
+    public function updatePrice(Request $request)
+    {
         $vaccineId = $request->input('vaccine_id');
         $newPrice = $request->input('new_price');
 
         $vaccine = Vaccine::find($vaccineId);
-        if($vaccine){
+        if ($vaccine) {
             $vaccine->price = $newPrice;
             $vaccine->save();
-            return redirect()->back()->with('success','Harga berhasil di update');
-        }else{
-            return redirect()->back()->with('error','Harga gagal di update');
+            return redirect()->back()->with('success', 'Harga berhasil di update');
+        } else {
+            return redirect()->back()->with('error', 'Harga gagal di update');
         }
     }
 
@@ -108,5 +109,4 @@ class AdminController extends Controller
             'photo_donasi' => 'image|mimes:png,jpg,jpeg,gif|max:2048'
         ]);
     }
-
 }

@@ -23,6 +23,7 @@ class TransactionsSeeder extends Seeder
                 'paymentType' => 'qris',
                 'paymentDate' => '2024-01-02',
                 'appointmentDate' => '15',
+                'status' => 'pending'
             ],
             [
                 'transactionId' => 8,
@@ -32,6 +33,7 @@ class TransactionsSeeder extends Seeder
                 'paymentType' => 'transfer',
                 'paymentDate' => '2024-02-09',
                 'appointmentDate' => '1',
+                'status' => 'pending'
             ],
             [
                 'transactionId' => 9,
@@ -41,6 +43,7 @@ class TransactionsSeeder extends Seeder
                 'paymentType' => 'virtual account',
                 'paymentDate' => '2024-02-21',
                 'appointmentDate' => '30',
+                'status' => 'pending'
             ]
         ]);
     }

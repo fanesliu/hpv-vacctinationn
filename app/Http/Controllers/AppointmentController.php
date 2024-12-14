@@ -7,6 +7,8 @@ use App\Models\Appointment;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+
 
 class AppointmentController extends Controller
 {
@@ -35,46 +37,65 @@ class AppointmentController extends Controller
             ]);
         }
 
-        return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId', 'date','today'));
+        return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId', 'date', 'today'));
     }
 
     // Metode untuk melakukan checkout
     public function createTransaction(Request $request)
-{
-    // Validasi input
-    $request->validate([
-        'userId' => 'required|integer', // Pastikan userId ada dan merupakan integer
-        'appointmentId' => 'required|integer',
-        'finalPrice' => 'required|numeric',
-        'paymentType' => 'required|string',
-        'appointmentDate' => 'required|integer',
-        'paymentDate' => 'required|date',
-    ]);
-
-    // Ambil data dari request
-    $data = $request->all();
-    // dd($data);
-
-    // Debugging: Lihat semua data yang dikirim
-    // dd($data); // Uncomment ini jika Anda ingin melihat data yang dikirim
-
-    // Simpan transaksi ke database
-    try {
-        Transaction::create([
-            'userId' => $data['userId'], // Ambil userId dari data
-            'appointmentId' => $data['appointmentId'],
-            'finalPrice' => $data['finalPrice'],
-            'paymentType' => $data['paymentType'],
-            'appointmentDate' => $data['appointmentDate'],
-            'paymentDate' => $data['paymentDate'],
+    {
+        // Validasi input
+        $request->validate([
+            'userId' => 'required|integer', // Pastikan userId ada dan merupakan integer
+            'appointmentId' => 'required|integer',
+            'finalPrice' => 'required|numeric',
+            'paymentType' => 'required|string',
+            'appointmentDate' => 'required|integer',
+            'paymentDate' => 'required|date',
         ]);
+        // Ambil data dari request
+        $data = $request->all();
+        
+        try {
+            $appointment = Appointment::findOrFail($data['appointmentId']);
+            $transaction = Transaction::create([
+                'userId' => $data['userId'], // Ambil userId dari data
+                'appointmentId' => $data['appointmentId'],
+                'finalPrice' => $data['finalPrice'],
+                'paymentType' => $data['paymentType'],
+                'appointmentDate' => $data['appointmentDate'],
+                'paymentDate' => $data['paymentDate'],
+            ]);
 
-        return redirect()->back()->with('success', 'Transaction created successfully!');
-    } catch (\Exception $e) {
-        // Tangani kesalahan jika terjadi saat menyimpan
-        return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan transaksi: ' . $e->getMessage());
+            // Set your Merchant Server Key
+            \Midtrans\Config::$serverKey = config('midtrans.serverKey');
+            // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+            \Midtrans\Config::$isProduction = false;
+            // Set sanitization on (default)
+            \Midtrans\Config::$isSanitized = true;
+            // Set 3DS transaction for credit card to true
+            \Midtrans\Config::$is3ds = true;
+
+            $params = array(
+                'transaction_details' => array(
+                    'order_id' => rand(),
+                    'gross_amount' => $data['finalPrice'],
+                ),
+                // 'customer_details' => array(
+                //     'first_name' => Auth::user()->name,
+                //     'email' => Auth::user()->email,
+                // )
+            );
+            
+            $snapToken = \Midtrans\Snap::getSnapToken($params);
+            $transaction->snap_token = $snapToken;
+            $transaction->save();
+
+            return view('pages.checkout', compact('transaction', 'appointment'));
+        } catch (\Exception $e) {
+            // Tangani kesalahan jika terjadi saat menyimpan
+            return redirect()->back()->with('error', 'Terjadi kesalahan saat menyimpan transaksi: ' . $e->getMessage());
+        }
     }
-}
     // Metode untuk menandai transaksi sebagai pending
     public function pending(Request $request)
     {

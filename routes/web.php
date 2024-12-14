@@ -20,6 +20,7 @@ Route::get('/appointment/{userID}/{vaccineID}/{date}', [AppointmentController::c
 Route::get('/pricing/{userID}', [VaccineController::class, 'get_allVaccine'])->name("pricing.view");
 Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");
 Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
+Route::view('/checkout','pages.checkout')->name('checkout');
 
 Route::get('/', [UserController::class, 'home'])->name('homepage');
 Route::get('/register', [LoginRegisterController::class, 'registerPage'])->name('register');

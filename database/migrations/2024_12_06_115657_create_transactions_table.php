@@ -18,10 +18,11 @@ class CreateTransactionsTable extends Migration
             $table->integer('userId')->unsigned(); // foreign key column (unsigned to match users' userId)
             $table->integer('appointmentId')->unsigned(); // foreign key column (unsigned to match appointment's appointmentId)
             $table->integer('finalPrice'); // equivalent to 'int'
-            $table->longText('paymentType'); // equivalent to 'longtext'
+            $table->longText('paymentType');
             $table->date('paymentDate'); // equivalent to 'date'
             $table->string('appointmentDate', 45); // equivalent to 'varchar(45)'
-
+            $table->enum('status', ['pending', 'success', 'failed']);
+            $table->string('snap_token')->nullable();
             // Primary key and indexes
             $table->primary('transactionId');
             $table->index('userId');
@@ -29,14 +30,14 @@ class CreateTransactionsTable extends Migration
 
             // Foreign key constraints
             $table->foreign('appointmentId')
-                  ->references('appointmentId')->on('appointments')
-                  ->onDelete('cascade')  // on delete cascade
-                  ->onUpdate('cascade'); // on update cascade
+                ->references('appointmentId')->on('appointments')
+                ->onDelete('cascade')  // on delete cascade
+                ->onUpdate('cascade'); // on update cascade
 
             $table->foreign('userId')
-                  ->references('userId')->on('users')
-                  ->onDelete('cascade'); // optional: cascade delete (depends on your needs)
-            $table->timestamps(); 
+                ->references('userId')->on('users')
+                ->onDelete('cascade'); // optional: cascade delete (depends on your needs)
+            $table->timestamps();
         });
     }
 

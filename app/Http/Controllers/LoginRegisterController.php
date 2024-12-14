@@ -37,24 +37,6 @@ class LoginRegisterController extends Controller
         // Add debugging statements
         if (Auth::attempt($input)) {
             $user = Auth::user();
-            // $user = User::findOrFail(Auth::id());
-
-            // dd($user->name);
-
-            // Debug information
-            // dd([
-            //     'user' => $user,
-            //     'name' => $user->name,
-            //     'email' => $user->email,
-            //     'role' => $user->role
-            // ]);
-
-            // dd(
-            //     Auth::user(),
-            //     Auth::user()->name,
-            //     Auth::user()->getAttribute('name')
-            // );
-
             if ($user->role == "admin") {
                 return redirect()->route("admin_dashboard");
             } else {

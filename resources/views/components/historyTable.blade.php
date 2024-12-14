@@ -25,6 +25,7 @@
                 <td colspan="5" class="text-center">No history data found</td>
             </tr>
             @endforelse
+            {{$histories->links()}}
         </tbody>
     </table>
 </div>

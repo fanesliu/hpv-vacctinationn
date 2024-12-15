@@ -72,6 +72,37 @@
         font-weight: 100;
         margin: 0;
     }
+
+    .gallery-section {
+        margin: 50px 0;
+    }
+
+    .gallery-title {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .gallery-description {
+        text-align: center;
+        margin-bottom: 40px;
+        font-size: 1.1em;
+        color: #6c757d;
+    }
+
+    .gallery-item {
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.05);
+    }
+
+    .info-text {
+        text-align: center;
+        margin-top: 10px;
+    }
 </style>
 
 @extends('components.userLayout')
@@ -199,15 +230,49 @@
         </div>
     </section>
 
+    <div class="container gallery-section">
+        <h1 class="gallery-title">A Gallery of HPV</h1>
+        <p class="gallery-description">The HPV information gallery provides a comprehensive overview of this virus, from
+            initial symptoms to preventative measures, aiming to enhance public understanding.</p>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="{{ asset('assets/photo1.png') }}" class="img-fluid" alt="Purple Ribbon">
+                    <div class="info-text">
+                        <h5>HPV Awareness</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="{{ asset('assets/photo2.png') }}" class="img-fluid" alt="HPV">
+                    <div class="info-text">
+                        <h3>HPV</h3>
+                        <p>HPV stands for human papillomavirus.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="gallery-item">
+                    <img src="{{ asset('assets/photo3.png') }}" class="img-fluid" alt="Vaccine">
+                    <div class="info-text">
+                        <h5>Vaccination Information</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="d-flex justify-content-center align-items-center">
-    <h1 class="w-full text-center mt-5">FAQ</h1>
+        <h1 class="w-full text-center mt-5">FAQ</h1>
     </div>
     <div class="container mt-3 mb" style="margin-bottom: 10rem;">
         <div class="accordion" id="accordionExample">
             <div class="accordion-item">
                 <h2 class="accordion-header">
-                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                        aria-expanded="true" aria-controls="collapseOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         Accordion Item #1
                     </button>
                 </h2>

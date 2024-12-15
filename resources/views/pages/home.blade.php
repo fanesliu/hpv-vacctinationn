@@ -74,7 +74,7 @@
     }
 
     .gallery-section {
-        margin: 50px 0;
+        margin: 10rem 0;
     }
 
     .gallery-title {
@@ -107,6 +107,7 @@
 
 @extends('components.userLayout')
 @section('content')
+    {{-- Hero Section --}}
     <section class="container py-5 mt-5">
         <div class="row align-items-center">
             {{-- Left Content --}}
@@ -125,6 +126,7 @@
         </div>
     </section>
 
+    {{-- Data Section --}}
     <section class="py-5 gradasi" id="data">
         <div class="container">
             <div class="row text-center text-white">
@@ -144,6 +146,7 @@
         </div>
     </section>
 
+    {{-- Mission Section --}}
     <section class="py-5 martop">
         <div class="container text-center">
             <h6 class="text-uppercase text-muted">Our Mission</h6>
@@ -172,7 +175,8 @@
         </div>
     </section>
 
-    <section id="about-us" class="py-5 martop">
+    {{-- About Us Section --}}
+    <section id="about-us" class="martop">
         <div class="container">
             <div class="row align-items-center">
                 {{-- Left Content --}}
@@ -197,6 +201,7 @@
         </div>
     </section>
 
+    {{-- Goals Section --}}
     <section class="py-5 martop">
         <div class="hero">
             <div class="container">
@@ -230,13 +235,14 @@
         </div>
     </section>
 
+    {{-- Gallery Section --}}
     <div class="container gallery-section">
         <h1 class="gallery-title">A Gallery of HPV</h1>
         <p class="gallery-description">The HPV information gallery provides a comprehensive overview of this virus, from
             initial symptoms to preventative measures, aiming to enhance public understanding.</p>
 
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="gallery-item">
                     <img src="{{ asset('assets/photo1.png') }}" class="img-fluid" alt="Purple Ribbon">
                     <div class="info-text">
@@ -244,7 +250,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <div class="gallery-item">
                     <img src="{{ asset('assets/photo2.png') }}" class="img-fluid" alt="HPV">
                     <div class="info-text">
@@ -253,7 +259,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <div class="gallery-item">
                     <img src="{{ asset('assets/photo3.png') }}" class="img-fluid" alt="Vaccine">
                     <div class="info-text">
@@ -264,6 +270,7 @@
         </div>
     </div>
 
+    {{-- FAQ Section --}}
     <div class="d-flex justify-content-center align-items-center">
         <h1 class="w-full text-center mt-5">FAQ</h1>
     </div>

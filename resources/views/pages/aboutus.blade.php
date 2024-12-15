@@ -40,34 +40,43 @@
             <h3 class="text-center">Why Our HPV Awareness Campaign Stands Out</h3>
         </div>
         <div class="card-deck" style="display: flex; justify-content: center; gap: 20px; margin-top: 3%">
-            <div class="card" style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;" 
-                 onmouseover="this.style.backgroundColor='#007D6E'; this.style.color='white';" 
-                 onmouseout="this.style.backgroundColor='#e8e8e8'; this.style.color='black';">
-                <img src="assets\aboutUs\1.png" alt="Image 1" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+            <div class="card border border-dark"
+                style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;"
+                onmouseover="this.style.background='linear-gradient(to right, #5EB47C, #007D6E)';"
+                onmouseout="this.style.background='#e8e8e8'; this.style.color='black';">
+                <img src="assets\aboutUs\1.png" alt="Image 1"
+                    style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-user-shield"></i>
                     <h5 class="card-title">Comprehensive Information</h5>
-                    <p class="card-text">We provide detailed insights into HPV, covering everything from symptoms to prevention methods, ensuring a thorough understanding.</p>
+                    <p class="card-text">We provide detailed insights into HPV, covering everything from symptoms to
+                        prevention methods, ensuring a thorough understanding.</p>
                 </div>
             </div>
-            <div class="card" style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;" 
-                 onmouseover="this.style.backgroundColor='#007D6E'; this.style.color='white';" 
-                 onmouseout="this.style.backgroundColor='#e8e8e8'; this.style.color='black';">
-                <img src="assets\aboutUs\2.png" alt="Image 2" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+            <div class="card border border-dark"
+                style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;"
+                onmouseover="this.style.background='linear-gradient(to right, #5EB47C, #007D6E)'; this.style.color='white';"
+                onmouseout="this.style.background='#e8e8e8'; this.style.color='black';">
+                <img src="assets\aboutUs\2.png" alt="Image 2"
+                    style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-user-md"></i>
                     <h5 class="card-title">Trusted Expertise</h5>
-                    <p class="card-text">Our team consists of medical professionals and educators dedicated to raising awareness about HPV, offering reliable guidance and support.</p>
+                    <p class="card-text">Our team consists of medical professionals and educators dedicated to raising
+                        awareness about HPV, offering reliable guidance and support.</p>
                 </div>
             </div>
-            <div class="card" style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;" 
-                 onmouseover="this.style.backgroundColor='#007D6E'; this.style.color='white';" 
-                 onmouseout="this.style.backgroundColor='#e8e8e8'; this.style.color='black';">
-                <img src="assets\aboutUs\3.png" alt="Image 3" style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+            <div class="card border border-dark"
+                style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;"
+                onmouseover="this.style.background='linear-gradient(to right, #5EB47C, #007D6E)';"
+                onmouseout="this.style.background='#e8e8e8'; this.style.color='black'">
+                <img src="assets\aboutUs\3.png" alt="Image 3"
+                    style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-atom"></i>
                     <h5 class="card-title">Interactive Resources</h5>
-                    <p class="card-text">Engaging galleries and interactive tools make learning about HPV an immersive experience, empowering individuals to take proactive steps towards prevention.</p>
+                    <p class="card-text">Engaging galleries and interactive tools make learning about HPV an immersive
+                        experience, empowering individuals to take proactive steps towards prevention.</p>
                 </div>
             </div>
         </div>

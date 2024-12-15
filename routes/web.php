@@ -6,6 +6,7 @@ use App\Http\Controllers\VaccineController;
 use App\Models\Vaccine;
 use App\Http\Controllers\LoginRegisterController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -21,6 +22,7 @@ Route::get('/pricing/{userID}', [VaccineController::class, 'get_allVaccine'])->n
 Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");
 Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
 Route::view('/checkout','pages.checkout')->name('checkout');
+Route::post('/update-transaction', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
 
 Route::get('/', [UserController::class, 'home'])->name('homepage');
 Route::get('/register', [LoginRegisterController::class, 'registerPage'])->name('register');

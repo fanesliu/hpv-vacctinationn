@@ -77,6 +77,19 @@
         margin: 10rem 0;
     }
 
+    .overlay {
+        position: absolute;
+        /* Menjadikan layer menutupi gambar sepenuhnya */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Layer hitam dengan transparansi */
+        z-index: 1;
+        /* Pastikan layer berada di atas gambar */
+    }
+
     .gallery-title {
         text-align: center;
         margin-bottom: 20px;
@@ -90,18 +103,37 @@
     }
 
     .gallery-item {
+        position: relative;
         border-radius: 10px;
         overflow: hidden;
+        object-fit: cover;
         transition: transform 0.3s;
+    }
+
+    .tengah {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .gallery-item:hover {
         transform: scale(1.05);
     }
 
+    .cover {
+        object-fit: cover;
+    }
+
     .info-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         text-align: center;
-        margin-top: 10px;
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        z-index: 2;
     }
 </style>
 
@@ -244,7 +276,9 @@
         <div class="row">
             <div class="col-md-3">
                 <div class="gallery-item">
-                    <img src="{{ asset('assets/photo1.png') }}" class="img-fluid" alt="Purple Ribbon">
+                    <img src="{{ asset('assets/photo4.png') }}" class="img-fluid cover" alt="Purple Ribbon"
+                        style="height: 300px;">
+                    <div class="overlay"></div>
                     <div class="info-text">
                         <h5>HPV Awareness</h5>
                     </div>
@@ -252,7 +286,9 @@
             </div>
             <div class="col-md-6">
                 <div class="gallery-item">
-                    <img src="{{ asset('assets/photo2.png') }}" class="img-fluid" alt="HPV">
+                    <img src="{{ asset('assets/photo2.png') }}" class="img-fluid cover" alt="HPV"
+                        style="height: 300px;">
+                    <div class="overlay"></div>
                     <div class="info-text">
                         <h3>HPV</h3>
                         <p>HPV stands for human papillomavirus.</p>
@@ -261,7 +297,9 @@
             </div>
             <div class="col-md-3">
                 <div class="gallery-item">
-                    <img src="{{ asset('assets/photo3.png') }}" class="img-fluid" alt="Vaccine">
+                    <img src="{{ asset('assets/photo3.png') }}" class="img-fluid cover" alt="Vaccine"
+                        style="height: 300px;">
+                    <div class="overlay"></div>
                     <div class="info-text">
                         <h5>Vaccination Information</h5>
                     </div>

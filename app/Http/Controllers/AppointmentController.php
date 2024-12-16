@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Auth;
 class AppointmentController extends Controller
 {
     // Metode untuk mendapatkan tempat
-    public function get_place($userID, $vaccineId, $date)
+    public function get_place($vaccineId, $date)
     {
         if ($date == 0) {
             $places = [];
             $message = "Please Select an Appointment Date";
-            return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId', 'date'));
+            return view('pages.appointment', compact('places', 'message', 'vaccineId', 'date'));
         }
         $today = Carbon::now()->format('Y-m-d');
         // Ambil semua tempat yang tersedia berdaan tanggal dan vaccineID
@@ -37,15 +37,15 @@ class AppointmentController extends Controller
             ]);
         }
 
-        return view('pages.appointment', compact('places', 'message', 'userID', 'vaccineId', 'date', 'today'));
+        return view('pages.appointment', compact('places', 'message', 'vaccineId', 'date', 'today'));
     }
 
     // Metode untuk melakukan checkout
     public function createTransaction(Request $request)
     {
+        $dataUser = Auth::user();
         // Validasi input
         $request->validate([
-            'userId' => 'required|integer', // Pastikan userId ada dan merupakan integer
             'appointmentId' => 'required|integer',
             'finalPrice' => 'required|numeric',
             'paymentType' => 'required|string',
@@ -58,7 +58,7 @@ class AppointmentController extends Controller
         try {
             $appointment = Appointment::findOrFail($data['appointmentId']);
             $transaction = Transaction::create([
-                'userId' => $data['userId'], // Ambil userId dari data
+                'userId' => $dataUser['userId'], // Ambil userId dari data
                 'appointmentId' => $data['appointmentId'],
                 'finalPrice' => $data['finalPrice'],
                 'paymentType' => $data['paymentType'],

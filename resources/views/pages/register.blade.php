@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <title>Register</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
     <style>
-        body{
+        body {
             background: linear-gradient(to right, #2ba84a, #159d83);
             height: 100vh;
             display: flex;
@@ -15,7 +16,7 @@
             align-items: center;
         }
 
-        .register-card{
+        .register-card {
             background: white;
             border-radius: 10px;
             padding: 2rem;
@@ -24,16 +25,18 @@
             max-width: 500px;
             text-align: center;
         }
-        .text-con{
-            display: flex;
-            justify-content: center;
-        }
-        .input-con{
+
+        .text-con {
             display: flex;
             justify-content: center;
         }
 
-        .register-card .btn{
+        .input-con {
+            display: flex;
+            justify-content: center;
+        }
+
+        .register-card .btn {
             background-color: #159d83;
             color: white;
             border-radius: 20px;
@@ -41,25 +44,35 @@
             margin-top: 1rem;
         }
 
-        .register-card .btn:hover{
+        .register-card .btn:hover {
             background-color: #117a65;
         }
     </style>
 </head>
+
 <body>
     <div class="register-card">
         <div class="row">
             <div class="img-fluid">
-                <img src="{{asset('assets/logo.png')}}" alt="">
+                <img src="{{ asset('assets/logo.png') }}" alt="">
             </div>
 
             <div>
-                <h1 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Register</h1>
+                <h1
+                    style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                    Register</h1>
             </div>
-            <form action="{{route('register')}}" method="POST">
+            @if ($errors->any())
+                <script>
+                    alert("Email or password not allowed !\nEmail must be @gmail.com\nPassword minumum 8 character");
+                </script>
+            @endif
+            <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <div class="text-con">
-                    <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Name</h3>
+                    <h3
+                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        Name</h3>
                 </div>
 
                 <div class="input-con">
@@ -67,16 +80,20 @@
                 </div>
 
                 <div class="text-con">
-                    <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Email</h3>
+                    <h3
+                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        Email</h3>
                 </div>
 
                 <div class="input-con">
                     <input type="email" name="email" class="form-control" placeholder="Email" required>
                 </div>
-                
-                
+
+
                 <div class="text-con">
-                    <h3 style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Password</h3>
+                    <h3
+                        style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">
+                        Password</h3>
                 </div>
 
                 <div class="input-con">
@@ -90,4 +107,5 @@
 
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 </body>
+
 </html>

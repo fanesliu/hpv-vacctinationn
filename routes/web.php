@@ -30,7 +30,7 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/services', function () {
         return view('pages.servicesPage');
     })->name('service.view');
-    Route::get('/appointment/{userID}/{vaccineID}/{date}', [AppointmentController::class, 'get_place'])->name("appointment.view");
+    Route::get('/appointment/{vaccineID}/{date}', [AppointmentController::class, 'get_place'])->name("appointment.view");
     Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
     Route::get('/pricing', [VaccineController::class, 'get_allVaccine'])->name("pricing.view");
     Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");

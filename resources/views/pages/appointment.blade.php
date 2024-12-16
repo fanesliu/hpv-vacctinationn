@@ -84,7 +84,6 @@
                             </div>
                             <form method="POST" action="{{route('createTransaction')}}">
                                 @csrf
-                                <input type="hidden" name="userId" value="{{ $userID }}">
                                 <input type="hidden" name="appointmentId" value="{{$place->appointmentId}}">
                                 <input type="hidden" name="finalPrice" value="{{ $place->vaccine->price }}">
                                 <input type="hidden" name="paymentType" value="credit_card">
@@ -103,7 +102,7 @@
 
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
-                    const userId = @json($userID); // Menggunakan json_encode untuk mengeluarkan nilai
+                 
                     const vaccineId = @json($vaccineId); // Menggunakan json_encode untuk mengeluarkan nilai
 
                     const datepicker = document.querySelector('[inline-datepicker]');
@@ -116,7 +115,7 @@
                         const formattedDay = String(selectedDay);
 
                         // Construct the new URL
-                        const newUrl = `/appointment/${userId}/${vaccineId}/${selectedDay}`; // Hanya menggunakan hari
+                        const newUrl = `/appointment/${vaccineId}/${selectedDay}`; // Hanya menggunakan hari
                         window.location.href = newUrl; // Redirect to the new URL
                     });
                 }); 

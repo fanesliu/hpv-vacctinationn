@@ -62,7 +62,7 @@
                             <p class="description" style="color: black;">
                                 {{ $item->description }}
                             </p>
-                            <a href="{{ route('appointment.view', ['userID' => $userID, 'vaccineID' => $item->vaccineId, 'date' => 0]) }}"
+                            <a href="{{ route('appointment.view', ['vaccineID' => $item->vaccineId, 'date' => 0]) }}"
                                 class="btn btn-primary px-4"
                                 style="background-color: #EC744A; border: none; text-decoration: none; display: inline-block;"
                                 onmouseover="this.style.backgroundColor='#D86A3A';"

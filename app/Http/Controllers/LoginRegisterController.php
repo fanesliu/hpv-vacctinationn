@@ -38,7 +38,7 @@ class LoginRegisterController extends Controller
         if (Auth::attempt($input)) {
             $user = Auth::user();
             if ($user->role == "admin") {
-                return redirect()->route("admin_dashboard");
+                return redirect()->route("admin");
             } else {
                 return redirect()->route("homepage");
             }

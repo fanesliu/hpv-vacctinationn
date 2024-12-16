@@ -19,9 +19,11 @@ Route::post('/login', [LoginRegisterController::class, 'loginInsert']);
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 // ---------------------------------USER---------------------------------
-Route::middleware([UserMiddleware::class])->group(function(){
+Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/', [UserController::class, 'home'])->name('homepage');
-    Route::get('/services', function () {return view('pages.servicesPage');})->name('service.view');
+    Route::get('/services', function () {
+        return view('pages.servicesPage');
+    })->name('service.view');
     Route::get('/appointment/{userID}/{vaccineID}/{date}', [AppointmentController::class, 'get_place'])->name("appointment.view");
     Route::get('/pricing/{userID}', [VaccineController::class, 'get_allVaccine'])->name("pricing.view");
     Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");
@@ -33,9 +35,9 @@ Route::middleware([UserMiddleware::class])->group(function(){
 
 // ---------------------------------ADMIN---------------------------------
 Route::middleware([AdminMiddleware::class])->group(function () {
-    Route::get('/admin-test', [AdminController::class, 'getAllVaccine']);
-    Route::post('/admin-test', [AdminController::class, 'getAllVaccine']);
-    Route::post('/admin-test/update-price', [AdminController::class, 'updatePrice'])->name('updateVaccinePrice');
+    Route::get('/admin', [AdminController::class, 'getAllVaccine'])->name('admin');
+    Route::post('/admin', [AdminController::class, 'getAllVaccine']);
+    Route::post('/admin/update-price', [AdminController::class, 'updatePrice'])->name('updateVaccinePrice');
     Route::post('/createNewAppointment', [AdminController::class, 'createNewAppointment'])->name('createNewAppointment');
     Route::post('/updateAppointment', [AdminController::class, 'updateAppointment'])->name('updateAppointment');
     Route::post('/deleteAppointment', [AdminController::class, 'deleteAppointment'])->name('deleteAppointment');

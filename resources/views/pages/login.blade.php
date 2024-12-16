@@ -81,7 +81,7 @@
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
             @endif
-    </br>
+            </br>
 
             <small style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Don't have account? <a href="{{route('register')}}">Register</a></small>
         </div>

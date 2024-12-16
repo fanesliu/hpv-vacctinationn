@@ -45,7 +45,7 @@
                     <a class="nav-link" href="{{ route('service.view') }}">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Information</a>
+                    <a class="nav-link" href="{{route('pricing.view')}}">Get Vaccine</a>
                 </li>
             </ul>
 

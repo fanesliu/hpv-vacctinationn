@@ -14,7 +14,6 @@ class VaccineController extends Controller
     {
         $vaccines = Vaccine::all();
         $userID = Auth::user()->userId;
-        dd($userID);
         return view('pages.pricing', compact('vaccines', 'userID'));
     }
 

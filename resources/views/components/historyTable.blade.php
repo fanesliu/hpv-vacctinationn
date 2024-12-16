@@ -9,6 +9,8 @@
                 <th style="background-color: #159d83">Payment Type</th>
                 <th style="background-color: #159d83">Payment Date</th>
                 <th style="background-color: #159d83">Appointment Date</th>
+                <th style="background-color: #159d83">Status</th>
+                
             </tr>
         </thead>
         <tbody>
@@ -19,6 +21,7 @@
                 <td>{{ $history->paymentType }}</td>
                 <td>{{ $history->paymentDate }}</td>
                 <td>{{ $history->appointmentDate }}</td>
+                <td>{{ $history->status}}</td>
             </tr>
             @empty
             <tr>

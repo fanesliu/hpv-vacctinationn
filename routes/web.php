@@ -35,10 +35,13 @@ Route::middleware([UserMiddleware::class])->group(function () {
 
 // ---------------------------------ADMIN---------------------------------
 Route::middleware([AdminMiddleware::class])->group(function () {
-    Route::get('/admin', [AdminController::class, 'getAllVaccine'])->name('admin');
-    Route::post('/admin', [AdminController::class, 'getAllVaccine']);
+    Route::get('/admin', [AdminController::class, 'getAllVaccineAndAppointment'])->name('admin');
+    Route::post('/admin', [AdminController::class, 'getAllVaccineAndAppointment']);
+
+    // Tambahan winsen
+    Route::delete('/admin-test/delete/{app}', [AdminController::class, 'deleteAppointment'])->name('deleteAppointment');
+    Route::post('/admin/update-selected-list/{app}', [AdminController::class, 'updateSelectedList'])->name('updateSelectedSchedule');
+    Route::get('/insert/add-row', [AdminController::class, 'addRow'])->name('addRow');
     Route::post('/admin/update-price', [AdminController::class, 'updatePrice'])->name('updateVaccinePrice');
-    Route::post('/createNewAppointment', [AdminController::class, 'createNewAppointment'])->name('createNewAppointment');
-    Route::post('/updateAppointment', [AdminController::class, 'updateAppointment'])->name('updateAppointment');
-    Route::post('/deleteAppointment', [AdminController::class, 'deleteAppointment'])->name('deleteAppointment');
+    Route::post('/admin/insert-data', [AdminController::class, 'storeList'])->name('storeList');
 });

@@ -68,7 +68,7 @@
     </div>
 
     <div class="container my-5">
-        <h1 class="mb-4">Profile</h1>
+        <h1 class="mb-4 text-center">Profile</h1>
         <div class="card p-4" style="background-color: #4caf50; border-radius: 15px;">
             <div class="row align-items-center">
 

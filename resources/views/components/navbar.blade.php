@@ -45,12 +45,22 @@
                     <a class="nav-link" href="{{ route('service.view') }}">Services</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('pricing.view')}}">Get Vaccine</a>
+                    <a class="nav-link" href="{{ route('pricing.view') }}">Get Vaccine</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Language
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Indonesia</a></li>
+                        <li><a class="dropdown-item" href="#">English</a></li>
+                    </ul>
                 </li>
             </ul>
 
             <div class="d-flex align-items-center">
-                <a class="btn contact-btn text-white me-3" href="{{route('profile') }}">Profile</a>
+                <a class="btn contact-btn text-white me-3" href="{{ route('profile') }}">Profile</a>
                 <a href="#" class="d-flex align-items-center">
                     <i class="fas fa-user-circle fa-lg"></i>
                 </a>

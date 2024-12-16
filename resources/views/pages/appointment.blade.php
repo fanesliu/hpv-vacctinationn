@@ -32,17 +32,16 @@
                 <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('homepage') }}">Home</a></li>
                 <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('aboutus.view') }}">About</a></li>
                 <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('service.view') }}">Services</a></li>
-                <li><a class="text-gray-700 hover:text-gray-900" href="#">Information</a></li>
+                <li><a class="text-gray-700 hover:text-gray-900" href="{{route('pricing.view')}}">Get Vaccine</a></li>
             </ul>
             <div class="flex items-center space-x-4">
                 <a class="bg-orange-400 text-white rounded-full px-6 py-2 hover:bg-white hover:text-orange-400 border border-orange-400"
-                    href="#">Contact Us</a>
+                    href="{{ route('profile') }}">Profile</a>
                 <a class="bg-orange-400 text-white rounded-full px-6 py-2 hover:bg-white hover:text-orange-400 border border-orange-400"
                     href="#">Logout</a>
             </div>
         </div>
     </nav>
-
     <section class="relative bg-gradient-to-r from-green-400 to-green-600 text-white py-20 overflow-hidden">
         <div class="curved-line"></div>
         <div class="container mx-auto px-6 relative z-10">

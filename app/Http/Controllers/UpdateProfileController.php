@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\Cache\Store;
 use Illuminate\Http\Request;
 use Storage;
 

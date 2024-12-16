@@ -1,5 +1,7 @@
+import flowbitePlugin from "flowbite/plugin";
+
 /** @type {import('tailwindcss').Config} */
-module.exports = {
+export default {
     content: [
         "./resources/**/*.blade.php",
         "./resources/**/*.js",
@@ -9,5 +11,5 @@ module.exports = {
     theme: {
         extend: {},
     },
-    plugins: [require("flowbite/plugin")],
+    plugins: [flowbitePlugin],
 };

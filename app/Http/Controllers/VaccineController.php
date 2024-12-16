@@ -4,16 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Vaccine;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 
 class VaccineController extends Controller
 {
-    public function get_allVaccine($userID)
+    public function get_allVaccine()
     {
         $vaccines = Vaccine::all();
-        dd($vaccines);
-        return view('pages.pricing', compact('vaccines'));
+        $userID = Auth::user()->userId;
+        return view('pages.pricing', compact('vaccines', 'userID'));
     }
 
     public function index(){

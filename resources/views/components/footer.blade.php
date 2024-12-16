@@ -1,15 +1,3 @@
-<style>
-    .footer-bg {
-        background: linear-gradient(to right, #5EB47C, #007D6E);
-        color: white;
-        padding: 80px 0;
-    }
-
-    .text-body-secondary {
-        color: white !important;
-    }
-</style>
-
 <footer class="p-5 footer-bg">
     <div class="row">
         <div class="col-6 col-md-2 mb-3">

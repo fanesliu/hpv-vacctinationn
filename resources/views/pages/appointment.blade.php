@@ -49,36 +49,49 @@
             <div class="max-w-xl">
                 <h1 class="text-4xl font-bold mb-6">Book an Online Appointment</h1>
                 <p class="text-lg leading-relaxed">
-                    Our services offer comprehensive screenings, consultations, and educational resources tailored to empower individuals in their
-                    understanding and management of HPV.
+                    @lang('test.appointmentDesc')
                 </p>
             </div>
         </div>
     </section>
 
-    <section class="bg-gray-50 py-10">
+    <section class="bg-gray-50 py-32 min-h-screen">
         <div class="container mx-auto flex flex-col lg:flex-row items-start justify-between gap-8">
-            <!-- Kolom Kiri -->
+            <!-- Left Column -->
             <div class="lg:w-1/2 space-y-6 sticky top-0 pt-4 z-10">
                 <h1 class="text-4xl font-bold">Book an Online Appointment</h1>
                 <div>
                     <label for="datepicker" class="block text-lg font-medium text-gray-700">Select a date</label>
-                    <div id="datepicker-inline" name="appointment_date" inline-datepicker data-date="{{ date('m/d/Y') }}"></div>
+                    <div id="datepicker-inline" name="appointment_date" inline-datepicker
+                        data-date="{{ date('d') }}"></div>
                 </div>
             </div>
 
-            <!-- Kolom Kanan -->
+            <!-- Right Column -->
             <div class="lg:w-1/2 space-y-6">
                 <h1 class="text-4xl font-bold">Available Places for Vaccine Dose</h1>
-                <ul class="space-y-4">
+                <ul class="space-y-4 listData" id="placesList">
                     @forelse ($places as $place)
-                        <li class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white">
-                            <p>
-                                <span class="font-bold">{{ $place->place }}</span>: Available from
-                                <span class="font-bold">{{ $place->dateAvailibilityStart }}</span> to
-                                <span class="font-bold">{{ $place->dateAvailibilityEnd }}</span>
-                            </p>
-                            <p>For dose <span class="font-semibold">{{ $place->vaccineId }}</span></p>
+                        <li
+                            class="bg-orange-400 shadow-lg p-4 rounded-md border border-gray-200 text-white flex justify-between items-center">
+                            <div>
+                                <p>
+                                    <span class="font-bold">{{ $place->place }}</span>: Available from
+                                    <span class="font-bold">{{ $place->dateAvailibilityStart }}</span> to
+                                    <span class="font-bold">{{ $place->dateAvailibilityEnd }}</span>
+                                </p>
+                                <p>For dose <span class="font-semibold">{{ $place->vaccineId }}</span></p>
+                            </div>
+                            <form method="POST" action="{{route('createTransaction')}}">
+                                @csrf
+                                <input type="hidden" name="userId" value="{{ $userID }}">
+                                <input type="hidden" name="appointmentId" value="{{$place->appointmentId}}">
+                                <input type="hidden" name="finalPrice" value="{{ $place->vaccine->price }}">
+                                <input type="hidden" name="paymentType" value="credit_card">
+                                <input type="hidden" name="appointmentDate" value="{{$date}}" id="appointmentDateInput"> <!-- Tanggal janji temu statis -->
+                                <input type="hidden" name="paymentDate" value="{{$today}}" id="paymentDateInput"> 
+                                <button type="submit">Book</button>
+                            </form>
                         </li>
                     @empty
                         @if ($message)
@@ -87,7 +100,27 @@
                     @endforelse
                 </ul>
             </div>
-        </div>
+
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const userId = @json($userID); // Menggunakan json_encode untuk mengeluarkan nilai
+                    const vaccineId = @json($vaccineId); // Menggunakan json_encode untuk mengeluarkan nilai
+
+                    const datepicker = document.querySelector('[inline-datepicker]');
+
+                    datepicker.addEventListener('changeDate', function(event) {
+                        // Get the selected date
+                        const selectedDate = event.detail.date; // Ambil tanggal yang dipilih
+                        const selectedDay = selectedDate.getDate(); // Ambil hanya hari
+
+                        const formattedDay = String(selectedDay);
+
+                        // Construct the new URL
+                        const newUrl = `/appointment/${userId}/${vaccineId}/${selectedDay}`; // Hanya menggunakan hari
+                        window.location.href = newUrl; // Redirect to the new URL
+                    });
+                }); 
+            </script>
     </section>
 
     <footer class="bg-gradient-to-r from-green-400 to-teal-600 text-white py-20">
@@ -169,15 +202,6 @@
     </footer>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            $('#datepicker').datepicker({
-                onSelect: function(dateText) {
-                    $('#datepicker').val(dateText); // Set nilai input ke tanggal yang dipilih
-                }
-            });
-        });
-    </script>
 </body>
 
 </html>

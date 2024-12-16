@@ -42,7 +42,7 @@ class AdminController extends Controller
             session()->flash('add_row', true);
         
 
-        return redirect()->route('viewAll')->with('success','Berhasil menambahkan baris baru');
+        return redirect()->route('admin')->with('success','Berhasil menambahkan baris baru');
     }
 
     public function storeList(Request $request){
@@ -60,7 +60,7 @@ class AdminController extends Controller
             'dateAvailibilityEnd' => $request->dateAvailibilityEnd
         ]);
 
-        return redirect()->route('viewAll')->with('success', 'Data berhasil ditambahkan.');
+        return redirect()->route('admin')->with('success', 'Data berhasil ditambahkan.');
     }
     // public function getAllAppointment(){
         

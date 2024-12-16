@@ -36,17 +36,10 @@ class UserController extends Controller
         return redirect()->route('users.index');
     }
 
-    public function logout()
-    {
-        Auth::logout();
-        return redirect()->route('login');
-    }
-
-
     public function profile(){
 
         $users = Auth::user();
-        $histories = Transaction::where('userId', $users->userId)->get();
+        $histories = Transaction::where('userId', $users->userId)->paginate(5);
 
         return view('pages.profile', compact('users', 'histories'));
     }
@@ -58,7 +51,7 @@ class UserController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        $user = Auth()->user();
+        $user = Auth::user();
 
         if ($request->hasFile('image')) {
             $file = $request->file('image');

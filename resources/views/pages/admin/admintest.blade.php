@@ -53,7 +53,7 @@
 
         <header class="d-flex align-items-center justify-content-between mb-4">
             <div>
-                <a href="{{ route('login') }}" class="btn btn-danger">Logout</a>
+                <a href="{{route('logout')}}" class="btn btn-danger">Logout</a>
             </div>
             <h1 class="ms-3 m-0">Admin</h1> 
             <a href="{{route('addRow')}}" class="btn btn-primary">Add New Row</a>

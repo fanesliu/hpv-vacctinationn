@@ -1,83 +1,58 @@
 <?php
 
-use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\LoginRegisterController;
+use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VaccineController;
 use App\Http\Middleware\AdminAuthenticate;
 use App\Models\Vaccine;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\UserMiddleware;
+
+
 
 Route::get('/', [UserController::class, 'home'])->name('homepage');
-
 Route::get('/register', [LoginRegisterController::class, 'registerPage'])->name('register');
 Route::post('/register', [LoginRegisterController::class, 'registerInsert']);
 Route::get('/login', [LoginRegisterController::class, 'loginPage'])->name('login');
 Route::post('/login', [LoginRegisterController::class, 'loginInsert']);
-Route::get('/logout', [UserController::class, 'logout'])->name('logout');
-
-Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-
-Route::post('/updateProfile', [UserController::class, 'updateProfile'])->name('updateProfile');
+Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 
-Route::get('/update-password', [UserController::class, 'editPassword'])->name('editPassword');
-Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name('updatePassword');
 
-// ---------------------------------------------------------------------------------------------------
-// ---------------------------------ADMIN---------------------------------
-
-//Kalo belom login, ga bisa akses route dibawah
-Route::middleware(['auth', 'user'])->group(function () {});
-
-Route::get('/admin-test', [AdminController::class, 'getAllVaccine']);
-Route::post('/admin-test', [AdminController::class, 'getAllVaccine']);
-Route::post('/admin-test/update-price', [AdminController::class, 'updatePrice'])->name('updateVaccinePrice');
-Route::post('/createNewAppointment', [AdminController::class, 'createNewAppointment'])->name('createNewAppointment');
-Route::post('/updateAppointment', [AdminController::class, 'updateAppointment'])->name('updateAppointment');
-Route::post('/deleteAppointment', [AdminController::class, 'deleteAppointment'])->name('deleteAppointment');
-
-// INI BELOM DIMASUKKIN MIDDLEWARE-Winsen
-Route::delete('/admin-test/delete/{app}', [AdminController::class, 'deleteAppointment'])->name('deleteAppointment');
-Route::get('/admin-test',[AdminController::class,'getAllVaccineAndAppointment'])->name('viewAll');
-Route::post('/admin-test/update-selected-list/{app}',[AdminController::class,'updateSelectedList'])->name('updateSelectedSchedule');
-// Route::get('/admin-test', [AdminController::class, 'index'])->name('indexData');
-Route::get('/admin-test',[AdminController::class,'getAllVaccineAndAppointment'])->name('viewAll');
-Route::get('/insert/add-row', [AdminController::class, 'addRow'])->name('addRow');
-Route::post('/admin-test/update-price',[AdminController::class,'updatePrice'])->name('updateVaccinePrice');
-Route::post('/admin-test/insert-data',[AdminController::class,'storeList'])->name('storeList');
-// Route::get('/admin-test',[AdminController::class,'updateSchedule'])->name('updateSchedule');
-
-
-//Route dibawah hanya bisa diakses oleh akun yang punya role admin
-Route::middleware(AdminAuthenticate::class)->group(function () {
-    Route::get('/admin/create-appointment', [AdminController::class, 'createAppointment']);
-    Route::get('/admin/create-appointment', [AdminController::class, 'insertAppointment']);
-
-    //Account Page
-    Route::get('/admin/user/all-accounts', [AdminController::class, 'allAccountsPage']);
-
-    Route::get('/admin', [AdminController::class, 'adminDashboard'])->name('admin_dashboard');
-
-    Route::get('/appointment', 'App\Http\Controllers\AppointmentController@index')->name('index.appointment');
-    Route::get('/create-appointment', 'App\Http\Controllers\AppointmentController@create')->name('index.create');
-    Route::post('/appointment/store', 'App\Http\Controllers\AppointmentController@store')->name('store.appointment');
-    Route::post('/appointment/destroy/{id}', 'App\Http\Controllers\AppointmentController@delete')->name('appointment.destroy');
-
-
-    Route::get('/vaccine', 'App\Http\Controllers\VaccineController@index')->name('vaccine.index');
-    Route::get('/vaccine/edit{id}', 'App\Http\Controllers\VaccineController@edit')->name('vaccine.edit');
-    Route::put('/vaccine/update{id}', 'App\Http\Controllers\VaccineController@update')->name('vaccine.update');
-
-    //schedule list   
+// ---------------------------------USER---------------------------------
+Route::middleware([UserMiddleware::class])->group(function () {
+    Route::get('/', [UserController::class, 'home'])->name('homepage');
+    Route::get('/services', function () {
+        return view('pages.servicesPage');
+    })->name('service.view');
+    Route::get('/appointment/{userID}/{vaccineID}/{date}', [AppointmentController::class, 'get_place'])->name("appointment.view");
+    Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
+    Route::get('/pricing', [VaccineController::class, 'get_allVaccine'])->name("pricing.view");
+    Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
+    Route::post('/updateProfile', [UserController::class, 'updateProfile'])->name('updateProfile');
+    Route::get('/update-password', [UserController::class, 'editPassword'])->name('editPassword');
+    Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name('updatePassword');
+    Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");
+    Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
+    Route::view('/checkout', 'pages.checkout')->name('checkout');
+    Route::post('/update-transaction', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
 });
 
+// ---------------------------------ADMIN---------------------------------
+Route::middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/admin', [AdminController::class, 'getAllVaccineAndAppointment'])->name('admin');
+    Route::post('/admin', [AdminController::class, 'getAllVaccineAndAppointment']);
 
-Route::get('/services', function () {
-    return view('pages.servicesPage');
-})->name('service.view');
-// Route::get('/',[VaccineController::class,'get_allVaccine'])->name("home.view");
-Route::get('/appointment/{userID}/{vaccineID}/{date}', [AppointmentController::class, 'get_place'])->name("appointment.view");
-Route::get('/pricing/{userID}', [VaccineController::class, 'get_allVaccine'])->name("pricing.view");
-Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");
+    // Tambahan winsen
+    Route::delete('/admin-test/delete/{app}', [AdminController::class, 'deleteAppointment'])->name('deleteAppointment');
+    Route::post('/admin/update-selected-list/{app}', [AdminController::class, 'updateSelectedList'])->name('updateSelectedSchedule');
+    Route::get('/insert/add-row', [AdminController::class, 'addRow'])->name('addRow');
+    Route::post('/admin/update-price', [AdminController::class, 'updatePrice'])->name('updateVaccinePrice');
+    Route::post('/admin/insert-data', [AdminController::class, 'storeList'])->name('storeList');
+});

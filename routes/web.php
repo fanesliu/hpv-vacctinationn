@@ -23,6 +23,7 @@ Route::post('/login', [LoginRegisterController::class, 'loginInsert']);
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 
+
 // ---------------------------------USER---------------------------------
 Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/', [UserController::class, 'home'])->name('homepage');
@@ -37,6 +38,10 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::post('/updateProfile', [UserController::class, 'updateProfile'])->name('updateProfile');
     Route::get('/update-password', [UserController::class, 'editPassword'])->name('editPassword');
     Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name('updatePassword');
+    Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");
+    Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
+    Route::view('/checkout', 'pages.checkout')->name('checkout');
+    Route::post('/update-transaction', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
 });
 
 // ---------------------------------ADMIN---------------------------------

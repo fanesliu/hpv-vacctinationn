@@ -1,57 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Profile</title>
-    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
+    <script src="{{ asset('bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}"></script>
     <style>
-        .profile-card{
+        .profile-card {
             background: linear-gradient(to right, #2ba84a, #159d83);
             margin: 10%;
-            display: flex;
-            flex-direction: column;
+            margin-top: 10px;
+            border-radius: 20px;
         }
 
-    </style> 
+        .profile-picture {
+            max-width: 150px;
+            margin: auto;
+        }
+
+        label {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        .curved-line {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 40%;
+            height: 100%;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(20%, 50%);
+        }
+
+        .custom-table {
+            background: linear-gradient(to right, #2ba84a, #159d83);
+            height: 2px;
+            color: white;
+            border: none;
+        }
+
+        .custom-container {
+            background-color: linear-gradient(to right, #159d83, #2ba84a);
+
+        }
+
+        .custom-table-header {
+            background-color: #159d83;
+        }
+
+        .small-arrow {
+            width: 5%;
+            height: 5%;
+        }
+    </style>
 </head>
+
 <body>
+    {{-- <hr class="custom-line"> --}}
+    <div class="p-5">
+        <a href="{{route('homepage')}}">
+            <img src="{{asset('assets/backward-arrow.png')}}" alt="" class="small-arrow">
+        </a>
+    </div>
 
-    <nav class="navbar navbar-nav">
-        <ul>
-            Navbar
-        </ul>
-    </nav>
+    <div class="container my-5">
+        <h1 class="mb-4">Profile</h1>
+        <div class="card p-4" style="background-color: #4caf50; border-radius: 15px;">
+            <div class="row align-items-center">
 
-    <div class="profile-card p-4 text-white">
-        <div class="row align-items-center">
-            <div class="col text-center">
-                <img src="{{asset('profile_bg.png')}}" class="rounded-circle" alt="">
-            </div> 
-            
-            <div class="col-9">
-                <form action="{{route('profile')}}" action="post">
-                    <div class="row mb-3">
-                        <div class="col">
-                            <label for="name" class="form-label" style="font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Name</label>
-                            <input type="text" class="form-control" id="name" placeholder="Name">
+                <div class="col-md-4 text-center">
+                    <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <img src="{{ $users->image ? asset('storage/' . $users->image) : asset('profile_bg.png') }}" alt="Profile Picture" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
+
+                        <div class="d-flex justify-content-center align-items-center mt-3">
+                            <input type="file" class="form-control w-50 me-3" id="image" name="image">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
                         </div>
-                        <div class="col">
-                            <label for="email" class="form-label" style="font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Email</label>
-                            <input type="email" class="form-control" id="email" placeholder="Email">
+                    </form>
+                </div>
+
+
+                <div class="col-md-8">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="name" disabled value="{{$users->name}}">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" disabled value="{{$users->email}}">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label" style="font-family :'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Password</label>
-                        <input type="password" class="form-control" id="password" placeholder="Password">
+                        <label for="password" class="form-label">Password</label>
+                        <a href="{{ route('editPassword') }}"><button class="btn btn-primary">Update Password</button></a>
                     </div>
-                    <input type="file" class="form-control" id="profile_picture" name="profile_picture">
-                </form>
-                
+                </div>
             </div>
         </div>
     </div>
+
+
+    @include('components.historyTable')
+
 </body>
+
 </html>

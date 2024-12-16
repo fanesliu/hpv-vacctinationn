@@ -148,7 +148,7 @@
                 <p class="fs-4 fw-semibold text-danger">Why Just Survive, When You Can Live Happily.</p>
                 <p class="fs-6">Ready to start the journey?</p>
                 <a ondblclick="scrollToSection('data')" class="btn text-white fw-semibold smooth"
-                    style="background-color: #EC744A;">Get started</a>
+                    style="background-color: #EC744A;" href="{{route('pricing.view', ['userID' => $userID])}}">Get started</a>
             </div>
 
             {{-- Right Content --}}

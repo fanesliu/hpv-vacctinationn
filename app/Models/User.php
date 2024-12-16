@@ -16,7 +16,8 @@ class User extends Authenticatable
     protected $primaryKey = 'userId';
     protected $guarded=[];
 
-    public function transactions(){
+    public function transactions()
+    {
         return $this->hasMany(Transaction::class);
     }
     /**
@@ -24,11 +25,13 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
     protected $fillable = [
         'name',
         'email',
         'password',
         'image',
+        'role'
     ];
 
     /**
@@ -52,5 +55,12 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    public function getImageUrlAttribute()
+    {
+        if ($this->image) {
+            return asset('storage/' . $this->image);
+        }
+        return asset('images/default-profile.png');
     }
 }

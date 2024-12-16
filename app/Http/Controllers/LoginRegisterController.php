@@ -18,17 +18,29 @@ class LoginRegisterController extends Controller
 
     public function loginInsert(Request $req)
     {
+        $messages = [
+            'email.required' => 'Email is required!',
+            'password.required' => 'Password is required!'
+        ];
+
         $input = $req->validate([
-            "email" => "required|email|regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/']",
+            "email" => "required|email",
             "password" => "required|min:8",
-        ]);
+        ], $messages);
 
-        if (auth::attempt($input)) {
-            if (Auth::user()->role   == "admin") {
-                return redirect()->route("admin_dashboard"); //admin punya dashboard
+        if (!str_ends_with($req->email, '@gmail.com')) {
+            return redirect()->back()->withErrors([
+                'email' => 'Only @gmail.com email addresses are allowed.',
+            ]);
+        }
+
+        // Add debugging statements
+        if (Auth::attempt($input)) {
+            $user = Auth::user();
+            if ($user->role == "admin") {
+                return redirect()->route("admin");
             } else {
-                return redirect()->route("homepage"); //user punya dashboard
-
+                return redirect()->route("homepage");
             }
         } else {
             return redirect()->back()->with('error', 'Input Invalid!');
@@ -42,9 +54,21 @@ class LoginRegisterController extends Controller
 
     public function registerInsert(Request $req)
     {
+        $req->validate([
+            'name' => 'required|string|max:255',
+            'email' => [
+                'required',
+                'email',
+                'regex:/^[a-zA-Z0-9._%+-]+@gmail\.com$/', // Ensure the email ends with @gmail.com
+                'unique:users,email',
+            ],
+            'password' => 'required|min:8',
+        ]);
+
+        // Create the user
 
         $users = new User;
-        $users->name = $req->input('username');
+        $users->name = $req->input('name');
         $users->email = $req->input('email');
         $users->password = Hash::make($req->input('password'));
         $users->role = 'user';

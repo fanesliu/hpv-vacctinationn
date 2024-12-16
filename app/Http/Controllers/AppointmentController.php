@@ -112,4 +112,12 @@ class AppointmentController extends Controller
             'transaction' => $transaction,
         ]);
     }
+
+
+public function delete(Appointment $id)
+{
+    $id->delete();
+    return redirect()->route(route: 'index.appointment')
+            ->with('success','Data berhasil di hapus' );
+}
 }

@@ -13,6 +13,7 @@
         </div>
     </section>
 
+    {{-- Services Section --}}
     <section class="services-section">
         <div class="container">
             <div class="text-center mb-5">
@@ -42,6 +43,7 @@
         </div>
     </section>
 
+    {{-- FAQ Section --}}
     <div class="d-flex justify-content-center align-items-center">
         <h1 class="w-full text-center mt-5">FAQ</h1>
     </div>

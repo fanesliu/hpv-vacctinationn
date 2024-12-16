@@ -1,3 +1,9 @@
+<style>
+    .martop {
+        margin-top: 15rem;
+    }
+</style>
+
 @extends('components.userLayout')
 @section('content')
     <section class="hero-section">
@@ -15,7 +21,8 @@
         </div>
     </section>
 
-    <section class="aboutus-section" style="margin-top: 5%">
+    {{-- About Us Section --}}
+    <section class="aboutus-section martop">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
@@ -34,14 +41,20 @@
             </div>
         </div>
     </section>
-    <section class="campaign-section" style="padding: 40px 0; margin-top: 5%">
+
+    {{-- Card Section --}}
+    <section class="campaign-section martop" style="padding: 40px 0; margin-bottom: 15rem">
         <div class="container">
             <h5 class="text-center">Why?</h5>
             <h3 class="text-center">Why Our HPV Awareness Campaign Stands Out</h3>
         </div>
+
+        {{-- Card --}}
         <div class="card-deck" style="display: flex; justify-content: center; gap: 20px; margin-top: 3%">
             <div class="card border border-dark"
-                style="background-color: transparent; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 4vh; padding-bottom: 4vh; font-size: 1vw;">
+                style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;"
+                onmouseover="this.style.background='linear-gradient(to right, #5EB47C, #007D6E)'; this.style.color='white';"
+                onmouseout="this.style.background='#e8e8e8'; this.style.color='black';">
                 <img src="assets\aboutUs\1.png" alt="Image 1"
                     style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
@@ -52,7 +65,9 @@
                 </div>
             </div>
             <div class="card border border-dark"
-                style="background-color: #e8e8e8; color: white; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 4vh; padding-bottom: 4vh; font-size: 1vw; background: linear-gradient(to right, #5EB47C, #007D6E);">
+                style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;"
+                onmouseover="this.style.background='linear-gradient(to right, #5EB47C, #007D6E)'; this.style.color='white';"
+                onmouseout="this.style.background='#e8e8e8'; this.style.color='black';">
                 <img src="assets\aboutUs\2.png" alt="Image 2"
                     style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
@@ -63,7 +78,9 @@
                 </div>
             </div>
             <div class="card border border-dark"
-            style="background-color: transparent; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 4vh; padding-bottom: 4vh; font-size: 1vw;">
+                style="background-color: #e8e8e8; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px;"
+                onmouseover="this.style.background='linear-gradient(to right, #5EB47C, #007D6E)'; this.style.color='white';"
+                onmouseout="this.style.background='#e8e8e8'; this.style.color='black'">
                 <img src="assets\aboutUs\3.png" alt="Image 3"
                     style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">

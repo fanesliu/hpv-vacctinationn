@@ -13,14 +13,19 @@ use Illuminate\Support\Facades\Auth;
 class AppointmentController extends Controller
 {
     // Metode untuk mendapatkan tempat
-    public function get_place($vaccineId, $date)
+    public function get_place($vaccineId, $date, $month, $year)
     {
         if ($date == 0) {
             $places = [];
             $message = "Please Select an Appointment Date";
             return view('pages.appointment', compact('places', 'message', 'vaccineId', 'date'));
         }
+
         $today = Carbon::now()->format('Y-m-d');
+        $dateSekarang = $date;
+        $monthSekarang = $month;
+        $yearSekarang = $year;
+
         // Ambil semua tempat yang tersedia berdaan tanggal dan vaccineID
         $places = Appointment::with('vaccine')
             ->where('vaccineId', $vaccineId)
@@ -37,7 +42,9 @@ class AppointmentController extends Controller
             ]);
         }
 
-        return view('pages.appointment', compact('places', 'message', 'vaccineId', 'date', 'today'));
+        // dd($monthSekarang);
+
+        return view('pages.appointment', compact('places', 'message', 'vaccineId', 'date', 'today', 'dateSekarang', 'monthSekarang', 'yearSekarang'));
     }
 
     // Metode untuk melakukan checkout
@@ -54,7 +61,7 @@ class AppointmentController extends Controller
         ]);
         // Ambil data dari request
         $data = $request->all();
-        
+
         try {
             $appointment = Appointment::findOrFail($data['appointmentId']);
             $transaction = Transaction::create([
@@ -85,7 +92,7 @@ class AppointmentController extends Controller
                 //     'email' => Auth::user()->email,
                 // )
             );
-            
+
             $snapToken = \Midtrans\Snap::getSnapToken($params);
             $transaction->snap_token = $snapToken;
             $transaction->save();
@@ -114,10 +121,10 @@ class AppointmentController extends Controller
     }
 
 
-public function delete(Appointment $id)
-{
-    $id->delete();
-    return redirect()->route(route: 'index.appointment')
-            ->with('success','Data berhasil di hapus' );
-}
+    public function delete(Appointment $id)
+    {
+        $id->delete();
+        return redirect()->route(route: 'index.appointment')
+            ->with('success', 'Data berhasil di hapus');
+    }
 }

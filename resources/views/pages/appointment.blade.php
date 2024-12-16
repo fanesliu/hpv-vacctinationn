@@ -32,7 +32,7 @@
                 <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('homepage') }}">Home</a></li>
                 <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('aboutus.view') }}">About</a></li>
                 <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('service.view') }}">Services</a></li>
-                <li><a class="text-gray-700 hover:text-gray-900" href="{{route('pricing.view')}}">Get Vaccine</a></li>
+                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('pricing.view') }}">Get Vaccine</a></li>
             </ul>
             <div class="flex items-center space-x-4">
                 <a class="bg-orange-400 text-white rounded-full px-6 py-2 hover:bg-white hover:text-orange-400 border border-orange-400"
@@ -61,8 +61,8 @@
                 <h1 class="text-4xl font-bold">Book an Online Appointment</h1>
                 <div>
                     <label for="datepicker" class="block text-lg font-medium text-gray-700">Select a date</label>
-                    <div id="datepicker-inline" name="appointment_date" inline-datepicker
-                        data-date="{{ date('d') }}"></div>
+                    <div id="datepicker-inline" name="appointment_date" inline-datepicker datepicker-format="dd-mm-yyyy"
+                        data-date="{{ $dateSekarang }}-{{ $monthSekarang }}-{{ $yearSekarang }}"></div>
                 </div>
             </div>
 
@@ -81,13 +81,15 @@
                                 </p>
                                 <p>For dose <span class="font-semibold">{{ $place->vaccineId }}</span></p>
                             </div>
-                            <form method="POST" action="{{route('createTransaction')}}">
+                            <form method="POST" action="{{ route('createTransaction') }}">
                                 @csrf
-                                <input type="hidden" name="appointmentId" value="{{$place->appointmentId}}">
+                                <input type="hidden" name="appointmentId" value="{{ $place->appointmentId }}">
                                 <input type="hidden" name="finalPrice" value="{{ $place->vaccine->price }}">
                                 <input type="hidden" name="paymentType" value="credit_card">
-                                <input type="hidden" name="appointmentDate" value="{{$date}}" id="appointmentDateInput"> <!-- Tanggal janji temu statis -->
-                                <input type="hidden" name="paymentDate" value="{{$today}}" id="paymentDateInput"> 
+                                <input type="hidden" name="appointmentDate" value="{{ $date }}"
+                                    id="appointmentDateInput"> <!-- Tanggal janji temu statis -->
+                                <input type="hidden" name="paymentDate" value="{{ $today }}"
+                                    id="paymentDateInput">
                                 <button type="submit">Book</button>
                             </form>
                         </li>
@@ -101,7 +103,7 @@
 
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
-                 
+
                     const vaccineId = @json($vaccineId); // Menggunakan json_encode untuk mengeluarkan nilai
 
                     const datepicker = document.querySelector('[inline-datepicker]');
@@ -110,14 +112,19 @@
                         // Get the selected date
                         const selectedDate = event.detail.date; // Ambil tanggal yang dipilih
                         const selectedDay = selectedDate.getDate(); // Ambil hanya hari
+                        const selectedMonth = selectedDate.getMonth() + 1; // Ambil bulan
+                        const selectedYear = selectedDate.getFullYear();
 
                         const formattedDay = String(selectedDay);
+                        const formattedMonth = String(selectedMonth);
+                        const formattedYear = String(selectedYear);
 
                         // Construct the new URL
-                        const newUrl = `/appointment/${vaccineId}/${selectedDay}`; // Hanya menggunakan hari
+                        const newUrl =
+                            `/appointment/${vaccineId}/${formattedDay}/${formattedMonth}/${formattedYear}`; // Hanya menggunakan hari
                         window.location.href = newUrl; // Redirect to the new URL
                     });
-                }); 
+                });
             </script>
     </section>
 

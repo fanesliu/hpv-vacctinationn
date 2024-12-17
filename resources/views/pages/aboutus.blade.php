@@ -53,34 +53,34 @@
         <div class="card-deck" style="display: flex; justify-content: center; gap: 20px; margin-top: 3%">
             <div class="card border border-dark"
                 style="background-color: transparent; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 4vh; padding-bottom: 4vh; font-size: 1vw;">
-                <img src="assets\aboutUs\1.png" alt="Image 1"
-                    style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+                <img src="assets\aboutUs\1.png" alt="Image 1" 
+                    style="width: 150px; height: 150px; object-fit: cover;width:5vw;height:auto; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-user-shield"></i>
-                    <h5 class="card-title">Comprehensive Information</h5>
-                    <p class="card-text">We provide detailed insights into HPV, covering everything from symptoms to
+                    <h5 class="card-title" style="font-size: 1.2vw;">Comprehensive Information</h5>
+                    <p class="card-text" style="font-size:1vw;">We provide detailed insights into HPV, covering everything from symptoms to
                         prevention methods, ensuring a thorough understanding.</p>
                 </div>
             </div>
             <div class="card border border-dark"
                 style="background-color: #e8e8e8; color: white; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 4vh; padding-bottom: 4vh; font-size: 1vw; background: linear-gradient(to right, #5EB47C, #007D6E);">
                 <img src="assets\aboutUs\2.png" alt="Image 2"
-                    style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+                    style="width: 150px; height: 150px; object-fit: cover; width:5vw;height:auto; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-user-md"></i>
-                    <h5 class="card-title">Trusted Expertise</h5>
-                    <p class="card-text">Our team consists of medical professionals and educators dedicated to raising
+                    <h5 class="card-title" style="font-size: 1.2vw;">Trusted Expertise</h5>
+                    <p class="card-text" style="font-size:1vw;">Our team consists of medical professionals and educators dedicated to raising
                         awareness about HPV, offering reliable guidance and support.</p>
                 </div>
             </div>
             <div class="card border border-dark"
                 style="background-color: transparent; color: black; border: none; border-radius: 8px; width: 350px; height: 350px; display: flex; flex-direction: column; justify-content: center; align-items: center; padding-top: 4vh; padding-bottom: 4vh; font-size: 1vw;">
                 <img src="assets\aboutUs\3.png" alt="Image 3"
-                    style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+                    style="width: 150px; height: 150px; object-fit: cover; width:5vw;height:auto; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
-                    <i class="fas fa-atom"></i>
-                    <h5 class="card-title">Interactive Resources</h5>
-                    <p class="card-text">Engaging galleries and interactive tools make learning about HPV an immersive
+                    <i class="fas fa-atom" ></i>
+                    <h5 class="card-title" style="font-size: 1.2vw;">Interactive Resources</h5>
+                    <p class="card-text" style="font-size:1vw;">Engaging galleries and interactive tools make learning about HPV an immersive
                         experience, empowering individuals to take proactive steps towards prevention.</p>
                 </div>
             </div>

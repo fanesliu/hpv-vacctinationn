@@ -11,11 +11,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="display-4 mb-4">About Us</h1>
-                    <p class="lead">For more than 130 years, we have brought hope to humanity through the development of
-                        important medicines and vaccines. We foster a diverse and inclusive global workforce and operate
-                        responsibly every day to enable a safe, sustainable and healthy future for all people and
-                        communities.</p>
+                    <h1 class="display-4 mb-4">@lang('messages.title_aboutUs')</h1>
+                    <p class="lead">@lang('messages.subtitle_aboutUs')</p>
                 </div>
             </div>
         </div>
@@ -31,11 +28,9 @@
                 </div>
                 <div class="col-md-6">
                     <div class="text-left mb-5" style="margin-top: 20px;"> <!-- Menambahkan margin atas -->
-                        <h2>About Us</h2>
-                        <h2 class="display-5 text-black">We are helping women in 27-45 years old to access affordable HPV
-                            Vaccination</h2>
-                        <p>At MSD, we specialize in affordable HPV vaccinations for women aged 27-45, fostering health
-                            awareness and protection against HPV-related conditions.</p>
+                        <h2>@lang('messages.section1_aboutUs')</h2>
+                        <h2 class="display-5 text-black">@lang('messages.subsection1_aboutUs')</h2>
+                        <p>@lang('messages.subsection2_aboutUs')</p>
                     </div>
                 </div>
             </div>
@@ -45,8 +40,8 @@
     {{-- Card Section --}}
     <section class="campaign-section martop" style="padding: 40px 0; margin-bottom: 15rem">
         <div class="container">
-            <h5 class="text-center">Why?</h5>
-            <h3 class="text-center">Why Our HPV Awareness Campaign Stands Out</h3>
+            <h5 class="text-center">@lang('messages.section2_aboutUs')</h5>
+            <h3 class="text-center">@lang('messages.titleSection2_aboutUs')</h3>
         </div>
 
         {{-- Card --}}
@@ -57,9 +52,8 @@
                     style="width: 150px; height: 150px; object-fit: cover;width:5vw;height:auto; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-user-shield"></i>
-                    <h5 class="card-title" style="font-size: 1.2vw;">Comprehensive Information</h5>
-                    <p class="card-text" style="font-size:1vw;">We provide detailed insights into HPV, covering everything from symptoms to
-                        prevention methods, ensuring a thorough understanding.</p>
+                    <h5 class="card-title" style="font-size: 1.2vw;">@lang('messages.section2_a')</h5>
+                    <p class="card-text" style="font-size:1vw;">@lang('messages.section2_aDescription')</p>
                 </div>
             </div>
             <div class="card border border-dark"
@@ -68,9 +62,8 @@
                     style="width: 150px; height: 150px; object-fit: cover; width:5vw;height:auto; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-user-md"></i>
-                    <h5 class="card-title" style="font-size: 1.2vw;">Trusted Expertise</h5>
-                    <p class="card-text" style="font-size:1vw;">Our team consists of medical professionals and educators dedicated to raising
-                        awareness about HPV, offering reliable guidance and support.</p>
+                    <h5 class="card-title" style="font-size: 1.2vw;">@lang('messages.section2_b')</h5>
+                    <p class="card-text" style="font-size:1vw;">@lang('messages.section2_bDescription')</p>
                 </div>
             </div>
             <div class="card border border-dark"
@@ -79,9 +72,8 @@
                     style="width: 150px; height: 150px; object-fit: cover; width:5vw;height:auto; border-radius: 8px; margin-bottom: 10px;">
                 <div class="card-body" style="text-align: center;">
                     <i class="fas fa-atom" ></i>
-                    <h5 class="card-title" style="font-size: 1.2vw;">Interactive Resources</h5>
-                    <p class="card-text" style="font-size:1vw;">Engaging galleries and interactive tools make learning about HPV an immersive
-                        experience, empowering individuals to take proactive steps towards prevention.</p>
+                    <h5 class="card-title" style="font-size: 1.2vw;">@lang('messages.section2_c')</h5>
+                    <p class="card-text" style="font-size:1vw;">@lang('messages.section2_cDescription')</p>
                 </div>
             </div>
         </div>

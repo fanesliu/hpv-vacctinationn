@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile</title>
+    <title>@lang('messages.profile')</title>
     <link rel="stylesheet" href="{{ asset('bootstrap/bootstrap-5.3.3-dist/css/bootstrap.min.css') }}">
     <script src="{{ asset('bootstrap/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js') }}"></script>
     <style>
@@ -68,7 +68,7 @@
     </div>
 
     <div class="container mb-5">
-        <h1 class="mb-4 text-center">Profile</h1>
+        <h1 class="mb-4 text-center">@lang('messages.profile')</h1>
         <div class="card p-4" style="background-color: #4caf50; border-radius: 15px;">
             <div class="row align-items-center">
 
@@ -79,7 +79,7 @@
 
                         <div class="d-flex justify-content-center align-items-center mt-3">
                             <input type="file" class="form-control w-50 me-3" id="image" name="image">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <button type="submit" class="btn btn-primary">@lang('messages.btn_saveChange')</button>
                         </div>
                     </form>
                 </div>
@@ -88,17 +88,17 @@
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-6 mb-3">
-                            <label for="name" class="form-label">Name</label>
+                            <label for="name" class="form-label">@lang('messages.name')</label>
                             <input type="text" class="form-control" id="name" disabled value="{{$users->name}}">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label for="email" class="form-label">Email</label>
+                            <label for="email" class="form-label">@lang('messages.email')</label>
                             <input type="email" class="form-control" id="email" disabled value="{{$users->email}}">
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <a href="{{ route('editPassword') }}"><button class="btn btn-primary">Update Password</button></a>
+                        <label for="password" class="form-label">@lang('messages.password')</label>
+                        <a href="{{ route('editPassword') }}"><button class="btn btn-primary">@lang('messages.btn_password')</button></a>
                     </div>
                 </div>
             </div>

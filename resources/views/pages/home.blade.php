@@ -144,11 +144,13 @@
     <div class="row align-items-center">
         {{-- Left Content --}}
         <div class="col-md-6 text-md-start text-center">
-            <h1 class="fw-bold">Empowering Health:</h1>
-            <p class="fs-4 fw-semibold text-danger">Why Just Survive, When You Can Live Happily.</p>
-            <p class="fs-6">Ready to start the journey?</p>
+            <h1 class="fw-bold">
+                @lang('messages.label_sub_judul1')
+            </h1>
+            <p class="fs-4 fw-semibold text-danger">@lang('messages.label_description1')</p>
+            <p class="fs-6">@lang('messages.label_description2')</p>
             <a ondblclick="scrollToSection('data')" class="btn text-white fw-semibold smooth"
-                style="background-color: #EC744A;" href="{{route('pricing.view')}}">Get started</a>
+                style="background-color: #EC744A;" href="{{route('pricing.view')}}">@lang('messages.btn_get_started')</a>
         </div>
 
         {{-- Right Content --}}
@@ -163,15 +165,15 @@
     <div class="container">
         <div class="row text-center text-white">
             <div class="col-md-4">
-                <h5>Cervical Cancer</h5>
+                <h5>@lang('messages.label1')</h5>
                 <h2 class="fw-bold">&gt;95%</h2>
             </div>
             <div class="col-md-4">
-                <h5>Invasive Anal Cancer</h5>
+                <h5>@lang('messages.label2')</h5>
                 <h2 class="fw-bold">88.3%</h2>
             </div>
             <div class="col-md-4">
-                <h5>Vaginal Cancer</h5>
+                <h5>@lang('messages.label3')</h5>
                 <h2 class="fw-bold">74%</h2>
             </div>
         </div>
@@ -181,26 +183,25 @@
 {{-- Mission Section --}}
 <section class="py-5 martop">
     <div class="container text-center">
-        <h6 class="text-uppercase text-muted">Our Mission</h6>
-        <h2 class="fw-bold">To make HPV vaccinations accessible and affordable, ensuring that no one faces preventable
-            cervical cancer.</h2>
+        <h6 class="text-uppercase text-muted">@lang('messages.label_section1')</h6>
+        <h2 class="fw-bold">@lang('messages.label_subsection1')</h2>
         <div class="row mt-5 align-items-center">
             <div class="col-md-4 mb-3 mb-md-0">
                 <div class="border border-2 border-dark rounded p-4 h-100">
                     <img src="{{ asset('assets/leftIcon.png') }}" alt="Icon" class="mb-3">
-                    <h5 class="fw-semibold">Improve Accessibility</h5>
+                    <h5 class="fw-semibold">@lang('messages.section1_mission1')</h5>
                 </div>
             </div>
             <div class="col-md-4 mb-3 mb-md-0">
                 <div class="border border-3 border-dark rounded p-4 h-100 w-auto text-white gradasi">
                     <img src="{{ asset('assets/middleIcon.png') }}" alt="Icon" class="mb-3">
-                    <h5 class="fw-semibold">Increase Awareness</h5>
+                    <h5 class="fw-semibold">@lang('messages.section1_mission2')</h5>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="border border-2 border-dark rounded p-4 h-100">
                     <img src="{{ asset('assets/rightIcon.png') }}" alt="Icon" class="mb-3">
-                    <h5 class="fw-semibold">Reduce Cost Barriers</h5>
+                    <h5 class="fw-semibold">@lang('messages.section1_mission3')</h5>
                 </div>
             </div>
         </div>
@@ -218,16 +219,13 @@
             </div>
             {{-- Right Content --}}
             <div class="col-lg-6">
-                <h5 class="text-muted">About Us</h5>
+                <h5 class="text-muted">@lang('messages.label_section2')</h5>
                 <h2 class="fw-bold">
-                    We are helping women in <br>
-                    <span class="orange">27-45 years old</span> to access <br>
-                    affordable HPV Vaccination
+                    @lang('messages.label_subsection2')
                 </h2>
-                <p class="mt-3">Want to know more about us?</p>
+                <p class="mt-3">@lang('messages.label_question2')</p>
                 <a href="{{ route('aboutus.view') }}" class="btn text-white fw-semibold"
-                    style="background-color: #EC744A;">See
-                    detail</a>
+                    style="background-color: #EC744A;">@lang('messages.btn_detail')</a>
             </div>
         </div>
     </div>
@@ -243,21 +241,20 @@
                 </div>
                 <div class="col-md-6 d-flex middle">
                     <div class="goals-section">
-                        <h3>Goals</h3>
-                        <h1>To make HPV vaccination</h1>
+                        <h3>@lang('messages.goals')</h3>
+                        <h1>@lang('messages.goals_description')</h1>
                         <div class="goal-item">
                             <img src="{{ asset('assets/tanamanVector.png') }}" alt="Easily Accessible Icon">
                             <div>
-                                <h5>Easily Accessible</h5>
-                                <p>By reducing the price of HPV vaccine to the lowest, we allow every woman to get
-                                    vaccinated.</p>
+                                <h5>@lang('messages.goals_title1')</h5>
+                                <p>@lang('messages.goals_title2')</p>
                             </div>
                         </div>
                         <div class="goal-item">
                             <img src="{{ asset('assets/orangVector.png') }}" alt="Increase Awareness Icon">
                             <div>
-                                <h5>Increase awareness</h5>
-                                <p>To eliminate HPV, we have to let everyone know its existence.</p>
+                                <h5>@lang('messages.goals_desc1')</h5>
+                                <p>@lang('messages.goals_desc2')</p>
                             </div>
                         </div>
                     </div>
@@ -269,9 +266,8 @@
 
 {{-- Gallery Section --}}
 <div class="container gallery-section">
-    <h1 class="gallery-title">A Gallery of HPV</h1>
-    <p class="gallery-description">The HPV information gallery provides a comprehensive overview of this virus, from
-        initial symptoms to preventative measures, aiming to enhance public understanding.</p>
+    <h1 class="gallery-title">@lang('messages.label_section3')</h1>
+    <p class="gallery-description">@lang('messages.label_subsection3')</p>
 
     <div class="row">
         <div class="col-md-3">
@@ -280,7 +276,7 @@
                     style="height: 300px;">
                 <div class="overlay"></div>
                 <div class="info-text">
-                    <h5>HPV Awareness</h5>
+                    <h5>@lang('messages.section3_title1')</h5>
                 </div>
             </div>
         </div>
@@ -291,7 +287,7 @@
                 <div class="overlay"></div>
                 <div class="info-text">
                     <h3>HPV</h3>
-                    <p>HPV stands for human papillomavirus.</p>
+                    <p>@lang('messages.section3_subtitle2')</p>
                 </div>
             </div>
         </div>
@@ -301,7 +297,7 @@
                     style="height: 300px;">
                 <div class="overlay"></div>
                 <div class="info-text">
-                    <h5>Vaccination Information</h5>
+                    <h5>@lang('messages.section3_title3')</h5>
                 </div>
             </div>
         </div>
@@ -318,14 +314,12 @@
             <h2 class="accordion-header">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    What is HPV, and why is it important to get vaccinated?
+                    @lang('messages.heading1')
                 </button>
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    HPV (Human Papillomavirus) is a common virus that can cause various health problems, including genital warts and cancers such as cervical, anal, throat, and penile cancer. Vaccination is important because it protects against the types of HPV most likely to cause these health issues, reducing the risk of infection and related diseases significantly.
-
-                    though the transition does limit overflow.
+                    @lang('messages.body1')
                 </div>
             </div>
         </div>
@@ -333,30 +327,23 @@
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    What does the HPV vaccine protect against?
+                    @lang('messages.heading2')
                 </button>
             </h2>
             <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                    The HPV vaccine protects against the most common types of HPV that cause cervical cancer, genital warts, and other cancers such as throat, anal, vulvar, and penile cancers. Some vaccines, like Gardasil 9, cover nine types of HPV, offering broad protection against high-risk strains.
-                </div>
+                    @lang('messages.body2') </div>
             </div>
         </div>
         <div class="accordion-item">
             <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Who should get the HPV vaccine?
-                 </button>
+                    @lang('messages.heading3') </button>
             </h2>
             <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                 <div class="accordion-body">
-                The HPV vaccine is recommended for:
-
-Preteens (boys and girls) aged 11–12 years, though it can be started as early as 9.
-Teens and young adults who have not been vaccinated, up to age 26.
-Adults aged 27–45 may also receive the vaccine after discussing potential benefits with their healthcare provider, although it is less effective if they have already been exposed to HPV.
-                </div>
+                    @lang('messages.body3')</div>
             </div>
         </div>
     </div>

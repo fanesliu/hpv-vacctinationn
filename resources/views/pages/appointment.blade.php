@@ -29,13 +29,13 @@
                 <span class="material-icons">menu</span>
             </button>
             <ul class="flex space-x-6 mx-auto">
-                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('homepage') }}">Home</a></li>
-                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('aboutus.view') }}">About</a></li>
-                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('service.view') }}">Services</a></li>
-                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('pricing.view') }}">Get Vaccine</a></li>
+                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('homepage') }}">@lang('messages.btn_home')</a></li>
+                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('aboutus.view') }}">@lang('messages.btn_aboutUs')</a></li>
+                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('service.view') }}">@lang('messages.btn_services')</a></li>
+                <li><a class="text-gray-700 hover:text-gray-900" href="{{ route('pricing.view') }}">@lang('messages.btn_vaccine')</a></li>
 
                 <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                    class="flex items-center justify-between w-full py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 md:w-auto dark:text-white md:dark:hover:text-black dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">Language
+                    class="flex items-center justify-between w-full py-2 px-3 text-gray-700 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-black md:p-0 md:w-auto dark:text-white md:dark:hover:text-black dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">@lang('messages.btn_language')
                     <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -46,11 +46,11 @@
                     class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-400" aria-labelledby="dropdownLargeButton">
                         <li>
-                            <a href="#"
+                            <a href="{{route('set-locale', 'id')}}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Indonesia</a>
                         </li>
                         <li>
-                            <a href="#"
+                            <a href="{{route('set-locale', 'en')}}"
                                 class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">English</a>
                         </li>
                     </ul>
@@ -58,9 +58,9 @@
             </ul>
             <div class="flex items-center space-x-4">
                 <a class="bg-orange-400 text-white rounded-full px-6 py-2 hover:bg-white hover:text-orange-400 border border-orange-400"
-                    href="{{ route('profile') }}">Profile</a>
+                    href="{{ route('profile') }}">@lang('messages.btn_profile')</a>
                 <a class="bg-orange-400 text-white rounded-full px-6 py-2 hover:bg-white hover:text-orange-400 border border-orange-400"
-                    href="#">Logout</a>
+                    href="#">@lang('messages.btn_logout')</a>
             </div>
         </div>
     </nav>
@@ -68,9 +68,9 @@
         <div class="curved-line"></div>
         <div class="container mx-auto px-6 relative z-10">
             <div class="max-w-xl">
-                <h1 class="text-4xl font-bold mb-6">Book an Online Appointment</h1>
+                <h1 class="text-4xl font-bold mb-6">@lang('messages.appHeading')</h1>
                 <p class="text-lg leading-relaxed">
-                    @lang('test.appointmentDesc')
+                @lang('messages.appDesc')
                 </p>
             </div>
         </div>
@@ -80,9 +80,9 @@
         <div class="container mx-auto flex flex-col lg:flex-row items-start justify-between gap-8">
             <!-- Left Column -->
             <div class="lg:w-1/2 space-y-6 sticky top-0 pt-4 z-10">
-                <h1 class="text-4xl font-bold">Book an Online Appointment</h1>
+                <h1 class="text-4xl font-bold">@lang('messages.appHeading')</h1>
                 <div>
-                    <label for="datepicker" class="block text-lg font-medium text-gray-700">Select a date</label>
+                    <label for="datepicker" class="block text-lg font-medium text-gray-700">@lang('messages.selectDate')</label>
                     <div id="datepicker-inline" name="appointment_date" inline-datepicker datepicker-format="dd-mm-yyyy"
                         data-date="{{ $dateSekarang }}-{{ $monthSekarang }}-{{ $yearSekarang }}"></div>
                 </div>
@@ -90,7 +90,7 @@
 
             <!-- Right Column -->
             <div class="lg:w-1/2 space-y-6">
-                <h1 class="text-4xl font-bold">Available Places for Vaccine Dose</h1>
+                <h1 class="text-4xl font-bold">@lang('messages.right')</h1>
                 <ul class="space-y-4 listData" id="placesList">
                     @forelse ($places as $place)
                         <li
@@ -154,43 +154,43 @@
         <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
             <!-- Service Section -->
             <div>
-                <h5 class="font-bold text-lg mb-4">Service</h5>
+                <h5 class="font-bold text-lg mb-4">@lang('messages.service_footer')</h5>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-white hover:text-gray-300">Psychotherapy</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Mental Counselling</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Support Groups</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Case Management</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">@lang('messages.service_footer1')</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">@lang('messages.service_footer2')</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">@lang('messages.service_footer3')</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">@lang('messages.service_footer4')</a></li>
                 </ul>
             </div>
 
             <!-- Contact Section -->
             <div>
-                <h5 class="font-bold text-lg mb-4">Contact</h5>
+                <h5 class="font-bold text-lg mb-4">@lang('messages.service_footer')</h5>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-white hover:text-gray-300">+62 NOMOR FANES</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">+6281 2345 6789</a></li>
                     <li><a href="#" class="text-white hover:text-gray-300">MUSAWA@gmail.com</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">SOKIN POSISI</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">Binus University</a></li>
                 </ul>
             </div>
 
             <!-- Links Section -->
             <div>
-                <h5 class="font-bold text-lg mb-4">Links</h5>
+                <h5 class="font-bold text-lg mb-4">@lang('messages.link_footer')</h5>
                 <ul class="space-y-2">
-                    <li><a href="#" class="text-white hover:text-gray-300">Privacy Policy</a></li>
-                    <li><a href="#" class="text-white hover:text-gray-300">Terms Of Use</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">@lang('messages.link_footer1')</a></li>
+                    <li><a href="#" class="text-white hover:text-gray-300">@lang('messages.link_footer2')/a></li>
                 </ul>
             </div>
 
             <!-- Newsletter Section -->
             <div class="md:col-span-2 lg:col-span-1">
-                <h5 class="font-bold text-lg mb-4">Subscribe to our newsletter</h5>
-                <p class="mb-4">Monthly digest of what's new and exciting from us.</p>
+                <h5 class="font-bold text-lg mb-4">@lang('messages.subscribe_footer')</h5>
+                <p class="mb-4">@lang('messages.subscribe_footer1')</p>
                 <form class="flex flex-col sm:flex-row gap-2">
                     <input type="text" placeholder="Email address"
                         class="px-4 py-2 rounded-md text-gray-700 focus:ring focus:ring-green-300 outline-none">
                     <button type="button" class="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-                        Subscribe
+                    @lang('messages.btn_subscribe')
                     </button>
                 </form>
             </div>
@@ -198,7 +198,7 @@
 
         <!-- Footer Bottom Section -->
         <div class="mt-8 pt-8 border-t border-white flex flex-col sm:flex-row justify-center items-center gap-4">
-            <p>© 2024 Company, Inc. All rights reserved.</p>
+            <p>@lang('messages.copyright_footer')</p>
             <ul class="flex space-x-4 mt-4 sm:mt-0">
                 <li>
                     <a href="#" class="text-white hover:text-gray-300">

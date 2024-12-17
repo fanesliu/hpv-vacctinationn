@@ -29,10 +29,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h1 class="display-4 mb-4">Pricing</h1>
-                    <p class="lead">Our services offer comprehensive screenings, consultations, and educational resources
-                        tailored to empower
-                        individuals in their understanding and management of HPV.</p>
+                    <h1 class="display-4 mb-4">@lang('messages.title_getvaccine')</h1>
+                    <p class="lead">@lang('messages.subtitle_getvaccine').</p>
                 </div>
             </div>
         </div>
@@ -40,8 +38,8 @@
 
     <div class="container py-5 sizing">
         <div class="text-center mb-4">
-            <small class="text-uppercase text-muted">Pricing</small>
-            <h2 class="fw-bold">Choose Mental Health Consultation Packages for Your Needs</h2>
+            <small class="text-uppercase text-muted">@lang('messages.section1_getvaccine')</small>
+            <h2 class="fw-bold">@lang('messages.subsection1_getvaccine')</h2>
         </div>
         <div class="row g-4">
             <!-- First Dose -->
@@ -55,7 +53,7 @@
                                 this.querySelector('.price').style.color=''; 
                                 this.querySelector('.description').style.color='';">
                         <div class="card-body text-center">
-                            <h5>Dosis ke {{ $item->dose }}</h5>
+                            <h5>{{ $item->dose }} Dose</h5>
                             <h2 class="fw-bold price" style="color: black;">Rp
                                 {{ number_format($item->price ?? 0, 0, ',', '.') }}</h2>
                             <p class="description" style="color: black;">
@@ -65,7 +63,7 @@
                                 class="btn btn-primary px-4"
                                 style="background-color: #EC744A; border: none; text-decoration: none; display: inline-block;"
                                 onmouseover="this.style.backgroundColor='#D86A3A';"
-                                onmouseout="this.style.backgroundColor='#EC744A';">Choose now</a>
+                                onmouseout="this.style.backgroundColor='#EC744A';">@lang('messages.btn_choose')</a>
                         </div>
                     </div>
                 </div>

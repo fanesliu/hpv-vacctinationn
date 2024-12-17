@@ -8,11 +8,13 @@ use App\Http\Controllers\VaccineController;
 use App\Http\Middleware\AdminAuthenticate;
 use App\Models\Vaccine;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\UserMiddleware;
-
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 
 
 Route::get('/', [UserController::class, 'home'])->name('homepage');
@@ -42,6 +44,18 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
     Route::view('/checkout', 'pages.checkout')->name('checkout');
     Route::post('/update-transaction', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
+
+
+    // Localization
+    Route::get('/set-locale/{locale}', function ($locale) {
+        if (in_array($locale, ['en', 'id'])) {
+            Session::put('locale', $locale);
+            App::setLocale($locale);
+        }
+
+
+        return redirect()->back();
+    })->name('set-locale');
 });
 
 // ---------------------------------ADMIN---------------------------------

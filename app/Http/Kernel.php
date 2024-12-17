@@ -48,6 +48,10 @@ class Kernel extends HttpKernel
 
         'User' => [
             \App\Http\Middleware\UserMiddleware::class,
+        ],
+
+        'Localization' => [
+            \App\Http\Middleware\LocalizationMiddleware::class,
         ]
     ];
 

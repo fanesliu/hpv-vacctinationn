@@ -36,37 +36,37 @@
 
             <ul class="navbar-nav mx-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link" href="{{ route('homepage') }}">@lang('messages.btn_home')</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('aboutus.view') }}">About</a>
+                    <a class="nav-link" href="{{ route('aboutus.view') }}">@lang('messages.btn_aboutUs')</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('service.view') }}">Services</a>
+                    <a class="nav-link" href="{{ route('service.view') }}">@lang('messages.btn_services')</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('pricing.view') }}">Get Vaccine</a>
+                    <a class="nav-link" href="{{ route('pricing.view') }}">@lang('messages.btn_vaccine')</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Language
+                        @lang('messages.btn_language')
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Indonesia</a></li>
-                        <li><a class="dropdown-item" href="#">English</a></li>
+                        <li><a class="dropdown-item" href="{{route('set-locale', 'id')}}">Indonesia</a></li>
+                        <li><a class="dropdown-item" href="{{route('set-locale', 'en')}}">English</a></li>
                     </ul>
                 </li>
             </ul>
 
             <div class="d-flex align-items-center">
-                <a class="btn contact-btn text-white me-3" href="{{ route('profile') }}">Profile</a>
+                <a class="btn contact-btn text-white me-3" href="{{ route('profile') }}">@lang('messages.btn_profile')</a>
                 <a href="#" class="d-flex align-items-center">
                     <i class="fas fa-user-circle fa-lg"></i>
                 </a>
             </div>
             <div class="d-flex align-items-center">
-                <a class="btn contact-btn text-white me-3" href="{{ route('logout') }}">Log Out</a>
+                <a class="btn contact-btn text-white me-3" href="{{ route('logout') }}">@lang('messages.btn_logout')</a>
                 <i class="fas fa-user-circle fa-lg"></i>
                 </a>
             </div>

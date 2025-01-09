@@ -41,7 +41,7 @@ Route::middleware([UserMiddleware::class])->group(function () {
     Route::get('/update-password', [UserController::class, 'editPassword'])->name('editPassword');
     Route::post('/updatePassword', [UserController::class, 'updatePassword'])->name('updatePassword');
     Route::view('/aboutus', 'pages.aboutus')->name("aboutus.view");
-    Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
+    // Route::post('/create-transaction', [AppointmentController::class, 'createTransaction'])->name('createTransaction');
     Route::view('/checkout', 'pages.checkout')->name('checkout');
     Route::post('/update-transaction', [TransactionController::class, 'updateTransaction'])->name('updateTransaction');
 

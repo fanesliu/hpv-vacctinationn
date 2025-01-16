@@ -22,20 +22,20 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="d-flex flex-column service-card">
-                    <h3>@lang('messages.label_section2')</h3>
-                    <a href="" class="btn contact-btn text-white me-3 mt-3">@lang('messages.section1_a')</a>
+                    <h3>@lang('messages.section1_a')</h3>
+                    <a href="{{route('pricing.view')}}" class="btn contact-btn text-white me-3 mt-3">@lang('messages.buttonServices')</a>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="d-flex flex-column service-card">
-                    <h3>@lang('messages.label_section2')</h3>
-                    <a class="btn contact-btn text-white me-3 mt-3">@lang('messages.section1_b')</a>
+                    <h3>@lang('messages.section1_b')</h3>
+                    <a href="{{route('aboutus.view')}}" class="btn contact-btn text-white me-3 mt-3">@lang('messages.buttonServices')</a>
                 </div>
             </div>
             <div class="col-12 col-md-6 mx-auto mt-3">
                 <div class="d-flex flex-column service-card">
                     <h3>@lang('messages.section1_c')</h3>
-                    <a class="btn contact-btn text-white me-3 mt-3">@lang('messages.section2_title')</a>
+                    <a href="{{route('aboutus.view')}}" class="btn contact-btn text-white me-3 mt-3">@lang('messages.buttonServices')</a>
                 </div>
             </div>
         </div>

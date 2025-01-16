@@ -1,8 +1,8 @@
 <?php
 return [
-    'appointmentDesc' => 'Layanan kami menawarkan skrining, konsultasi, dan sumber daya pendidikan yang komprehensif yang disesuaikan untuk memberdayakan individu dalam pemahaman dan manajemen HPV.',
+    'appointmentDesc' => 'Our services offer comprehensive screenings, consultations, and educational resources tailored to empower individuals in understanding and managing HPV.',
     'btn_home' => 'Home',
-    'btn_aboutUs' => 'About',
+    'btn_aboutUs' => 'About Us',
     'btn_services' => 'Services',
     'btn_vaccine' => 'Get Vaccine',
     'btn_language' => 'English',
@@ -21,15 +21,15 @@ return [
     'section1_mission2' => 'Increase Awareness',
     'section1_mission3' => 'Reduce Cost Barriers',
     'label_section2' => 'About Us',
-    'label_subsection2' => 'We are helping women in 27-45 years old to access affordable HPV Vaccination',
+    'label_subsection2' => 'We are helping women aged 27-45 access affordable HPV Vaccination.',
     'label_question2' => 'Want to know more about us?',
-    'btn_detail' => 'See Detail',
+    'btn_detail' => 'See Details',
     'goals' => 'Goals',
     'goals_description' => 'To make HPV vaccination',
     'goals_title1' => 'Easily Accessible',
-    'goals_title2' => 'Increase awareness',
-    'goals_desc1' => 'By reducing the price of HPV vaccine to the lowest, we allow every woman to get vaccinated.',
-    'goals_desc2' => 'To eliminate HPV, we have to let everyone know its existence.',
+    'goals_title2' => 'Increase Awareness',
+    'goals_desc1' => 'By reducing the price of the HPV vaccine to the lowest, we allow every woman to get vaccinated.',
+    'goals_desc2' => 'To eliminate HPV, we must let everyone know of its existence.',
     'label_section3' => 'A Gallery of HPV',
     'label_subsection3' => 'The HPV information gallery provides a comprehensive overview of this virus, from initial symptoms to preventative measures, aiming to enhance public understanding.',
     'section3_title1' => 'HPV Awareness',
@@ -43,19 +43,19 @@ return [
     'service_footer4' => 'Case Management',
     'contact_footer' => 'Contact',
     'link_footer' => 'Links',
-    'link_footer1' => 'Privacy Polic',
-    'link_footer2' => 'Term Of Use',
+    'link_footer1' => 'Privacy Policy',
+    'link_footer2' => 'Terms of Use',
     'subscribe_footer' => 'Subscribe to our newsletter',
-    'subscribe_footer1' => 'Monthly digest of what\'s new and exciting from us.',
+    'subscribe_footer1' => 'Monthly digest of what’s new and exciting from us.',
     'btn_subscribe' => 'Subscribe',
     'copyright_footer' => '© 2024 Company, Inc. All rights reserved.',
 
     //page about Us
 
     'title_aboutUs' => 'About Us',
-    'subtitle_aboutUs' => 'For more than 130 years, we have brought hope to humanity through the development of important medicines and vaccines. We foster a diverse and inclusive global workforce and operate responsibly every day to enable a safe, sustainable and healthy future for all people and communities.',
+    'subtitle_aboutUs' => 'For more than 130 years, we have brought hope to humanity through the development of important medicines and vaccines. We foster a diverse and inclusive global workforce and operate responsibly every day to enable a safe, sustainable, and healthy future for all people and communities.',
     'section1_aboutUs' => 'About Us',
-    'subsection1_aboutUs' => 'We are helping women in 27-45 years old to access affordable HPV Vaccination.',
+    'subsection1_aboutUs' => 'We are helping women aged 27-45 access affordable HPV Vaccination.',
     'subsection2_aboutUs' => 'At MSD, we specialize in affordable HPV vaccinations for women aged 27-45, fostering health awareness and protection against HPV-related conditions.',
     'section2_aboutUs' => 'Why??',
     'titleSection2_aboutUs' => 'Why Our HPV Awareness Campaign Stands Out',
@@ -68,17 +68,18 @@ return [
 
     //page Services
     'title_service' => 'Services',
-    'subtitle_service' => 'Our services offer comprehensive screenings, consultations, and educational resources tailored to empower individuals in their understanding and management of HPV.',
+    'subtitle_service' => 'Our services offer comprehensive screenings, consultations, and educational resources tailored to empower individuals in understanding and managing HPV.',
     'section1_service' => 'Services',
-    'subsection1_service' => 'Use our services to protect our beloved one',
-    'section1_a' => 'Book an online appointment to get your HPV Vaccine',
-    'section1_b' => 'Get the information about HPV',
-    'section1_c' => 'Assess your knowledge about HPV',
-    'section2_title' => 'Hearing the words from protected women',
+    'subsection1_service' => 'Use our services to protect our loved ones.',
+    'section1_a' => 'Book an online appointment to get your HPV Vaccine.',
+    'section1_b' => 'Get information about HPV.',
+    'section1_c' => 'Assess your knowledge about HPV.',
+    'section2_title' => 'Hearing the words from protected women.',
+    'buttonServices' => 'See Details',
 
     //page get vaccine
     'title_getvaccine' => 'Pricing',
-    'subtitle_getvaccine' => 'Our services offer comprehensive screenings, consultations, and educational resources tailored to empower individuals in their understanding and management of HPV.',
+    'subtitle_getvaccine' => 'Our services offer comprehensive screenings, consultations, and educational resources tailored to empower individuals in understanding and managing HPV.',
     'section1_getvaccine' => 'Pricing',
     'subsection1_getvaccine' => 'Choose Mental Health Consultation Packages for Your Needs',
     'section1_dose1' => 'The initial dose lays the groundwork for immunity against HPV. It primes the immune system to recognize and fight the virus, offering the first layer of defense.',
@@ -90,33 +91,31 @@ return [
     'profile' => 'Profile',
     'name' => 'Name',
     'email' => 'Email',
-    'btn_saveChange' => 'Save Change',
+    'btn_saveChange' => 'Save Changes',
     'password' => 'Password',
     'btn_password' => 'Change Password',
-    'history_table' => 'History Transaction',
+    'history_table' => 'Transaction History',
     'price' => 'Price',
     'payment_type' => 'Payment Type',
     'payment_date' => 'Payment Date',
     'appointment_date' => 'Appointment Date',
     'status' => 'Status',
 
-    // untuk page appointment
+    //appointment page
     'appHeading' => 'Book an Online Appointment',
     'appDesc' => 'Are you ready to safeguard your health and take proactive steps against HPV-related risks? Look no further! Our cutting-edge HPV vaccination services offer comprehensive protection, backed by science and compassion.',
-    'selectDate' => 'selectDate',
+    'selectDate' => 'Select Date',
     'right' => 'Available Places for Vaccine Dose',
 
+    //Faq
+    'heading1' => 'What is HPV, and why is it important to get vaccinated?',
+    'body1' => 'HPV (Human Papillomavirus) is a common virus that can cause various health problems, including genital warts and cancers such as cervical, anal, throat, and penile cancer. Vaccination is crucial because it protects against the types of HPV most likely to cause these health problems, significantly reducing the risk of infection and related diseases.',
+    'heading2' => 'What does the HPV vaccine protect against?',
+    'body2' => 'The HPV vaccine protects against the most common types of HPV that cause cervical cancer, genital warts, and other cancers such as throat, anal, vulvar, and penile cancer. Some vaccines, like Gardasil 9, cover nine types of HPV, offering broad protection against high-risk strains.',
+    'heading3' => 'Who should get the HPV vaccine?',
+    'body3' => 'The HPV vaccine is recommended for:
 
-    // Faq
-    'heading1' => 'Apa itu HPV, dan mengapa penting untuk divaksinasi?',
-    'body1' => 'HPV (Human Papillomavirus) adalah virus umum yang dapat menyebabkan berbagai masalah kesehatan, termasuk kutil kelamin dan kanker seperti kanker serviks, anus, tenggorokan, dan penis. Vaksinasi penting karena melindungi dari jenis HPV yang paling mungkin menyebabkan masalah kesehatan ini, sehingga secara signifikan mengurangi risiko infeksi dan penyakit terkait.',
-    'heading2' => 'Apa yang dilindungi oleh vaksin HPV?',
-    'body2' => 'Vaksin HPV melindungi dari jenis HPV paling umum yang menyebabkan kanker serviks, kutil kelamin, dan kanker lainnya seperti kanker tenggorokan, anus, vulva, dan penis. Beberapa vaksin, seperti Gardasil 9, mencakup sembilan jenis HPV, menawarkan perlindungan luas terhadap strain berisiko tinggi.',
-    'heading3' => 'Siapa yang sebaiknya mendapatkan vaksin HPV?',
-    'body3' => 'Vaksin HPV direkomendasikan untuk: 
-
-    - Pra-remaja (laki-laki dan perempuan) usia 11–12 tahun, meskipun bisa dimulai sejak usia 9 tahun.  
-    - Remaja dan dewasa muda yang belum divaksinasi, hingga usia 26 tahun.  
-    - Orang dewasa usia 27–45 tahun juga dapat menerima vaksin setelah berdiskusi dengan penyedia layanan kesehatan mereka mengenai potensi manfaatnya, meskipun efektivitasnya berkurang jika sudah pernah terpapar HPV sebelumnya.',
-
+    - Pre-teens (boys and girls) aged 11–12 years, although it can start as early as age 9.
+    - Teens and young adults who haven’t been vaccinated, up to age 26.
+    - Adults aged 27–45 may also receive the vaccine after discussing potential benefits with their healthcare provider, though its effectiveness may be reduced if they have already been exposed to HPV.',
 ];

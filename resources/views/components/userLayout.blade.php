@@ -81,7 +81,7 @@
             color: white !important;
         }
     </style>
-    <title>Serices - HPV Vaccination</title>
+    <title>Services - HPV Vaccination</title>
 </head>
 
 <body class="primaryBos">

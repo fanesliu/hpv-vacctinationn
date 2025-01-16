@@ -43,7 +43,7 @@ class LoginRegisterController extends Controller
                 return redirect()->route("homepage");
             }
         } else {
-            return redirect()->back()->with('error', 'Input Invalid!');
+            return redirect()->back()->withErrors(['login' => 'Invalid email or password']);
         }
     }
 

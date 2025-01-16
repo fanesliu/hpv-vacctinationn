@@ -61,29 +61,41 @@
     <div class="login-card">
         <div class="row">
             <div class="img-fluid">
-                <img src="{{asset('assets/logo.png')}}" alt="Logo">
+                <img src="{{ asset('assets/logo.png') }}" alt="Logo">
             </div>
             <h1>Log In</h1>
             <form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="d-flex"></div>
                 <div class="mb-3">
+                    <h2>Email</h2>
                     <input type="email" name="email" class="form-control" placeholder="Email">
+                    @error('email')
+                        <div class="text-danger" style="color: red;">{{ $message }}</div>
+                    @enderror
                 </div>
                 <div class="mb-3">
+                    <h2>Password</h2>
                     <input type="password" name="password" class="form-control" placeholder="Password">
+                    @error('password')
+                        <div class="text-danger" style="color: red;">{{ $message }}</div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Log In</button>
             </form>
-
+            @error('login')
+                <p style="color: red;">{{ $message }}</p>
+            @enderror
             @if ($errors->has('email'))
-            <span class="invalid-feedback" style="color: red;">
-                <strong>{{ $errors->first('email') }}</strong>
-            </span>
+                <span class="invalid-feedback" style="color: red;">
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
             @endif
             </br>
 
-            <small style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Don't have account? <a href="{{route('register')}}">Register</a></small>
+            <small
+                style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Don't
+                have account? <a href="{{ route('register') }}">Register</a></small>
         </div>
     </div>
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js') }}"></script>

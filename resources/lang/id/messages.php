@@ -75,6 +75,7 @@ return [
     'section1_b' => 'Dapatkan informasi tentang HPV',
     'section1_c' => 'Nilai pengetahuan Anda tentang HPV',
     'section2_title' => 'Mendengar perkataan dari wanita yang dilindungi',
+    'buttonServices' => 'See Details',
 
     //page get vaccine
     'title_getvaccine' => 'Biaya',

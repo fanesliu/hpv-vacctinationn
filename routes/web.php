@@ -48,10 +48,10 @@ Route::middleware([UserMiddleware::class])->group(function () {
 
     // Localization
     Route::get('/set-locale/{locale}', function ($locale) {
-        if (in_array($locale, ['en', 'id'])) {
+        // if (in_array($locale, ['en', 'id', 'jp'])) {
             Session::put('locale', $locale);
             App::setLocale($locale);
-        }
+        // }
 
 
         return redirect()->back();

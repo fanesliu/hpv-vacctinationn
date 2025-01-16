@@ -46,29 +46,37 @@ class UserController extends Controller
 
     public function updateProfile(Request $request)
     {
-        // Validate the incoming request
+        // Validasi input
         $request->validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
-
+    
+        // Mendapatkan user yang sedang login
         $user = Auth::user();
-
+    
         if ($request->hasFile('image')) {
             $file = $request->file('image');
-
-            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
-
-            $filePath = $file->storeAs('image', $filename, 'public');
-
+            
+            // Membaca isi file dan mengubahnya ke base64
+            $contents = file_get_contents($file->getRealPath());
+            $base64 = base64_encode($contents);
+            $mimeType = $file->getMimeType();
+            $base64Data = 'data:' . $mimeType . ';base64,' . $base64;
+    
+            // Hapus gambar lama dari database jika ada
             if ($user->image) {
-                Storage::disk('public')->delete($user->image);
+                $user->image = null; // Jika ingin menghapus gambar lama
             }
-
-            $user->image = $filePath;
+    
+            // Simpan gambar base64 ke database
+            $user->image = $base64Data;
             $user->save();
         }
+    
+        // Redirect dengan pesan sukses
         return redirect()->route('profile')->with('success', 'Profile image updated successfully.');
     }
+    
 
     public function editPassword()
     {

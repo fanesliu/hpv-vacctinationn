@@ -53,8 +53,9 @@
                         @lang('messages.btn_language')
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('set-locale', 'id')}}">Indonesia</a></li>
+                        <li><a class="dropdown-item" href="{{route('set-locale', 'id')}}">Indonesian</a></li>
                         <li><a class="dropdown-item" href="{{route('set-locale', 'en')}}">English</a></li>
+                        <li><a class="dropdown-item" href="{{route('set-locale', 'jp')}}">Japanese</a></li>
                     </ul>
                 </li>
             </ul>

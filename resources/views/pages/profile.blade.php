@@ -76,7 +76,7 @@
                 <div class="col-md-4 text-center">
                     <form action="{{route('updateProfile')}}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <img src="{{ $users->image ? asset('storage/' . $users->image) : asset('profile_bg.png') }}" alt="{{asset('profile_bg.png')}}" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
+                        <img src="{{ $users->image}}" alt="{{asset('profile_bg.png')}}" class="rounded-circle mb-3" style="width: 150px; height: 150px;">
 
                         <div class="d-flex justify-content-center align-items-center mt-3">
                             <input type="file" class="form-control w-50 me-3" id="image" name="image">

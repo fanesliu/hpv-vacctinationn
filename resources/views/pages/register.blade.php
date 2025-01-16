@@ -100,7 +100,18 @@
                     <input type="password" name="password" class="form-control" placeholder="Password" required>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Register</button>
+                <div class="mb-2">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+                
+                <br>
+
+                <div  class="text-con mt-1"  >
+                    <small
+                    style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Already Registered ? 
+                        <a href="{{ route('login') }}">Log In</a>
+                    </small>
+                </div>
             </form>
         </div>
     </div>
